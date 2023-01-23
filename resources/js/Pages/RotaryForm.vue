@@ -2,43 +2,27 @@
     <Head title="Formulario" />
 
     <AuthenticatedLayout>
-        <h1 class="mt-5 font-semibold text-xl text-gray-800 leading-tight">Solicitud de Subvención Global</h1>
-        <hr>
+        <div class="row mt-5">
+            <div class="col-8">
+                <div class="primary-bg">
+                    <p class="p-3 text-white fw-bold" >
+                        <span class="mx-4">District Number: 4240</span>
 
-        <div class="mt-5">
-            <div class="">
-                <p><strong>Todos los campos son obligatorios salvo que se indique que son optativos.</strong></p>
-                <p>Proporciónanos cierta información básica y asignaremos un número a tu solicitud.</p>
+                        District Status:
+                        <span style="color: #9add6b;"><i class="fa-solid fa-circle-check"></i> Distrito certificado</span>
+                    </p>
+                </div>
 
-                <accordion id="step-1" title="Paso #1">
-                    <p>¿Qué tipo de proyecto piensas llevar a cabo?</p>
-                    <p>Marca todas las opciones que correspondan, a fin de determinar qué otros datos se necesitan.</p>
+                <h4 class="title-color my-3">Solicitud de Subvención Global</h4>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Proyecto humanitario
-                            <span>Aborda necesidades de la comunidad con resultados mensurables y sostenibles.</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Equipo de capacitación profesional
-                            <span>Mejorar las competencias de la comunidad mediante el financiamiento del viaje de un grupo de profesionales para que capaciten a sus pares locales o adquieran nuevas habilidades.</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                        <label class="form-check-label" for="flexRadioDefault3">
-                            Beca
-                            <span>Financia estudios de postgrado de personas interesadas en seguir una carrera profesional en una de las áreas de interés de Rotary.</span>
-                        </label>
-                    </div>
+                <p class="mt-5 mb-3"><strong>Todos los campos son obligatorios salvo que se indique que son optativos.</strong></p>
+
+                <accordion id="step-1" title="Paso #1 Información general">
+                    <Step1 />
                 </accordion>
 
                 <accordion id="step-2" title="Paso #2">
-                    <p><strong>Selecciona a los contactos principales (local e internacional) del proyecto</strong></p>
+                    <Step2 />
                 </accordion>
 
                 <accordion id="step-2" title="Paso #2">
@@ -60,7 +44,7 @@
 
                 </accordion>
             </div>
-            <aside>
+            <aside class="col-4">
                 Aside
             </aside>
         </div>
@@ -68,15 +52,19 @@
 </template>
 
 <script>
+    import { Head } from '@inertiajs/vue3';
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import Accordion from '@/Components/Accordion.vue';
-    import { Head } from '@inertiajs/vue3';
+    import Step1 from '@/Components/Steps/Step1.vue';
+    import Step2 from '@/Components/Steps/Step2.vue';
 
     export default {
         components: {
             AuthenticatedLayout,
             Head,
             Accordion,
+            Step1,
+            Step2
         },
     }
 </script>

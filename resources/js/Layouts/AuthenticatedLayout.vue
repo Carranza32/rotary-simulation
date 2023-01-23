@@ -22,7 +22,7 @@ const showingNavigationDropdown = ref(false);
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -44,7 +44,7 @@ const showingNavigationDropdown = ref(false);
                             <a class="nav-link disabled">Disabled</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </nav>
 
