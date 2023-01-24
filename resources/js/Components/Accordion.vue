@@ -6,7 +6,7 @@
                     {{title}}
                 </button>
             </h2>
-            <div :id="id" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div :id="id" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <slot />
                 </div>
