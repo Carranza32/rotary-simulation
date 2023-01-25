@@ -25,23 +25,16 @@
                     <Step2 />
                 </accordion>
 
-                <accordion id="step-2" title="Paso #2">
-                    <p><strong>Contactos principales</strong></p>
+                <accordion id="step-3" title="Paso #3">
+					<Step3 />
+                </accordion>
 
-                    PRIMER CONTACTO PRINCIPAL
-                    Has sido designado automáticamente como contacto principal del proyecto. Antes de seleccionar al segundo, háblanos sobre tu papel y los patrocinadores del proyecto.
-                    Tu papel
-                    Local  Internacional
+                <accordion id="step-4" title="Paso #4 Áreas de interés">
+					<Step4 />
+                </accordion>
 
-                    Tu patrocinador
-                    Distrito  Club
-
-
-                    SEGUNDO CONTACTO PRINCIPAL
-                    ¿Quién es el contacto principal internacional? Búscalo en los campos de búsqueda que figuran continuación.
-                    Su patrocinador
-                    Distrito  Rotaract Club  Rotary Club
-
+                <accordion id="step-5" title="Paso #5 Medición del éxito">
+					<Step5 />
                 </accordion>
             </div>
             <aside class="col-4">
@@ -57,6 +50,9 @@
     import Accordion from '@/Components/Accordion.vue';
     import Step1 from '@/Components/Steps/Step1.vue';
     import Step2 from '@/Components/Steps/Step2.vue';
+    import Step3 from '@/Components/Steps/Step3.vue';
+    import Step4 from '@/Components/Steps/Step4.vue';
+    import Step5 from '@/Components/Steps/Step5.vue';
 
     export default {
         components: {
@@ -64,7 +60,10 @@
             Head,
             Accordion,
             Step1,
-            Step2
+            Step2,
+            Step3,
+            Step4,
+            Step5,
         },
     }
 </script>
