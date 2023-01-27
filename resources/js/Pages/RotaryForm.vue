@@ -36,6 +36,26 @@
                 <accordion id="step-5" title="Paso #5 Medición del éxito">
 					<Step5 />
                 </accordion>
+
+                <accordion id="step-6" title="Paso #6 Sede y fechas">
+					<Step6 />
+                </accordion>
+
+                <accordion id="step-7" title="Paso #7 Participantes">
+					<Step7 />
+                </accordion>
+
+                <accordion id="step-8" title="Paso #8 Presupuesto">
+					<Step8 />
+                </accordion>
+
+                <accordion id="step-9" title="Paso #9 Financiación">
+					<Step9 />
+                </accordion>
+
+                <accordion id="step-10" title="Paso #10 Sostenibilidad">
+					<Step10 />
+                </accordion>
             </div>
             <aside class="col-4">
                 Aside
@@ -53,6 +73,11 @@
     import Step3 from '@/Components/Steps/Step3.vue';
     import Step4 from '@/Components/Steps/Step4.vue';
     import Step5 from '@/Components/Steps/Step5.vue';
+    import Step6 from '@/Components/Steps/Step6.vue';
+    import Step7 from '@/Components/Steps/Step7.vue';
+    import Step8 from '@/Components/Steps/Step8.vue';
+    import Step9 from '@/Components/Steps/Step9.vue';
+    import Step10 from '@/Components/Steps/Step10.vue';
 
     export default {
         components: {
@@ -64,6 +89,11 @@
             Step3,
             Step4,
             Step5,
+            Step6,
+            Step7,
+            Step8,
+            Step9,
+            Step10,
         },
     }
 </script>
