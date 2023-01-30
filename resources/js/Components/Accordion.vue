@@ -2,7 +2,7 @@
     <div class="accordion">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" :data-bs-target="'#'+id" aria-expanded="true" :aria-controls="id">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#'+id" aria-expanded="false" :aria-controls="id">
                     {{title}}
                 </button>
             </h2>

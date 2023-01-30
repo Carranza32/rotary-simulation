@@ -65,7 +65,7 @@
 					<Step12 />
                 </accordion>
             </div>
-            <aside class="col-4">
+            <aside class="col-4 p-4">
                 Aside
             </aside>
         </div>
