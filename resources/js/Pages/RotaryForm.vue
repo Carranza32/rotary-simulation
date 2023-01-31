@@ -17,56 +17,58 @@
 
                 <p class="mt-5 mb-3"><strong>Todos los campos son obligatorios salvo que se indique que son optativos.</strong></p>
 
-                <accordion id="step-1" title="Paso #1 Información general">
-                    <Step1 />
-                </accordion>
+                <div class="accordion accordion-flush" style="margin: 2px 0px;" id="accordionStepper">
+                    <accordion id="step-1" title="Paso #1 Información general">
+                        <Step1 />
+                    </accordion>
 
-                <accordion id="step-2" title="Paso #2 Integrantes del comité">
-                    <Step2 />
-                </accordion>
+                    <accordion id="step-2" title="Paso #2 Integrantes del comité">
+                        <Step2 />
+                    </accordion>
 
-                <accordion id="step-3" title="Paso #3 Panorama general del proyecto">
-					<Step3 />
-                </accordion>
+                    <accordion id="step-3" title="Paso #3 Panorama general del proyecto">
+                        <Step3 />
+                    </accordion>
 
-                <accordion id="step-4" title="Paso #4 Áreas de interés">
-					<Step4 />
-                </accordion>
+                    <accordion id="step-4" title="Paso #4 Áreas de interés">
+                        <Step4 />
+                    </accordion>
 
-                <accordion id="step-5" title="Paso #5 Medición del éxito">
-					<Step5 />
-                </accordion>
+                    <accordion id="step-5" title="Paso #5 Medición del éxito">
+                        <Step5 />
+                    </accordion>
 
-                <accordion id="step-6" title="Paso #6 Sede y fechas">
-					<Step6 />
-                </accordion>
+                    <accordion id="step-6" title="Paso #6 Sede y fechas">
+                        <Step6 />
+                    </accordion>
 
-                <accordion id="step-7" title="Paso #7 Participantes">
-					<Step7 />
-                </accordion>
+                    <accordion id="step-7" title="Paso #7 Participantes">
+                        <Step7 />
+                    </accordion>
 
-                <accordion id="step-8" title="Paso #8 Presupuesto">
-					<Step8 />
-                </accordion>
+                    <accordion id="step-8" title="Paso #8 Presupuesto">
+                        <Step8 />
+                    </accordion>
 
-                <accordion id="step-9" title="Paso #9 Financiación">
-					<Step9 />
-                </accordion>
+                    <accordion id="step-9" title="Paso #9 Financiación">
+                        <Step9 />
+                    </accordion>
 
-                <accordion id="step-10" title="Paso #10 Sostenibilidad">
-					<Step10 />
-                </accordion>
+                    <accordion id="step-10" title="Paso #10 Sostenibilidad">
+                        <Step10 />
+                    </accordion>
 
-                <accordion id="step-11" title="Paso #11 Documentos justificantes">
-					<Step11Documents />
-                </accordion>
+                    <accordion id="step-11" title="Paso #11 Documentos justificantes">
+                        <Step11Documents />
+                    </accordion>
 
-                <accordion id="step-12" title="Paso #12 Autorizaciones">
-					<Step12 />
-                </accordion>
+                    <accordion id="step-12" title="Paso #12 Autorizaciones">
+                        <Step12 />
+                    </accordion>
+                </div>
             </div>
             <aside class="col-4 p-4">
-                Aside
+                Paso actual: {{ $store.state.currentStep }}
             </aside>
         </div>
     </AuthenticatedLayout>

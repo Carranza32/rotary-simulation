@@ -1,11 +1,12 @@
+import { onMounted } from 'vue';
 <template>
     <div>
         <p class="mt-3 mb-4">Proporciónanos cierta información básica y asignaremos un número a tu solicitud.</p>
 
         <div class="mb-3">
             <label for="name" class="form-label">Indica el nombre del proyecto.</label>
-            <input type="text" name="project_name" class="form-control" id="name">
-            <small class="float-end">0/100 caracteres</small>
+            <input type="text" name="project_name" class="form-control" id="name" v-model="$store.state.step1.project_name" maxlength="100">
+            <small class="float-end">{{ $store.state.step1.project_name.length }}/100 caracteres</small>
         </div>
 
         <p class="fw-bold">¿Qué tipo de proyecto piensas llevar a cabo?</p>
@@ -13,7 +14,7 @@
         <hr>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="Proyecto humanitario" v-model="$store.state.step1.type" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Proyecto humanitario
             </label>
@@ -21,7 +22,7 @@
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="Equipo de capacitación profesional" v-model="$store.state.step1.type" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Equipo de capacitación profesional
             </label>
@@ -29,7 +30,7 @@
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="Beca" v-model="$store.state.step1.type" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Beca
             </label>
@@ -50,11 +51,19 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- <tr v-for="contact in $store.state.contacts" :key="contact.name">
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.club }}</td>
+                    <td>{{ contact.district }}</td>
+                    <td>{{ contact.role }}</td>
+                </tr> -->
                 <tr>
                     <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal" >+ Añadir contacto principal</a></td>
                 </tr>
             </tbody>
         </table>
+
+
 
 
         <!-- Modal -->
@@ -139,20 +148,31 @@
                             </div>
                         </div>
 
-                        <DataTable :data="data" class="display" width="100%">
+                        <table class="display mt-5" width="100%">
                             <thead>
                                 <tr>
                                     <th>Número de socio</th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
+                                    <th></th>
                                 </tr>
                             </thead>
-                        </DataTable>
+                            <tbody>
+                                <tr v-for="item in data" :key="item[0]" :class="( $store.state.step1.contacts?.includes(c => c.id == item[0]) ) ? 'table-primary' : '' ">
+                                    <td>{{ item[0] }}</td>
+                                    <td>{{ item[1] }}</td>
+                                    <td>{{ item[2] }}</td>
+                                    <td>
+                                        <button class="btn btn-outline-primary my-2" @click="addContacts(item)">Select</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -160,15 +180,8 @@
     </div>
 </template>
 
-<script lang="ts">
-import DataTable from 'datatables.net-vue3'
-import DataTablesLib from 'datatables.net';
-
+<script>
 export default {
-    components: {
-        DataTable,
-        DataTablesLib
-    },
     data() {
         return {
             data: [
@@ -182,8 +195,29 @@ export default {
             ]
         }
     },
-    mounted() {
-        DataTable.use(DataTablesLib)
+    mounted: function () {
+        console.log(this.$store.state.step1.contacts)
     },
+    methods: {
+        addContacts(item) {
+            let find = this.$store.state.step1.contacts?.find(c => c.id == item[0])
+
+            if (find?.length == 0 || find == undefined) {
+                this.$store.state.step1.contacts?.push({
+                    id: item[0],
+                    name: item[1],
+                    lastname: item[2]
+                })
+            }
+        },
+
+        findId(id) {
+            let find = this.$store.state.step1.contacts?.includes(item => item.id == id)
+
+            console.log(find);
+
+            return find
+        }
+    }
 }
 </script>
