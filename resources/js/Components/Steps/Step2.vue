@@ -44,11 +44,11 @@
             <label for="name" class="form-label">¿Existe entre los integrantes del comité algún posible conflicto de interés?</label>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="papel" id="local" value="local" checked>
+                <input class="form-check-input" type="radio" name="papel" id="local" value="false" checked v-model="$store.state.step2.members_conflict">
                 <label class="form-check-label" for="local">No</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="papel" id="internacional" value="internacional">
+                <input class="form-check-input" type="radio" name="papel" id="internacional" value="true" v-model="$store.state.step2.members_conflict">
                 <label class="form-check-label" for="internacional">Si</label>
             </div>
         </div>

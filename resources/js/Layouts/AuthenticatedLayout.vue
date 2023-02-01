@@ -38,7 +38,8 @@ const showingNavigationDropdown = ref(false);
                     </label>
                 </span>
                 <div class="ml-3 d-inline-block">
-                    <Link class="me-3 text-white" :href="route('profile.edit')">Perfil</Link>
+                    <a class="me-3 text-white" :href="route('dashboard')">Dashboard</a>
+                    <a class="me-3 text-white" :href="route('profile.edit')">Perfil</a>
                     <button class="me-3 text-white" @click="logout()">Log Out</button>
                 </div>
             </div>

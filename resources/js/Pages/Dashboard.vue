@@ -1,22 +1,84 @@
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
-</script>
-
 <template>
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
-        </template>
+        <div class="py-5">
+            <div class="d-flex justify-content-between">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-5">Mis formularios creados</h2>
+                <a :href="route('simulation.form')" class="btn btn-primary ms-auto align-self-baseline">Crear formulario</a>
+            </div>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">You're logged in!</div>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col" v-for="form in forms" :key="form.id">
+                    <a href="#!" class="card custom-card custom-shadow h-100 p-2">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ form.name }}</h5>
+                            <p class="card-text">{{ form.description }}</p>
+                            <p class="card-text"><small class="text-muted">Creado: {{ form.created_at }}</small></p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     </AuthenticatedLayout>
 </template>
+
+<script>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { Head, Link } from '@inertiajs/vue3';
+
+export default {
+    components: {
+        AuthenticatedLayout,
+        Link,
+    },
+    data() {
+        return {
+            forms: [
+                {
+                    id: 1,
+                    name: 'Formulario 1',
+                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+                    created_at: '2021-08-01',
+                    step: 1,
+                },
+                {
+                    id: 1,
+                    name: 'Formulario 1',
+                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+                    created_at: '2021-08-01',
+                    step: 1,
+                },
+                {
+                    id: 1,
+                    name: 'Formulario 1',
+                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+                    created_at: '2021-08-01',
+                    step: 1,
+                },
+                {
+                    id: 1,
+                    name: 'Formulario 1',
+                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+                    created_at: '2021-08-01',
+                    step: 1,
+                },
+                {
+                    id: 1,
+                    name: 'Formulario 1',
+                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+                    created_at: '2021-08-01',
+                    step: 1,
+                },
+                {
+                    id: 1,
+                    name: 'Formulario 1',
+                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+                    created_at: '2021-08-01',
+                    step: 1,
+                },
+            ],
+        }
+    },
+}
+</script>
