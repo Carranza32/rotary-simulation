@@ -1,6 +1,13 @@
-import { onMounted } from 'vue';
 <template>
-    <div>
+    <form @submit.prevent="submit">
+        <div class="alert alert-danger" role="alert" >
+            <ul>
+                <li v-for="error in $page.props.errors" :key="error">
+                    {{ error }}
+                </li>
+            </ul>
+        </div>
+
         <p class="mt-3 mb-4">Proporciónanos cierta información básica y asignaremos un número a tu solicitud.</p>
 
         <div class="mb-3">
@@ -14,7 +21,7 @@ import { onMounted } from 'vue';
         <hr>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="Proyecto humanitario" v-model="$store.state.step1.type" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="1" v-model="$store.state.step1.type" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Proyecto humanitario
             </label>
@@ -22,7 +29,7 @@ import { onMounted } from 'vue';
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="Equipo de capacitación profesional" v-model="$store.state.step1.type" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="2" v-model="$store.state.step1.type" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Equipo de capacitación profesional
             </label>
@@ -30,7 +37,7 @@ import { onMounted } from 'vue';
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="Beca" v-model="$store.state.step1.type" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="3" v-model="$store.state.step1.type" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Beca
             </label>
@@ -62,6 +69,20 @@ import { onMounted } from 'vue';
                 </tr>
             </tbody>
         </table>
+
+
+
+        <div class="d-flex justify-content-start gap-3">
+            <button class="btn btn-primary" type="submit">
+                Guardar y continuar
+            </button>
+            <button class="btn btn-outline-primary" type="submit">
+                Guardar
+            </button>
+            <button class="btn btn-link" type="button">
+                Salir
+            </button>
+        </div>
 
 
 
@@ -177,11 +198,14 @@ import { onMounted } from 'vue';
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </template>
 
 <script>
 export default {
+    props: {
+        errors: Object,
+    },
     data() {
         return {
             data: [
@@ -192,7 +216,7 @@ export default {
                 [5879654, "Adrian", "Blake"],
                 [5879654, "Adrian", "Blake"],
                 [5879654, "Adrian", "Blake"],
-            ]
+            ],
         }
     },
     mounted: function () {
@@ -217,6 +241,23 @@ export default {
             console.log(find);
 
             return find
+        },
+
+        submit() {
+            this.$inertia.post(route('simulation.save.step1'), {
+                ...this.$store.state.step1,
+                current_step: this.$store.state.currentStep,
+            },
+            {
+                preserveState: true,
+                preserveScroll: true,
+                only: ['step1'],
+                onSuccess: (page) => {
+                    this.$store.state.currentStep = 2
+                    console.log(page);
+                }
+            }
+            )
         }
     }
 }

@@ -8,18 +8,6 @@
         <div :id="id" class="accordion-collapse collapse" :aria-labelledby="'heading'+id" data-bs-parent="#accordionStepper">
             <div class="accordion-body">
                 <slot />
-
-                <div class="d-flex justify-content-start gap-3">
-                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" :data-bs-target="'#'+id" aria-expanded="false" :aria-controls="id">
-                        Guardar y continuar
-                    </button>
-                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" :data-bs-target="'#'+id" aria-expanded="false" :aria-controls="id">
-                        Guardar
-                    </button>
-                    <button class="btn btn-link" type="button" data-bs-toggle="collapse" :data-bs-target="'#'+id" aria-expanded="false" :aria-controls="id">
-                        Salir
-                    </button>
-                </div>
             </div>
         </div>
     </div>

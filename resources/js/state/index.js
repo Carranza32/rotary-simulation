@@ -51,8 +51,6 @@ const store = {
             total: 0.0,
         },
         step9: {
-            currency: '',
-            exchange_rate: 0.0,
             sources: [
                 {
                     source: '',

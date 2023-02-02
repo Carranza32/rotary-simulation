@@ -928,7 +928,7 @@ nav button {
     position: relative;
     z-index: 0;
 }
-#okta-sign-in [type=button], [type=reset], [type=submit], button {
+#okta-sign-in [type=button], button {
     -webkit-appearance: button;
     appearance: button;
     background-color: transparent;
