@@ -27,7 +27,7 @@
                 <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
             </label>
 
-            <textarea class="form-control" id="textarea" rows="5"></textarea>
+            <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.members"></textarea>
         </div>
 
         <p class="fw-bold text-uppercase">VIAJEROS VOLUNTARIOS (OPTATIVO)</p>
@@ -57,7 +57,7 @@
                 Describe el papel que desempeñarán los patrocinadores locales en el proyecto:
             </label>
 
-            <textarea class="form-control" id="textarea" rows="5"></textarea>
+            <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.local_sponsors"></textarea>
         </div>
 
         <div class="mb-3">
@@ -65,7 +65,7 @@
                 Describe el papel que desempeñarán los patrocinadores internacionales en el proyecto:
             </label>
 
-            <textarea class="form-control" id="textarea" rows="5"></textarea>
+            <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.international_sponsors"></textarea>
         </div>
     </div>
 </template>

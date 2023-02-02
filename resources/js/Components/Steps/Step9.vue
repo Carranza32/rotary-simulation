@@ -51,7 +51,7 @@
                     <p class="tw-bold">Puedes solicitar hasta 0.00 US$ del Fondo Mundial.</p>
                 </div>
                 <div class="col-6">
-                    <input type="text" class="form-control" value="23000">
+                    <input type="text" class="form-control" v-model="$store.state.step9.world_donation">
                     <div class="invalid-feedback">
                         La cantidad que solicitaste supera el monto disponible.
                     </div>
@@ -76,19 +76,19 @@
                 <table class="w-100">
                     <tr>
                         <td class="text-end">Contribuciones en efectivo:</td>
-                        <td class="text-end">24.00</td>
+                        <td class="text-end">{{ $store.state.step9.total_contributions }}</td>
                     </tr>
                     <tr>
                         <td class="text-end">Fondo mundial:</td>
-                        <td class="text-end">23,000.00</td>
+                        <td class="text-end">{{ $store.state.step9.world_donation }}</td>
                     </tr>
                     <tr class="p-3">
                         <td class="text-end fw-bold my-3">Total financiado:</td>
-                        <td class="text-end">23,024.00</td>
+                        <td class="text-end">{{ $store.state.step9.total_financed }}</td>
                     </tr>
                     <tr>
                         <td class="text-end">Presupuesto total:</td>
-                        <td class="text-end">0</td>
+                        <td class="text-end">{{ $store.state.step9.total_budget }}</td>
                     </tr>
                 </table>
             </div>

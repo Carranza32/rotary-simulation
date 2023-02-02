@@ -27,11 +27,11 @@
             <label for="name" class="form-label">¿Ya sabes quíen recopilará la información necesario para la evaluación y le monitoreo?</label>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="papel" id="local" value="local" checked>
+                <input class="form-check-input" type="radio" name="papel" id="local" value="true" checked v-model="$store.state.step5.evaluation">
                 <label class="form-check-label" for="local">Si</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="papel" id="internacional" value="internacional">
+                <input class="form-check-input" type="radio" name="papel" id="internacional" value="false" v-model="$store.state.step5.evaluation">
                 <label class="form-check-label" for="internacional">No</label>
             </div>
         </div>

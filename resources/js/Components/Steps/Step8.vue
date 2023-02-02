@@ -8,7 +8,7 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="name" class="form-label">Modena local</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" v-model="$store.state.step8.currency">
                         <option value="1">USD</option>
                         <option value="1">EUR</option>
                         <option value="1">CLP</option>
@@ -18,7 +18,7 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="name" class="form-label"><a href="#!">Tipo de cambio</a> (por dólar estadounidense)</label>
-                    <input type="text" disabled name="project_name" class="form-control" id="name" value="1">
+                    <input type="text" disabled name="project_name" class="form-control" id="name" v-model="$store.state.step8.exchange_rate">
                     <small>Guardado el 18/01/2023</small>
                 </div>
             </div>
@@ -85,11 +85,11 @@
                         </td>
 
                         <td>
-                            0
+                            {{ $store.state.step8.exchange_rate }}
                         </td>
 
                         <td colspan="2">
-                            0
+                            {{ $store.state.step8.exchange_rate }}
                         </td>
                     </tr>
                     <tr>

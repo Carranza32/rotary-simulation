@@ -62,7 +62,7 @@ const store = {
                     total: '',
                 }
             ],
-            world_donation: 0.0,
+            world_donation: 23000,
             total_contributions: 0.0,
             total_financed: 0.0,
             total_budget: 0.0,
