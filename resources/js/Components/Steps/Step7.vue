@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <form @submit.prevent="submit">
         <p class="fw-bold text-uppercase">Organizadores y colaboradoras (optitivo)
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
@@ -67,5 +67,52 @@
 
             <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.international_sponsors"></textarea>
         </div>
-    </div>
+
+        <div class="d-flex justify-content-start gap-3 mt-4">
+            <button class="btn btn-primary" type="submit">
+                Guardar y continuar
+            </button>
+            <button class="btn btn-outline-primary" type="submit">
+                Guardar
+            </button>
+            <button class="btn btn-link" type="button">
+                Salir
+            </button>
+        </div>
+    </form>
 </template>
+
+<script>
+export default {
+    props: {
+        errors: Object,
+        data: Object,
+    },
+    methods: {
+        submit() {
+            this.$inertia.post(route('simulation.save.step7'), {
+                ...this.$store.state.step7,
+                current_step: this.$store.state.currentStep,
+            },
+            {
+                preserveState: true,
+                preserveScroll: true,
+                only: ['step7'],
+                onSuccess: (page) => {
+                    this.$store.state.currentStep++;
+
+                    this.$swal('Step 7 saved successfully', '', 'success');
+
+                    console.log(page);
+                    console.log(this.$page.props.data);
+                },
+                onError: (error) => {
+                    this.$swal('Error', 'Something went wrong', 'error');
+                    console.log(error);
+                }
+            }
+            )
+        }
+    }
+}
+</script>

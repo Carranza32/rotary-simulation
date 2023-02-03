@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <form @submit.prevent="submit">
         <p class="fw-bold">Háblanos sobre los fondos que has conseguido para el proyecto. Utilizaremos esta información para calcular la máxima aportación de contrapartida que podrías recibir del Fondo Mundial.</p>
 
         <div class="table-responsive">
@@ -94,5 +94,52 @@
             </div>
         </div>
 
-    </div>
+        <div class="d-flex justify-content-start gap-3 mt-4">
+            <button class="btn btn-primary" type="submit">
+                Guardar y continuar
+            </button>
+            <button class="btn btn-outline-primary" type="submit">
+                Guardar
+            </button>
+            <button class="btn btn-link" type="button">
+                Salir
+            </button>
+        </div>
+
+    </form>
 </template>
+
+<script>
+export default {
+    props: {
+        errors: Object,
+        data: Object,
+    },
+    methods: {
+        submit() {
+            this.$inertia.post(route('simulation.save.step9'), {
+                ...this.$store.state.step9,
+                current_step: this.$store.state.currentStep,
+            },
+            {
+                preserveState: true,
+                preserveScroll: true,
+                only: ['step9'],
+                onSuccess: (page) => {
+                    this.$store.state.currentStep++;
+
+                    this.$swal('Step 9 saved successfully', '', 'success');
+
+                    console.log(page);
+                    console.log(this.$page.props.data);
+                },
+                onError: (error) => {
+                    this.$swal('Error', 'Something went wrong', 'error');
+                    console.log(error);
+                }
+            }
+            )
+        }
+    }
+}
+</script>

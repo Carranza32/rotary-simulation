@@ -2,14 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RotaryForm;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class RotaryFormController extends Controller
 {
-    public function form()
+    public function dashboard()
     {
-        return Inertia::render('RotaryForm');
+        return Inertia::render('Dashboard', [
+            'forms' => RotaryForm::all(),
+        ]);
+    }
+
+    public function form($id = null)
+    {
+        $rotary = RotaryForm::find($id);
+
+        return Inertia::render('RotaryForm', [
+            'form' => $rotary,
+        ]);
     }
 
     public function saveStep1(Request $request)
@@ -21,8 +33,16 @@ class RotaryFormController extends Controller
             'contacts' => 'nullable',
         ]);
 
-        return back()->with('flash', [
+        $rotary = RotaryForm::create([
+            'project_name' => $request->project_name,
+            'type' => $request->type,
+            'contacts' => $request->contacts,
+            'user_id' => auth()->user()->id,
+        ]);
+
+        return redirect()->route('simulation.form')->with([
             'message' => 'Step 1 saved successfully',
+            'data' => $rotary,
         ]);
     }
 
@@ -35,6 +55,8 @@ class RotaryFormController extends Controller
             'members_conflict' => 'required',
         ]);
 
+        $rotary = RotaryForm::all()->first()->update($validate);
+
         return redirect()->route('simulation.form');
     }
 
@@ -45,6 +67,8 @@ class RotaryFormController extends Controller
             'objectives' => 'required',
         ]);
 
+        $rotary = RotaryForm::all()->first()->update($validate);
+
         return redirect()->route('simulation.form');
     }
 
@@ -54,6 +78,8 @@ class RotaryFormController extends Controller
             'current_step' => 'required',
             'interest_area' => 'required',
         ]);
+
+        $rotary = RotaryForm::all()->first()->update($validate);
 
         return redirect()->route('simulation.form');
     }
@@ -66,6 +92,8 @@ class RotaryFormController extends Controller
             'measures' => 'nullable',
             'evaluation' => 'required',
         ]);
+
+        $rotary = RotaryForm::all()->first()->update($validate);
 
         return redirect()->route('simulation.form');
     }
@@ -81,6 +109,8 @@ class RotaryFormController extends Controller
             'end_date' => 'required',
         ]);
 
+        $rotary = RotaryForm::all()->first()->update($validate);
+
         return redirect()->route('simulation.form');
     }
 
@@ -88,12 +118,14 @@ class RotaryFormController extends Controller
     {
         $validate = $request->validate([
             'current_step' => 'required',
-            'organizers' => 'nullable',
+            'measures' => 'nullable',
             'members' => 'required',
-            'travellers' => 'required',
+            'travellers' => 'nullable',
             'local_sponsors' => 'required',
             'international_sponsors' => 'required',
         ]);
+
+        $rotary = RotaryForm::all()->first()->update($validate);
 
         return redirect()->route('simulation.form');
     }
@@ -105,8 +137,10 @@ class RotaryFormController extends Controller
             'currency' => 'required',
             'exchange_rate' => 'required',
             'headings' => 'nullable',
-            'budget_step8' => 'required',
+            'budget_step8' => 'nullable',
         ]);
+
+        $rotary = RotaryForm::all()->first()->update($validate);
 
         return redirect()->route('simulation.form');
     }
@@ -122,6 +156,8 @@ class RotaryFormController extends Controller
             'total_budget' => 'required',
         ]);
 
+        $rotary = RotaryForm::all()->first()->update($validate);
+
         return redirect()->route('simulation.form');
     }
 
@@ -130,6 +166,8 @@ class RotaryFormController extends Controller
         $validate = $request->validate([
             'current_step' => 'required',
         ]);
+
+        $rotary = RotaryForm::all()->first()->update($validate);
 
         return redirect()->route('simulation.form');
     }
@@ -140,6 +178,8 @@ class RotaryFormController extends Controller
             'current_step' => 'required',
         ]);
 
+        $rotary = RotaryForm::all()->first()->update($validate);
+
         return redirect()->route('simulation.form');
     }
 
@@ -148,6 +188,8 @@ class RotaryFormController extends Controller
         $validate = $request->validate([
             'current_step' => 'required',
         ]);
+
+        $rotary = RotaryForm::all()->first()->update($validate);
 
         return redirect()->route('simulation.form');
     }

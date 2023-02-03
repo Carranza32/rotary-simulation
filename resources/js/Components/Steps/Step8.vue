@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <form @submit.prevent="submit">
         <p class="fw-bold">Indica qué moneda se utilizará en el presupuesto del proyecto</p>
         <p>La moneda que selecciones deberá ser la que utilices para la mayoría de los gastos del proyecto. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
@@ -101,6 +101,51 @@
             </table>
         </div>
 
-
-    </div>
+        <div class="d-flex justify-content-start gap-3 mt-4">
+            <button class="btn btn-primary" type="submit">
+                Guardar y continuar
+            </button>
+            <button class="btn btn-outline-primary" type="submit">
+                Guardar
+            </button>
+            <button class="btn btn-link" type="button">
+                Salir
+            </button>
+        </div>
+    </form>
 </template>
+
+<script>
+export default {
+    props: {
+        errors: Object,
+        data: Object,
+    },
+    methods: {
+        submit() {
+            this.$inertia.post(route('simulation.save.step8'), {
+                ...this.$store.state.step8,
+                current_step: this.$store.state.currentStep,
+            },
+            {
+                preserveState: true,
+                preserveScroll: true,
+                only: ['step8'],
+                onSuccess: (page) => {
+                    this.$store.state.currentStep++;
+
+                    this.$swal('Step 8 saved successfully', '', 'success');
+
+                    console.log(page);
+                    console.log(this.$page.props.data);
+                },
+                onError: (error) => {
+                    this.$swal('Error', 'Something went wrong', 'error');
+                    console.log(error);
+                }
+            }
+            )
+        }
+    }
+}
+</script>

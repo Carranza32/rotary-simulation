@@ -96,11 +96,30 @@ const store = {
 
         setAddStep(state) {
             state.currentStep ++;
-        }
+        },
+
+        setFormState(state, form) {
+            replaceObjectValues(state.step1, form);
+            replaceObjectValues(state.step2, form);
+            replaceObjectValues(state.step3, form);
+            replaceObjectValues(state.step4, form);
+            replaceObjectValues(state.step5, form);
+            replaceObjectValues(state.step6, form);
+            replaceObjectValues(state.step7, form);
+            replaceObjectValues(state.step8, form);
+            replaceObjectValues(state.step9, form);
+            replaceObjectValues(state.step10, form);
+        },
     },
     getters: {
         currentStep: state => state.currentStep,
     },
+}
+
+function replaceObjectValues(object, replace) {
+    Object.keys(object).forEach(function(key) {
+        object[key] = replace[key];
+    })
 }
 
 export default store;

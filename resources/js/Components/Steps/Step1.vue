@@ -21,24 +21,24 @@
         <hr>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="1" v-model="$store.state.step1.type" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="1" v-model="$store.state.step1.type" id="check_type1">
+            <label class="form-check-label" for="check_type1">
                 Proyecto humanitario
             </label>
             <small>Aborda necesidades de la comunidad con resultados mensurables y sostenibles.</small>
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="2" v-model="$store.state.step1.type" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="2" v-model="$store.state.step1.type" id="check_type2">
+            <label class="form-check-label" for="check_type2">
                 Equipo de capacitación profesional
             </label>
             <small>Mejorar las competencias de la comunidad mediante el financiamiento del viaje de un grupo de profesionales para que capaciten a sus pares locales o adquieran nuevas habilidades.</small>
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="3" v-model="$store.state.step1.type" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="3" v-model="$store.state.step1.type" id="check_type3">
+            <label class="form-check-label" for="check_type3">
                 Beca
             </label>
             <small>Financia estudios de postgrado de personas interesadas en seguir una carrera profesional en una de las áreas de interés de Rotary.</small>
@@ -205,6 +205,7 @@
 export default {
     props: {
         errors: Object,
+        data: Object,
     },
     data() {
         return {
@@ -238,8 +239,6 @@ export default {
         findId(id) {
             let find = this.$store.state.step1.contacts?.includes(item => item.id == id)
 
-            console.log(find);
-
             return find
         },
 
@@ -254,7 +253,13 @@ export default {
                 only: ['step1'],
                 onSuccess: (page) => {
                     this.$store.state.currentStep = 2
+                    this.$swal('Step 1 saved successfully', '', 'success');
                     console.log(page);
+                    console.log(this.$page.props.data);
+                },
+                onError: (error) => {
+                    this.$swal('Error', 'Something went wrong', 'error');
+                    console.log(error);
                 }
             }
             )

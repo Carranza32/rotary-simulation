@@ -21,17 +21,15 @@ Route::get('/', function () {
     return to_route('dashboard');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [RotaryFormController::class, 'dashboard'])->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::controller(RotaryFormController::class)->name('simulation.')->group(function () {
-        Route::get('/simulation', 'form')->name('form');
+        Route::get('/simulation/{id?}', 'form')->name('form');
 
         Route::post('/simulation/step/1', 'saveStep1')->name('save.step1');
         Route::post('/simulation/step/2', 'saveStep2')->name('save.step2');

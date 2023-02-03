@@ -10,9 +10,9 @@
 
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col" v-for="form in forms" :key="form.id">
-                    <a href="#!" class="card custom-card custom-shadow h-100 p-2">
+                    <a :href="route('simulation.form', form.id)" class="card custom-card custom-shadow h-100 p-2">
                         <div class="card-body">
-                            <h5 class="card-title">{{ form.name }}</h5>
+                            <h5 class="card-title">{{ form.project_name }}</h5>
                             <p class="card-text">{{ form.description }}</p>
                             <p class="card-text"><small class="text-muted">Creado: {{ form.created_at }}</small></p>
                         </div>
@@ -28,57 +28,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 
 export default {
+    props: {
+        forms: [],
+    },
     components: {
         AuthenticatedLayout,
         Link,
-    },
-    data() {
-        return {
-            forms: [
-                {
-                    id: 1,
-                    name: 'Formulario 1',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-                    created_at: '2021-08-01',
-                    step: 1,
-                },
-                {
-                    id: 1,
-                    name: 'Formulario 1',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-                    created_at: '2021-08-01',
-                    step: 1,
-                },
-                {
-                    id: 1,
-                    name: 'Formulario 1',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-                    created_at: '2021-08-01',
-                    step: 1,
-                },
-                {
-                    id: 1,
-                    name: 'Formulario 1',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-                    created_at: '2021-08-01',
-                    step: 1,
-                },
-                {
-                    id: 1,
-                    name: 'Formulario 1',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-                    created_at: '2021-08-01',
-                    step: 1,
-                },
-                {
-                    id: 1,
-                    name: 'Formulario 1',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-                    created_at: '2021-08-01',
-                    step: 1,
-                },
-            ],
-        }
     },
 }
 </script>

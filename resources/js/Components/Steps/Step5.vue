@@ -1,6 +1,6 @@
 
 <template>
-    <div>
+    <form @submit.prevent="submit">
         <Step5PazPrev />
 
         <hr>
@@ -27,15 +27,27 @@
             <label for="name" class="form-label">¿Ya sabes quíen recopilará la información necesario para la evaluación y le monitoreo?</label>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="papel" id="local" value="true" checked v-model="$store.state.step5.evaluation">
+                <input class="form-check-input" type="radio" name="papel" id="local" value="1" checked v-model="$store.state.step5.evaluation">
                 <label class="form-check-label" for="local">Si</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="papel" id="internacional" value="false" v-model="$store.state.step5.evaluation">
+                <input class="form-check-input" type="radio" name="papel" id="internacional" value="0" v-model="$store.state.step5.evaluation">
                 <label class="form-check-label" for="internacional">No</label>
             </div>
         </div>
-    </div>
+
+        <div class="d-flex justify-content-start gap-3 mt-4">
+            <button class="btn btn-primary" type="submit">
+                Guardar y continuar
+            </button>
+            <button class="btn btn-outline-primary" type="submit">
+                Guardar
+            </button>
+            <button class="btn btn-link" type="button">
+                Salir
+            </button>
+        </div>
+    </form>
 </template>
 
 <script>
@@ -45,5 +57,35 @@ export default {
     components: {
         Step5PazPrev,
     },
+    props: {
+        errors: Object,
+        data: Object,
+    },
+    methods: {
+        submit() {
+            this.$inertia.post(route('simulation.save.step5'), {
+                ...this.$store.state.step5,
+                current_step: this.$store.state.currentStep,
+            },
+            {
+                preserveState: true,
+                preserveScroll: true,
+                only: ['step5'],
+                onSuccess: (page) => {
+                    this.$store.state.currentStep++;
+
+                    this.$swal('Step 5 saved successfully', '', 'success');
+
+                    console.log(page);
+                    console.log(this.$page.props.data);
+                },
+                onError: (error) => {
+                    this.$swal('Error', 'Something went wrong', 'error');
+                    console.log(error);
+                }
+            }
+            )
+        }
+    }
 }
 </script>

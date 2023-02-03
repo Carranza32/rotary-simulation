@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <form @submit.prevent="submit">
         <p class="fw-bold">¿A qué áreas de interés pertenece el proyecto?</p>
         <p>Selecciona al menos un área. Te pediremos que establezcas metas y respondas a ciertas preguntas para cada área de interés que selecciones. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
@@ -53,5 +53,52 @@
                 Medioambiente
             </label>
         </div>
-    </div>
+
+        <div class="d-flex justify-content-start gap-3 mt-4">
+            <button class="btn btn-primary" type="submit">
+                Guardar y continuar
+            </button>
+            <button class="btn btn-outline-primary" type="submit">
+                Guardar
+            </button>
+            <button class="btn btn-link" type="button">
+                Salir
+            </button>
+        </div>
+    </form>
 </template>
+
+<script>
+export default {
+    props: {
+        errors: Object,
+        data: Object,
+    },
+    methods: {
+        submit() {
+            this.$inertia.post(route('simulation.save.step4'), {
+                ...this.$store.state.step4,
+                current_step: this.$store.state.currentStep,
+            },
+            {
+                preserveState: true,
+                preserveScroll: true,
+                only: ['step4'],
+                onSuccess: (page) => {
+                    this.$store.state.currentStep++;
+
+                    this.$swal('Step 4 saved successfully', '', 'success');
+
+                    console.log(page);
+                    console.log(this.$page.props.data);
+                },
+                onError: (error) => {
+                    this.$swal('Error', 'Something went wrong', 'error');
+                    console.log(error);
+                }
+            }
+            )
+        }
+    }
+}
+</script>

@@ -6,7 +6,7 @@
             <div class="col-8">
                 <div class="primary-bg">
                     <p class="p-3 text-white fw-bold" >
-                        <span class="mx-4">District Number: 4240</span>
+                        <span class="mx-4">District Number: {{ user?.district }}</span>
 
                         District Status:
                         <span style="color: #9add6b;"><i class="fa-solid fa-circle-check"></i> Distrito certificado</span>
@@ -92,6 +92,9 @@
     import Step12 from '@/Components/Steps/Step12.vue';
 
     export default {
+        props: {
+            form: Object,
+        },
         components: {
             AuthenticatedLayout,
             Head,
@@ -108,6 +111,16 @@
             Step10,
             Step11Documents,
             Step12,
+        },
+        computed: {
+            user() {
+                return this.$page.props.auth.user
+            },
+        },
+        mounted() {
+            if (this.form) {
+                this.$store.commit('setFormState', this.form)
+            }
         },
     }
 </script>
