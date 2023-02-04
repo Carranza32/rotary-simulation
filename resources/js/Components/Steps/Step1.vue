@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="submit">
-        <div class="alert alert-danger" role="alert" >
+        <div class="alert alert-danger" role="alert" v-if="$page.props.errors.length">
             <ul>
                 <li v-for="error in $page.props.errors" :key="error">
                     {{ error }}
@@ -202,9 +202,11 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     props: {
-        errors: Object,
+        errors: [],
         data: Object,
     },
     data() {
@@ -242,27 +244,43 @@ export default {
             return find
         },
 
-        submit() {
-            this.$inertia.post(route('simulation.save.step1'), {
+        async submit() {
+            axios.post(route('simulation.save.step1'), {
                 ...this.$store.state.step1,
                 current_step: this.$store.state.currentStep,
-            },
-            {
-                preserveState: true,
-                preserveScroll: true,
-                only: ['step1'],
-                onSuccess: (page) => {
-                    this.$store.state.currentStep = 2
-                    this.$swal('Step 1 saved successfully', '', 'success');
-                    console.log(page);
-                    console.log(this.$page.props.data);
-                },
-                onError: (error) => {
-                    this.$swal('Error', 'Something went wrong', 'error');
-                    console.log(error);
-                }
-            }
-            )
+            })
+            .then((response) => {
+                this.$store.state.currentStep = 2
+                this.$swal('Step 1 saved successfully', '', 'success');
+                console.log(response);
+            })
+            .catch((error) => {
+                this.$swal('Error', 'Something went wrong', 'error');
+
+                this.$page.props.errors = error.response.data.errors
+            })
+
+
+            // this.$inertia.post(route('simulation.save.step1'), {
+            //     ...this.$store.state.step1,
+            //     current_step: this.$store.state.currentStep,
+            // },
+            // {
+            //     preserveState: true,
+            //     preserveScroll: true,
+            //     only: ['step1'],
+            //     onSuccess: (page) => {
+            //         this.$store.state.currentStep = 2
+            //         this.$swal('Step 1 saved successfully', '', 'success');
+            //         console.log(page);
+            //         console.log(this.$page.props.data);
+            //     },
+            //     onError: (error) => {
+            //         this.$swal('Error', 'Something went wrong', 'error');
+            //         console.log(error);
+            //     }
+            // }
+            // )
         }
     }
 }

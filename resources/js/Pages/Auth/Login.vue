@@ -27,6 +27,8 @@ const submit = () => {
 
 <template>
     <GuestLayout>
+        <Head title="Login" />
+
         <div id="okta-sign-in" class="auth-container main-container no-beacon">
             <div class="okta-sign-in-header auth-header">
                 <div data-type="beacon-container" class="beacon-container">

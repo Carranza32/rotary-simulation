@@ -9,6 +9,7 @@ import { createStore } from 'vuex';
 import store from './state/index.js';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import axios from 'axios'
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RotaryForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 class RotaryFormController extends Controller
@@ -26,12 +27,19 @@ class RotaryFormController extends Controller
 
     public function saveStep1(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'project_name' => 'required',
             'type' => 'required',
             'contacts' => 'nullable',
         ]);
+
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
 
         $rotary = RotaryForm::create([
             'project_name' => $request->project_name,
@@ -40,10 +48,10 @@ class RotaryFormController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
-        return redirect()->route('simulation.form')->with([
+        return response()->json([
             'message' => 'Step 1 saved successfully',
             'data' => $rotary,
-        ]);
+        ], 422);
     }
 
     public function saveStep2(Request $request)
