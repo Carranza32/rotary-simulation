@@ -120,6 +120,26 @@
         mounted() {
             if (this.form) {
                 this.$store.commit('setFormState', this.form)
+                this.$store.commit('setFormId', this.form?.id)
+            }
+
+            let button = document.querySelector('#collapsestep-' + this.$store.state.currentStep + ' button')
+
+            button.disabled = false
+
+            button.click()
+
+            button.disabled = true
+        },
+        watch: {
+            '$store.state.currentStep': function (val) {
+                let button = document.querySelector('#collapsestep-' + val + ' button')
+
+                button.disabled = false
+
+                button.click()
+
+                button.disabled = true
             }
         },
     }

@@ -1,7 +1,7 @@
 <template>
     <div class="accordion-item" @click="addStep()" :id="'collapse'+id">
         <h2 class="accordion-header" :id="'heading'+id">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#'+id" aria-expanded="false" :aria-controls="id">
+            <button class="accordion-button collapsed" disabled type="button" data-bs-toggle="collapse" :data-bs-target="'#'+id" aria-expanded="false" :aria-controls="id">
                 {{title}}
             </button>
         </h2>
@@ -27,13 +27,6 @@ export default {
             this.$store.commit('setCurrentStep', step);
         }
     },
-    mounted() {
-        document.querySelector('#collapsestep-' + this.$store.state.currentStep + ' button').click()
-    },
-    watch: {
-        '$store.state.currentStep': function (val) {
-            document.querySelector('#collapsestep-' + val + ' button').click()
-        }
-    },
+
 }
 </script>

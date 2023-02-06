@@ -1,5 +1,13 @@
 <template>
     <form @submit.prevent="submit">
+        <div class="alert alert-danger" role="alert" v-if="$page.props.errors.length">
+            <ul>
+                <li v-for="error in $page.props.errors" :key="error">
+                    {{ error }}
+                </li>
+            </ul>
+        </div>
+
         <p class="fw-bold">Háblanos sobre los fondos que has conseguido para el proyecto. Utilizaremos esta información para calcular la máxima aportación de contrapartida que podrías recibir del Fondo Mundial.</p>
 
         <div class="table-responsive">
@@ -110,35 +118,30 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     props: {
-        errors: Object,
+        errors: [],
         data: Object,
     },
     methods: {
         submit() {
-            this.$inertia.post(route('simulation.save.step9'), {
+            axios.post(route('simulation.save.step9'), {
                 ...this.$store.state.step9,
                 current_step: this.$store.state.currentStep,
-            },
-            {
-                preserveState: true,
-                preserveScroll: true,
-                only: ['step9'],
-                onSuccess: (page) => {
-                    this.$store.state.currentStep++;
+                id: this.$page.props?.form?.id
+            })
+            .then((response) => {
+                this.$store.state.currentStep++
+                this.$swal('Step 9 saved successfully', '', 'success');
+                console.log(response);
+            })
+            .catch((error) => {
+                this.$swal('Error', 'Something went wrong', 'error');
 
-                    this.$swal('Step 9 saved successfully', '', 'success');
-
-                    console.log(page);
-                    console.log(this.$page.props.data);
-                },
-                onError: (error) => {
-                    this.$swal('Error', 'Something went wrong', 'error');
-                    console.log(error);
-                }
-            }
-            )
+                this.$page.props.errors = error.response.data.errors
+            })
         }
     }
 }

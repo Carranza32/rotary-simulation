@@ -1,5 +1,13 @@
 <template>
     <div>
+        <div class="alert alert-danger" role="alert" v-if="$page.props.errors.length">
+            <ul>
+                <li v-for="error in $page.props.errors" :key="error">
+                    {{ error }}
+                </li>
+            </ul>
+        </div>
+
         <p class="fw-bold">Los proyectos sostenibles ofrecen soluciones a largo plazo a los problemas que enfrenta una comunidad. Para que un proyecto sea sostenible, los integrantes de la comunidad deberán mantener por si mismos las actividades del proyecto una vez se agoten los fondos de la subvención. Tus respuestas a las preguntas que se incluyen a continuación nos ayudarán a determinar qué elementos del proyecto lo hacen sostenible.</p>
         <h4>PROYECTOS HUMANITARIOS</h4>
 

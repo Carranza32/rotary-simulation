@@ -2,6 +2,7 @@
 const store = {
     state: {
         currentStep: 1,
+        formId: null,
         step1: {
             project_name: '',
             type: [],
@@ -98,7 +99,15 @@ const store = {
             state.currentStep ++;
         },
 
+        setFormId(state, id) {
+            localStorage.setItem('formId', id);
+            state.formId = id;
+        },
+
         setFormState(state, form) {
+            state.formId = form.id;
+            state.currentStep = form.current_step;
+
             replaceObjectValues(state.step1, form);
             replaceObjectValues(state.step2, form);
             replaceObjectValues(state.step3, form);

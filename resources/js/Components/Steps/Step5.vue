@@ -1,6 +1,14 @@
 
 <template>
     <form @submit.prevent="submit">
+        <div class="alert alert-danger" role="alert" v-if="$page.props.errors.length">
+            <ul>
+                <li v-for="error in $page.props.errors" :key="error">
+                    {{ error }}
+                </li>
+            </ul>
+        </div>
+
         <Step5PazPrev />
 
         <hr>
@@ -52,39 +60,33 @@
 
 <script>
 import Step5PazPrev from '@/Components/Steps/Step51PazPrev.vue';
+import axios from 'axios'
 
 export default {
     components: {
         Step5PazPrev,
     },
     props: {
-        errors: Object,
+        errors: [],
         data: Object,
     },
     methods: {
         submit() {
-            this.$inertia.post(route('simulation.save.step5'), {
+            axios.post(route('simulation.save.step5'), {
                 ...this.$store.state.step5,
                 current_step: this.$store.state.currentStep,
-            },
-            {
-                preserveState: true,
-                preserveScroll: true,
-                only: ['step5'],
-                onSuccess: (page) => {
-                    this.$store.state.currentStep++;
+                id: this.$page.props?.form?.id
+            })
+            .then((response) => {
+                this.$store.state.currentStep++
+                this.$swal('Step 5 saved successfully', '', 'success');
+                console.log(response);
+            })
+            .catch((error) => {
+                this.$swal('Error', 'Something went wrong', 'error');
 
-                    this.$swal('Step 5 saved successfully', '', 'success');
-
-                    console.log(page);
-                    console.log(this.$page.props.data);
-                },
-                onError: (error) => {
-                    this.$swal('Error', 'Something went wrong', 'error');
-                    console.log(error);
-                }
-            }
-            )
+                this.$page.props.errors = error.response.data.errors
+            })
         }
     }
 }

@@ -42,6 +42,7 @@ class RotaryFormController extends Controller
         }
 
         $rotary = RotaryForm::create([
+            'current_step' => 2,
             'project_name' => $request->project_name,
             'type' => $request->type,
             'contacts' => $request->contacts,
@@ -51,64 +52,92 @@ class RotaryFormController extends Controller
         return response()->json([
             'message' => 'Step 1 saved successfully',
             'data' => $rotary,
-        ], 422);
+        ], 200);
     }
 
     public function saveStep2(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'local_members' => 'nullable',
             'international_members' => 'nullable',
             'members_conflict' => 'required',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }
 
     public function saveStep3(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'objectives' => 'required',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }
 
     public function saveStep4(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'interest_area' => 'required',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }
 
     public function saveStep5(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'interest_area_goals' => 'required',
             'measures' => 'nullable',
             'evaluation' => 'required',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }
 
     public function saveStep6(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'city' => 'required',
             'state' => 'required',
@@ -117,14 +146,21 @@ class RotaryFormController extends Controller
             'end_date' => 'required',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }
 
     public function saveStep7(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'measures' => 'nullable',
             'members' => 'required',
@@ -133,14 +169,21 @@ class RotaryFormController extends Controller
             'international_sponsors' => 'required',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }
 
     public function saveStep8(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'currency' => 'required',
             'exchange_rate' => 'required',
@@ -148,14 +191,21 @@ class RotaryFormController extends Controller
             'budget_step8' => 'nullable',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }
 
     public function saveStep9(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'sources' => 'nullable',
             'world_donation' => 'required',
@@ -164,40 +214,68 @@ class RotaryFormController extends Controller
             'total_budget' => 'required',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }
 
     public function saveStep10(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }
 
     public function saveStep11(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }
 
     public function saveStep12(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'current_step' => 'required',
         ]);
 
-        $rotary = RotaryForm::all()->first()->update($validate);
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($validate->validated());
 
         return redirect()->route('simulation.form');
     }

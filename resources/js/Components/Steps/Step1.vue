@@ -244,43 +244,24 @@ export default {
             return find
         },
 
-        async submit() {
+        submit() {
             axios.post(route('simulation.save.step1'), {
                 ...this.$store.state.step1,
                 current_step: this.$store.state.currentStep,
             })
             .then((response) => {
-                this.$store.state.currentStep = 2
+                this.$store.state.currentStep++
                 this.$swal('Step 1 saved successfully', '', 'success');
-                console.log(response);
+
+                let url = `${window.location.href}/${response?.data?.data?.id}`;
+
+                window.location.href = url;
             })
             .catch((error) => {
                 this.$swal('Error', 'Something went wrong', 'error');
 
                 this.$page.props.errors = error.response.data.errors
             })
-
-
-            // this.$inertia.post(route('simulation.save.step1'), {
-            //     ...this.$store.state.step1,
-            //     current_step: this.$store.state.currentStep,
-            // },
-            // {
-            //     preserveState: true,
-            //     preserveScroll: true,
-            //     only: ['step1'],
-            //     onSuccess: (page) => {
-            //         this.$store.state.currentStep = 2
-            //         this.$swal('Step 1 saved successfully', '', 'success');
-            //         console.log(page);
-            //         console.log(this.$page.props.data);
-            //     },
-            //     onError: (error) => {
-            //         this.$swal('Error', 'Something went wrong', 'error');
-            //         console.log(error);
-            //     }
-            // }
-            // )
         }
     }
 }
