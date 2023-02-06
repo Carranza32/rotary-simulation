@@ -256,6 +256,8 @@ export default {
                 let url = `${window.location.href}/${response?.data?.data?.id}`;
 
                 window.location.href = url;
+
+                this.$page.props.errors = []
             })
             .catch((error) => {
                 this.$swal('Error', 'Something went wrong', 'error');

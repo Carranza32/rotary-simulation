@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:'.User::class,
             'country' => 'nullable|string|max:255',
-            'district' => 'nullable|string|max:255',
+            'district' => 'required|string|max:255',
             'club' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:255',
             'position' => 'nullable|string|max:255',

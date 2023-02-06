@@ -47,7 +47,7 @@ export default {
             .then((response) => {
                 this.$store.state.currentStep++
                 this.$swal('Step 3 saved successfully', '', 'success');
-                console.log(response);
+                this.$page.props.errors = []
             })
             .catch((error) => {
                 this.$swal('Error', 'Something went wrong', 'error');
