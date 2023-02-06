@@ -13,49 +13,49 @@
         <hr>
 
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="1" v-model="$store.state.step4.interest_area" id="paz">
+            <input class="form-check-input" type="checkbox" value="1" v-model="$store.state.step4.interest_area" name="paz" id="paz">
             <label class="form-check-label" for="paz">
                 <img src="https://via.placeholder.com/40" class="rounded-circle">
                 Paz y prevención de conflictos
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="2" v-model="$store.state.step4.interest_area" id="prev">
+            <input class="form-check-input" type="checkbox" value="2" v-model="$store.state.step4.interest_area" id="prev" name="prev">
             <label class="form-check-label" for="prev">
                 <img src="https://via.placeholder.com/40" class="rounded-circle">
                 Prevención y tratamiento de enfermedades
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="3" v-model="$store.state.step4.interest_area" id="agua">
+            <input class="form-check-input" type="checkbox" value="3"  id="agua" name="agua">
             <label class="form-check-label" for="agua">
                 <img src="https://via.placeholder.com/40" class="rounded-circle">
                 Agua, saneamiento e higiene
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="4" v-model="$store.state.step4.interest_area" id="salud">
+            <input class="form-check-input" type="checkbox" value="4"  id="salud" name="salud">
             <label class="form-check-label" for="salud">
                 <img src="https://via.placeholder.com/40" class="rounded-circle">
                 Salud materno-infantil
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="5" v-model="$store.state.step4.interest_area" id="alf">
+            <input class="form-check-input" type="checkbox" value="5"  id="alf" name="alf">
             <label class="form-check-label" for="alf">
                 <img src="https://via.placeholder.com/40" class="rounded-circle">
                 Alfabetización y educación básica
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="6" v-model="$store.state.step4.interest_area" id="des">
+            <input class="form-check-input" type="checkbox" value="6"  id="des" name="des">
             <label class="form-check-label" for="des">
                 <img src="https://via.placeholder.com/40" class="rounded-circle">
                 Desarrollo económico de la comunidad
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="7" v-model="$store.state.step4.interest_area" id="ambiente">
+            <input class="form-check-input" type="checkbox" value="7"  id="ambiente" name="ambiente">
             <label class="form-check-label" for="ambiente">
                 <img src="https://via.placeholder.com/40" class="rounded-circle">
                 Medioambiente

@@ -135,11 +135,11 @@
             '$store.state.currentStep': function (val) {
                 let button = document.querySelector('#collapsestep-' + val + ' button')
 
-                button.disabled = false
+                // button.disabled = false
 
                 button.click()
 
-                button.disabled = true
+                // button.disabled = true
             }
         },
     }
