@@ -11,8 +11,10 @@ class RotaryFormController extends Controller
 {
     public function dashboard()
     {
+        $user = auth()->user();
+
         return Inertia::render('Dashboard', [
-            'forms' => RotaryForm::all(),
+            'forms' => RotaryForm::where('user_id', $user->id)->get(),
         ]);
     }
 
