@@ -186,7 +186,7 @@ class RotaryFormController extends Controller
         $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'currency' => 'required',
-            'exchange_rate' => 'required',
+            'exchange_rate' => 'nullable',
             'headings' => 'nullable',
             'budget_step8' => 'nullable',
         ]);
@@ -208,10 +208,10 @@ class RotaryFormController extends Controller
         $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'sources' => 'nullable',
-            'world_donation' => 'required',
-            'total_contributions' => 'required',
-            'total_financed' => 'required',
-            'total_budget' => 'required',
+            'world_donation' => 'nullable',
+            'total_contributions' => 'nullable',
+            'total_financed' => 'nullable',
+            'total_budget' => 'nullable',
         ]);
 
         if ($validate->fails()) {
@@ -230,6 +230,25 @@ class RotaryFormController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'current_step' => 'required',
+            'necesities' => 'required',
+            'necesities_process' => 'required',
+            'participants1' => 'required',
+            'participants2' => 'required',
+            'coo_work' => 'required',
+            'capacitation' => 'required',
+            'determinate_necesities' => 'required',
+            'incentives' => 'required',
+            'supervisors_names' => 'required',
+            'use_providers' => 'required',
+            'use_tender' => 'required',
+            'has_conflict_providers' => 'required',
+            'equipment_included' => 'required',
+            'equipment_maintenance' => 'required',
+            'use_founds' => 'required',
+            'completed_proyect' => 'required',
+            'has_microcredit' => 'required',
+            'has_local_founds' => 'required',
+            'generate_income' => 'required',
         ]);
 
         if ($validate->fails()) {

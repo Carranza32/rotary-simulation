@@ -12,54 +12,56 @@
         <p>Selecciona al menos un área. Te pediremos que establezcas metas y respondas a ciertas preguntas para cada área de interés que selecciones. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
 
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="1" v-model="$store.state.step4.interest_area" name="paz" id="paz">
-            <label class="form-check-label" for="paz">
-                <img src="https://via.placeholder.com/40" class="rounded-circle">
-                Paz y prevención de conflictos
-            </label>
-        </div>
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="2" v-model="$store.state.step4.interest_area" id="prev" name="prev">
-            <label class="form-check-label" for="prev">
-                <img src="https://via.placeholder.com/40" class="rounded-circle">
-                Prevención y tratamiento de enfermedades
-            </label>
-        </div>
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="3"  id="agua" name="agua">
-            <label class="form-check-label" for="agua">
-                <img src="https://via.placeholder.com/40" class="rounded-circle">
-                Agua, saneamiento e higiene
-            </label>
-        </div>
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="4"  id="salud" name="salud">
-            <label class="form-check-label" for="salud">
-                <img src="https://via.placeholder.com/40" class="rounded-circle">
-                Salud materno-infantil
-            </label>
-        </div>
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="5"  id="alf" name="alf">
-            <label class="form-check-label" for="alf">
-                <img src="https://via.placeholder.com/40" class="rounded-circle">
-                Alfabetización y educación básica
-            </label>
-        </div>
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="6"  id="des" name="des">
-            <label class="form-check-label" for="des">
-                <img src="https://via.placeholder.com/40" class="rounded-circle">
-                Desarrollo económico de la comunidad
-            </label>
-        </div>
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="7"  id="ambiente" name="ambiente">
-            <label class="form-check-label" for="ambiente">
-                <img src="https://via.placeholder.com/40" class="rounded-circle">
-                Medioambiente
-            </label>
+        <div class="step-4-checks">
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="1" name="paz" id="paz">
+                <label class="form-check-label" for="paz">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    Paz y prevención de conflictos
+                </label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="2" id="prev" name="prev">
+                <label class="form-check-label" for="prev">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    Prevención y tratamiento de enfermedades
+                </label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="3"  id="agua" name="agua">
+                <label class="form-check-label" for="agua">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    Agua, saneamiento e higiene
+                </label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="4"  id="salud" name="salud">
+                <label class="form-check-label" for="salud">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    Salud materno-infantil
+                </label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="5"  id="alf" name="alf">
+                <label class="form-check-label" for="alf">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    Alfabetización y educación básica
+                </label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="6"  id="des" name="des">
+                <label class="form-check-label" for="des">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    Desarrollo económico de la comunidad
+                </label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="7"  id="ambiente" name="ambiente">
+                <label class="form-check-label" for="ambiente">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    Medioambiente
+                </label>
+            </div>
         </div>
 
         <div class="d-flex justify-content-start gap-3 mt-4">
@@ -82,6 +84,34 @@ export default {
     props: {
         errors: [],
         data: Object,
+    },
+    mounted() {
+        if (this.$store.state.step4.interest_area == null || this.$store.state.step4.interest_area?.length == 0) {
+            this.$store.state.step4.interest_area = []
+        }
+
+        if (this.$page.props.form?.interest_area != null) {
+            JSON.parse(this.$page.props.form?.interest_area)?.forEach((item) => {
+                document.querySelector(`.step-4-checks input[value="${item}"]`).checked = true
+            })
+        }
+
+        document.querySelectorAll('.step-4-checks input').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (this.$store.state.step4.interest_area == null || this.$store.state.step4.interest_area?.length == 0) {
+                    this.$store.state.step4.interest_area = []
+                }
+
+                if (e.target.checked) {
+                    console.log(this.$store.state.step4.interest_area);
+                    JSON.parse(this.$store.state.step4.interest_area)?.push(parseInt(e.target.value))
+                } else {
+                    this.$store.state.step4.interest_area = JSON.parse(this.$store.state.step4.interest_area).filter((item) => item !== parseInt(e.target.value))
+                }
+
+                console.log(this.$store.state.step4.interest_area);
+            })
+        })
     },
     methods: {
         submit() {

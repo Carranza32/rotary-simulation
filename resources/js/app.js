@@ -10,6 +10,8 @@ import store from './state/index.js';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import axios from 'axios'
+import jsPDF from 'jspdf'
+import Vue3Html2pdf from 'vue3-html2pdf'
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -22,6 +24,7 @@ createInertiaApp({
             .use(ZiggyVue, Ziggy)
             .use( createStore(store) )
             .use( VueSweetalert2 )
+            .use( Vue3Html2pdf )
             .mount(el);
     },
     progress: {

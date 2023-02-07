@@ -25,8 +25,8 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <label for="name" class="form-label"><a href="#!">Tipo de cambio</a> (por dólar estadounidense)</label>
-                    <input type="text" disabled name="project_name" class="form-control" id="name" v-model="$store.state.step8.exchange_rate">
+                    <label for="exchange_rate" class="form-label"><a href="#!">Tipo de cambio</a> (por dólar estadounidense)</label>
+                    <input type="text" class="form-control" id="exchange_rate" v-model="$store.state.step8.exchange_rate" >
                     <small>Guardado el 18/01/2023</small>
                 </div>
             </div>

@@ -41,8 +41,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/simulation/step/8', 'saveStep8')->name('save.step8');
         Route::post('/simulation/step/9', 'saveStep9')->name('save.step9');
         Route::post('/simulation/step/10', 'saveStep10')->name('save.step10');
-        Route::post('/simulation/step1/1', 'saveStep11')->name('save.step11');
-        Route::post('/simulation/st2ep/1', 'saveSte2p1')->name('save.step12');
+        Route::post('/simulation/step/11', 'saveStep11')->name('save.step11');
+        Route::post('/simulation/step/12', 'saveStep12')->name('save.step12');
     });
 });
 

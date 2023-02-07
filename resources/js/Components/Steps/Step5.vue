@@ -9,7 +9,9 @@
             </ul>
         </div>
 
-        <Step5PazPrev />
+        <div class="step-5-checks">
+            <Step5PazPrev />
+        </div>
 
         <hr>
 
@@ -35,11 +37,11 @@
             <label for="name" class="form-label">¿Ya sabes quíen recopilará la información necesario para la evaluación y le monitoreo?</label>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="papel" id="local" value="1" checked v-model="$store.state.step5.evaluation">
+                <input class="form-check-input" type="radio" value="1" v-model="$store.state.step5.evaluation">
                 <label class="form-check-label" for="local">Si</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="papel" id="internacional" value="0" v-model="$store.state.step5.evaluation">
+                <input class="form-check-input" type="radio" value="0" v-model="$store.state.step5.evaluation">
                 <label class="form-check-label" for="internacional">No</label>
             </div>
         </div>
@@ -69,6 +71,32 @@ export default {
     props: {
         errors: [],
         data: Object,
+    },
+    mounted() {
+        if (this.$store.state.step5.interest_area_goals == null || this.$store.state.step5.interest_area_goals.length == 0) {
+            this.$store.state.step5.interest_area_goals = []
+        }else{
+            JSON.parse(this.$page.props.form.interest_area_goals)?.forEach((item) => {
+                document.querySelector(`.step-5-checks input[value="${item}"]`).checked = true
+            })
+        }
+
+        document.querySelectorAll('.step-5-checks input')?.forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (this.$store.state.step5.interest_area_goals == null || this.$store.state.step5.interest_area_goals?.length == 0) {
+                    this.$store.state.step5.interest_area_goals = []
+                }
+
+                if (e.target.checked) {
+                    console.log(this.$store.state.step5.interest_area_goals);
+                    this.$store.state.step5.interest_area_goals.push(parseInt(e.target.value))
+                } else {
+                    this.$store.state.step5.interest_area_goals = this.$store.state.step5.interest_area_goals.filter((item) => item !== parseInt(e.target.value))
+                }
+
+                console.log(this.$store.state.step5.interest_area_goals);
+            })
+        })
     },
     methods: {
         submit() {

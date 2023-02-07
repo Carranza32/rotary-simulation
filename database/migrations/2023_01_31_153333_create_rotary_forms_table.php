@@ -66,6 +66,29 @@ return new class extends Migration
             $table->decimal('total_budget')->nullable();
 
             //Step 10
+            $table->text('necesities')->nullable();
+            $table->text('necesities_process')->nullable();
+            $table->text('participants1')->nullable();
+            $table->text('participants2')->nullable();
+
+            $table->boolean('coo_work')->nullable();
+            $table->text('capacitation')->nullable();
+            $table->text('determinate_necesities')->nullable();
+            $table->text('incentives')->nullable();
+            $table->text('supervisors_names')->nullable();
+
+            $table->boolean('use_providers')->nullable();
+            $table->boolean('use_tender')->nullable();
+            $table->boolean('has_conflict_providers')->nullable();
+
+            $table->text('equipment_included')->nullable();
+            $table->text('equipment_maintenance')->nullable();
+            $table->boolean('use_founds')->nullable();
+            $table->text('completed_proyect')->nullable();
+
+            $table->boolean('has_microcredit')->nullable();
+            $table->boolean('has_local_founds')->nullable();
+            $table->text('generate_income')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
