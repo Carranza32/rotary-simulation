@@ -29,10 +29,9 @@
         <div class="mb-3">
             <label for="name" class="form-label">País</label>
             <select class="form-select" aria-label="Default select example" v-model="$store.state.step6.country">
-                <option value="1">España</option>
-                <option value="1">España</option>
-                <option value="1">España</option>
-                <option value="1">España</option>
+                <option v-for="country in countries" :value="country" :key="country.code">
+                    {{ country.name }}
+                </option>
             </select>
         </div>
 
@@ -68,11 +67,17 @@
 
 <script>
 import axios from 'axios'
+import countries from "@/Utils/countries.json";
 
 export default {
     props: {
         errors: [],
         data: Object,
+    },
+    data() {
+        return {
+            countries: countries
+        }
     },
     methods: {
         submit() {

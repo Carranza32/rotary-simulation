@@ -53,19 +53,21 @@
                 <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Club</th>
-                    <th scope="col">Distrito Patrocinador</th>
+                    <th scope="col">Distrito</th>
+                    <th scope="col">Patrocinador</th>
                     <th scope="col">Papel</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr v-for="contact in $store.state.contacts" :key="contact.name">
+                <tr v-for="contact in $store.state.step1.contacts" :key="contact.id">
                     <td>{{ contact.name }}</td>
                     <td>{{ contact.club }}</td>
                     <td>{{ contact.district }}</td>
-                    <td>{{ contact.role }}</td>
-                </tr> -->
+                    <td>{{ contact.patrocinador }}</td>
+                    <td>{{ contact.papel }}</td>
+                </tr>
                 <tr>
-                    <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal" >+ Añadir contacto principal</a></td>
+                    <td ><a href="#!" @click="showModal()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal" >+ Añadir contacto principal</a></td>
                 </tr>
             </tbody>
         </table>
@@ -85,9 +87,7 @@
         </div>
 
 
-
-
-        <!-- Modal -->
+<!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
@@ -179,12 +179,44 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="item in data" :key="item[0]" :class="( $store.state.step1.contacts?.includes(c => c.id == item[0]) ) ? 'table-primary' : '' ">
-                                    <td>{{ item[0] }}</td>
-                                    <td>{{ item[1] }}</td>
-                                    <td>{{ item[2] }}</td>
+                                <tr>
+                                    <td>5879654</td>
+                                    <td>Adrian</td>
+                                    <td>Blake</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2" @click="addContacts(item)">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5879654</td>
+                                    <td>Adrian</td>
+                                    <td>Blake</td>
+                                    <td>
+                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5879654</td>
+                                    <td>Adrian</td>
+                                    <td>Blake</td>
+                                    <td>
+                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5879654</td>
+                                    <td>Adrian</td>
+                                    <td>Blake</td>
+                                    <td>
+                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5879654</td>
+                                    <td>Adrian</td>
+                                    <td>Blake</td>
+                                    <td>
+                                        <button class="btn btn-outline-primary my-2">Select</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -192,12 +224,13 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" @click="addContacts()" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" @click="addContacts()" data-bs-dismiss="modal">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
+
     </form>
 </template>
 
@@ -211,31 +244,45 @@ export default {
     },
     data() {
         return {
-            data: [
-                [5879654, "Adrian", "Blake"],
-                [5879654, "Adrian", "Blake"],
-                [5879654, "Adrian", "Blake"],
-                [5879654, "Adrian", "Blake"],
-                [5879654, "Adrian", "Blake"],
-                [5879654, "Adrian", "Blake"],
-                [5879654, "Adrian", "Blake"],
-            ],
         }
     },
     mounted: function () {
         console.log(this.$store.state.step1.contacts)
+        console.log(this.$page);
     },
     methods: {
-        addContacts(item) {
-            let find = this.$store.state.step1.contacts?.find(c => c.id == item[0])
+        addContacts() {
+            // let find = this.$store.state.step1.contacts?.find(c => c.id == item[0])
 
-            if (find?.length == 0 || find == undefined) {
-                this.$store.state.step1.contacts?.push({
-                    id: item[0],
-                    name: item[1],
-                    lastname: item[2]
-                })
-            }
+            // if (find?.length == 0 || find == undefined) {
+            //     this.$store.state.step1.contacts?.push({
+            //         id: item[0],
+            //         name: item[1],
+            //         lastname: item[2]
+            //     })
+            // }
+
+            this.$store.state.step1.contacts = []
+
+            this.$store.state.step1.contacts?.push({
+                id: 1,
+                name: this.$page.props.auth.user.name,
+                club: this.$page.props.auth.user.club,
+                district: this.$page.props.auth.user.district,
+                patrocinador: 'Distrito',
+                papel: 'Local',
+            })
+
+            this.$store.state.step1.contacts?.push({
+                id: 2,
+                name: 'John Doe',
+                club: 'New York',
+                district: '7230',
+                patrocinador: 'Distrito',
+                papel: 'Internacional',
+            })
+
+            console.log(this.$store.state.step1.contacts);
         },
 
         findId(id) {
@@ -244,16 +291,21 @@ export default {
             return find
         },
 
+        showModal() {
+            document.body.appendChild( document.querySelector('#exampleModal') )
+        },
+
         submit() {
             axios.post(route('simulation.save.step1'), {
                 ...this.$store.state.step1,
                 current_step: this.$store.state.currentStep,
+                id: this.$page.props?.form?.id
             })
             .then((response) => {
                 this.$store.state.currentStep++
                 this.$swal('Step 1 saved successfully', '', 'success');
 
-                let url = `${window.location.href}/${response?.data?.data?.id}`;
+                let url = `${window.location.origin}/simulation/${response?.data?.data?.id}`;
 
                 window.location.href = url;
 

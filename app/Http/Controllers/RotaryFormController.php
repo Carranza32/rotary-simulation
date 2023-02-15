@@ -43,7 +43,9 @@ class RotaryFormController extends Controller
             ], 400);
         }
 
-        $rotary = RotaryForm::create([
+        $rotary = RotaryForm::updateOrCreate([
+            'id' => $request?->id
+        ],[
             'current_step' => 2,
             'project_name' => $request->project_name,
             'type' => $request->type,

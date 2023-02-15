@@ -9,6 +9,8 @@
             </ul>
         </div>
 
+        {{$store.state.step5.interest_area_goals}}
+
         <div class="step-5-checks">
             <Step5PazPrev />
         </div>
@@ -27,22 +29,65 @@
                 </tr>
             </thead>
             <tbody>
+                <tr v-for="measure in $store.state.step5.measures" :key="measure.id">
+                    <td>{{ measure.measure }}</td>
+                    <td>{{ measure.method }}</td>
+                    <td>{{ measure.frecuencie }}</td>
+                    <td>{{ measure.benefits }}</td>
+                </tr>
                 <tr>
-                    <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal" >+ Añadir medida</a></td>
+                    <td><a href="#!" @click="showModal()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep5" >+ Añadir medida</a></td>
                 </tr>
             </tbody>
         </table>
 
         <div class="mb-3">
-            <label for="name" class="form-label">¿Ya sabes quíen recopilará la información necesario para la evaluación y le monitoreo?</label>
+            <label class="form-label">¿Ya sabes quíen recopilará la información necesario para la evaluación y le monitoreo?</label>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" value="1" v-model="$store.state.step5.evaluation">
-                <label class="form-check-label" for="local">Si</label>
+                <input class="form-check-input" type="radio" name="evaluation_step5" value="1" v-model="$store.state.step5.evaluation">
+                <label class="form-check-label">Si</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" value="0" v-model="$store.state.step5.evaluation">
-                <label class="form-check-label" for="internacional">No</label>
+                <input class="form-check-input" type="radio" name="evaluation_step5" value="0" v-model="$store.state.step5.evaluation">
+                <label class="form-check-label">No</label>
+            </div>
+        </div>
+
+        <div class="my-3" v-if="$store.state.step5.evaluation == true">
+            <div class="mb-3">
+                <label class="form-label">Nombre de la empresa u organización</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="textarea" class="form-label">
+                    Explica brevemente por qué esta persona u organización están capacitadas para realizar esta tarea.
+                </label>
+
+                <textarea class="form-control" id="textarea" rows="5" ></textarea>
+            </div>
+        </div>
+
+        <div class="my-3" v-if="$store.state.step5.evaluation == false">
+            <div class="mb-3">
+                <label class="form-label">¿Ya sabes quién recopilará la información necesaria para la evaluación y el monitoreo?</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="evaluation_false_step5" value="1">
+                    <label class="form-check-label">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="evaluation_false_step5" value="0">
+                    <label class="form-check-label">No</label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="textarea" class="form-label">
+                    Indica cómo buscarás a la persona u organización que se encargará de realizar esta tarea.
+                </label>
+
+                <textarea class="form-control" id="textarea" rows="5" ></textarea>
             </div>
         </div>
 
@@ -58,6 +103,74 @@
             </button>
         </div>
     </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalStep5" tabindex="-1" aria-labelledby="modalStep5Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalStep5Label">Patrocinadores local</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="" class="form-label">Medida</label>
+                            <select class="form-select" id="measure" aria-label="Default select example">
+                                <option value="Number of groups and organizations participating in peace-building efforts">Number of groups and organizations participating in peace-building efforts</option>
+                                <option value="Number of individuals trained">Number of individuals trained</option>
+                                <option value="Number of conflicts mediated">Number of conflicts mediated</option>
+                                <option value="Number of communities reporting reduction in level of conflict">Number of communities reporting reduction in level of conflict</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="form-label">Método para obtener la información</label>
+                            <select class="form-select" id="method" aria-label="Default select example">
+                                <option value="Direct observation">Direct observation</option>
+                                <option value="Focus groups/interviews">Focus groups/interviews</option>
+                                <option value="Grant records and reports">Grant records and reports</option>
+                                <option value="Public records">Public records</option>
+                                <option value="Satellite imagery">Satellite imagery</option>
+                                <option value="Surveys/questionnaires">Surveys/questionnaires</option>
+                                <option value="Testing">Testing</option>
+                            </select>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="" class="form-label">Frecuencia</label>
+                            <select class="form-select" id="frecuencie" aria-label="Default select example">
+                                <option value="Every week">Every week</option>
+                                <option value="Every two weeks">Every two weeks</option>
+                                <option value="Every month">Every month</option>
+                                <option value="Every two months">Every two months</option>
+                                <option value="Every three months">Every three months</option>
+                                <option value="Every four months">Every four months</option>
+                                <option value="Every six months">Every six months</option>
+                                <option value="Every year">Every year</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="form-label">Beneficiarios</label>
+                            <select class="form-select" id="benefits" aria-label="Default select example">
+                                <option value="1-19">1-19</option>
+                                <option value="20-49">20-49</option>
+                                <option value="50-99">50-99</option>
+                                <option value="100-499">100-499</option>
+                                <option value="500-999">500-999</option>
+                                <option value="1000-2499">1000-2499</option>
+                                <option value="2500+">2500+</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" @click="addMeasure()" data-bs-dismiss="modal">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -73,32 +186,53 @@ export default {
         data: Object,
     },
     mounted() {
-        if (this.$store.state.step5.interest_area_goals == null || this.$store.state.step5.interest_area_goals.length == 0) {
-            this.$store.state.step5.interest_area_goals = []
-        }else{
-            JSON.parse(this.$page.props.form.interest_area_goals)?.forEach((item) => {
-                document.querySelector(`.step-5-checks input[value="${item}"]`).checked = true
-            })
-        }
+        try {
+            if (this.$store.state.step5.interest_area_goals == null || this.$store.state.step5.interest_area_goals.length == 0) {
+                this.$store.state.step5.interest_area_goals = []
+            }else{
+                JSON.parse(this.$page.props.form.interest_area_goals)?.forEach((item) => {
+                    document.querySelector(`.step-5-checks input[value="${item}"]`).checked = true
+                })
+            }
 
-        document.querySelectorAll('.step-5-checks input')?.forEach((input) => {
-            input.addEventListener('change', (e) => {
-                if (this.$store.state.step5.interest_area_goals == null || this.$store.state.step5.interest_area_goals?.length == 0) {
-                    this.$store.state.step5.interest_area_goals = []
-                }
+            document.querySelectorAll('.step-5-checks input')?.forEach((input) => {
+                input.addEventListener('change', (e) => {
+                    if (this.$store.state.step5.interest_area_goals == null || this.$store.state.step5.interest_area_goals?.length == 0) {
+                        this.$store.state.step5.interest_area_goals = []
+                    }
 
-                if (e.target.checked) {
+                    if (e.target.checked) {
+                        console.log(this.$store.state.step5.interest_area_goals);
+                        this.$store.state.step5.interest_area_goals.push(parseInt(e.target.value))
+                    } else {
+                        this.$store.state.step5.interest_area_goals = this.$store.state.step5.interest_area_goals.filter((item) => item !== parseInt(e.target.value))
+                    }
+
                     console.log(this.$store.state.step5.interest_area_goals);
-                    this.$store.state.step5.interest_area_goals.push(parseInt(e.target.value))
-                } else {
-                    this.$store.state.step5.interest_area_goals = this.$store.state.step5.interest_area_goals.filter((item) => item !== parseInt(e.target.value))
-                }
-
-                console.log(this.$store.state.step5.interest_area_goals);
+                })
             })
-        })
+        } catch (error) {
+
+        }
     },
     methods: {
+        showModal() {
+            document.body.appendChild( document.querySelector('#modalStep5') )
+        },
+
+        addMeasure() {
+            this.$store.state.step5.measures = []
+
+            this.$store.state.step5.measures.push({
+                measure: document.querySelector('select#measure').value,
+                method: document.querySelector('select#method').value,
+                frecuencie: document.querySelector('select#frecuencie').value,
+                benefits: document.querySelector('select#benefits').value,
+            })
+
+            console.log(this.$store.state.step5.measures);
+        },
+
         submit() {
             axios.post(route('simulation.save.step5'), {
                 ...this.$store.state.step5,

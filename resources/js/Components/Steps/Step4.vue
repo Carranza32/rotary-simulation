@@ -16,49 +16,49 @@
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="1" name="paz" id="paz">
                 <label class="form-check-label" for="paz">
-                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    <img src="../../assets/images/pazyprevencion.png" height="40" class="rounded-circle">
                     Paz y prevención de conflictos
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="2" id="prev" name="prev">
                 <label class="form-check-label" for="prev">
-                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    <img src="../../assets/images/prevencionenfermedades.png" height="40" class="rounded-circle">
                     Prevención y tratamiento de enfermedades
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="3"  id="agua" name="agua">
                 <label class="form-check-label" for="agua">
-                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    <img src="../../assets/images/aguaysaneamiento.png" height="40" class="rounded-circle">
                     Agua, saneamiento e higiene
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="4"  id="salud" name="salud">
                 <label class="form-check-label" for="salud">
-                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    <img src="../../assets/images/saludmaternoinfantil.png" height="40" class="rounded-circle">
                     Salud materno-infantil
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="5"  id="alf" name="alf">
                 <label class="form-check-label" for="alf">
-                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    <img src="../../assets/images/alfabetizacion.png" height="40" class="rounded-circle">
                     Alfabetización y educación básica
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="6"  id="des" name="des">
                 <label class="form-check-label" for="des">
-                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    <img src="../../assets/images/desarrolloeconomico.png" height="40" class="rounded-circle">
                     Desarrollo económico de la comunidad
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="7"  id="ambiente" name="ambiente">
                 <label class="form-check-label" for="ambiente">
-                    <img src="https://via.placeholder.com/40" class="rounded-circle">
+                    <img src="../../assets/images/medioambiente.png" height="40" class="rounded-circle">
                     Medioambiente
                 </label>
             </div>
@@ -104,9 +104,9 @@ export default {
 
                 if (e.target.checked) {
                     console.log(this.$store.state.step4.interest_area);
-                    JSON.parse(this.$store.state.step4.interest_area)?.push(parseInt(e.target.value))
+                    this.$store.state.step4.interest_area?.push(parseInt(e.target.value))
                 } else {
-                    this.$store.state.step4.interest_area = JSON.parse(this.$store.state.step4.interest_area).filter((item) => item !== parseInt(e.target.value))
+                    this.$store.state.step4.interest_area = this.$store.state.step4.interest_area?.filter((item) => item !== parseInt(e.target.value))
                 }
 
                 console.log(this.$store.state.step4.interest_area);

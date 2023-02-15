@@ -24,13 +24,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Efectivo procedente</td>
-                        <td>120</td>
-                        <td>24.00</td>
-                        <td>1.20</td>
-                        <td>25.20</td>
+                    <tr v-for="source in $store.state.step9.sources" :key="source.id">
+                        <td>{{ source.id }}</td>
+                        <td>{{ source.source }}</td>
+                        <td>{{ source.detail }}</td>
+                        <td>{{ source.amount }}</td>
+                        <td>{{ source.support }}</td>
+                        <td>{{ source.total }}</td>
                         <td>
                             <div class="d-flex justify-content-between w-100">
                                 <i class="fa-solid fa-pen"></i>
@@ -42,7 +42,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="7">
-                            <a href="#!">+ Agregar fuente de financiamiento</a>
+                            <a href="#!" @click="showModalStep9()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep9" >+ Agregar fuente de financiamiento</a>
                         </td>
                     </tr>
                 </tfoot>
@@ -114,7 +114,43 @@
             </button>
         </div>
 
+
     </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalStep9" tabindex="-1" aria-labelledby="modalStep9Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalStep9Label"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="" class="form-label">Fuente</label>
+                            <select class="form-select" id="source_money" aria-label="Default select example">
+                                <option value="Fondo Distrital Designado (FDD)">Fondo Distrital Designado (FDD)</option>
+                                <option value="Efectivo procedente del distrito">Efectivo procedente del distrito</option>
+                                <option value="Efectivo procedente del club">Efectivo procedente del club</option>
+                                <option value="Contribuciones realizadas por personas ajenas a Rotary NO equipadas por la Fundación">Contribuciones realizadas por personas ajenas a Rotary NO equipadas por la Fundación</option>
+                                <option value="Fondo Designado por los Donantes de la Fundación Rotaria">Fondo Designado por los Donantes de la Fundación Rotaria</option>
+                                <option value="Endowed/Directed gift - T10031 - Ernesto Leal Memorial Named Ambassadorial Scholarship">Endowed/Directed gift - T10031 - Ernesto Leal Memorial Named Ambassadorial Scholarship</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="" class="form-label">Monto en US$</label>
+                            <input type="number" min="0" value="0" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" @click="addFontSource()" data-bs-dismiss="modal">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -126,6 +162,23 @@ export default {
         data: Object,
     },
     methods: {
+        showModalStep9(){
+            document.body.appendChild( document.querySelector('#modalStep9') )
+        },
+
+        addFontSource() {
+            this.$store.state.step9.sources = []
+
+            this.$store.state.step9.sources.push({
+                id: this.$store.state.step9.sources.length + 1,
+                source: document.querySelector('select#source_money').value,
+                detail: '',
+                amount: 9999.99,
+                support: '',
+                total: 9999.99,
+            })
+        },
+
         submit() {
             axios.post(route('simulation.save.step9'), {
                 ...this.$store.state.step9,

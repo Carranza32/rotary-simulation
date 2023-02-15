@@ -120,8 +120,8 @@ import countries from "@/Utils/countries.json";
                             required
                             autocomplete="country">
 
-                            <option v-for="country in form.countries" :value="country" :key="country[0]">
-                                {{ country }}
+                            <option v-for="country in form.countries" :value="country" :key="country.code">
+                                {{ country.name }}
                             </option>
 
                         </select>
@@ -160,7 +160,7 @@ import countries from "@/Utils/countries.json";
                         <label
                             for="club"
                             class="text-small font-bold block text-gray-600 block"
-                            ><span>Club rotatorio</span
+                            ><span>Club Rotario</span
                             ><span aria-hidden="true"></span></label
                         >
                     </div>
