@@ -120,7 +120,7 @@ import countries from "@/Utils/countries.json";
                             required
                             autocomplete="country">
 
-                            <option v-for="country in form.countries" :value="country" :key="country.code">
+                            <option v-for="country in form.countries" :value="country.name" :key="country.code">
                                 {{ country.name }}
                             </option>
 
