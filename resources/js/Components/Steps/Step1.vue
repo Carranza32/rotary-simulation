@@ -12,7 +12,7 @@
 
         <div class="mb-3">
             <label for="name" class="form-label">Indica el nombre del proyecto.</label>
-            <input type="text" name="project_name" class="form-control" id="name" v-model="$store.state.step1.project_name" maxlength="100">
+            <input  type="text" name="project_name" class="form-control" id="name" v-model="$store.state.step1.project_name" maxlength="100">
             <small class="float-end">{{ $store.state.step1.project_name.length }}/100 caracteres</small>
         </div>
 
@@ -81,9 +81,9 @@
             <button class="btn btn-outline-primary" type="submit">
                 Guardar
             </button>
-            <button class="btn btn-link" type="button">
+            <a class="btn btn-link" :href="route('dashboard')">
                 Salir
-            </button>
+            </a>
         </div>
 
 
@@ -312,9 +312,21 @@ export default {
                 this.$page.props.errors = []
             })
             .catch((error) => {
-                this.$swal('Error', 'Something went wrong', 'error');
-
                 this.$page.props.errors = error.response.data.errors
+
+                let list = '<ul>'
+
+                this.$page.props.errors?.forEach(el => {
+                    list += `<li>${el}</li>`
+                });
+
+                list += '</ul>'
+
+                this.$swal({
+                    title: 'Error!',
+                    html: list,
+                    icon: 'error',
+                });
             })
         }
     }

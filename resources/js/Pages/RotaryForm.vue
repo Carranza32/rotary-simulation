@@ -141,12 +141,12 @@
                         <Step10 />
                     </accordion>
 
-                    <accordion id="step-doc" title="Documentos justificantes">
+                    <accordion id="step-documents" title="Documentos justificantes">
                         <Step11Documents />
                     </accordion>
 
-                    <accordion id="step-11" title="Paso #11 Documentos justificantes">
-                        <Step11Documents />
+                    <accordion id="step-11" title="Paso #11 Repaso y bloqueo de la solicitud”">
+                        <Step11 />
                     </accordion>
 
                     <accordion id="step-12" title="Paso #12 Autorizaciones">
@@ -185,6 +185,7 @@
     import Step9 from '@/Components/Steps/Step9.vue';
     import Step10 from '@/Components/Steps/Step10.vue';
     import Step11Documents from '@/Components/Steps/Step11Documents.vue';
+    import Step11 from '@/Components/Steps/Step11.vue';
     import Step12 from '@/Components/Steps/Step12.vue';
     import Vue3Html2pdf from 'vue3-html2pdf'
 
@@ -221,6 +222,7 @@
             Step9,
             Step10,
             Step11Documents,
+            Step11,
             Step12,
             Vue3Html2pdf,
         },

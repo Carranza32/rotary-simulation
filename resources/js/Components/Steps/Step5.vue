@@ -9,8 +9,6 @@
             </ul>
         </div>
 
-        {{$store.state.step5.interest_area_goals}}
-
         <div class="step-5-checks">
             <Step5PazPrev />
         </div>
@@ -98,9 +96,9 @@
             <button class="btn btn-outline-primary" type="submit">
                 Guardar
             </button>
-            <button class="btn btn-link" type="button">
+            <a class="btn btn-link" :href="route('dashboard')">
                 Salir
-            </button>
+            </a>
         </div>
     </form>
 
@@ -245,9 +243,21 @@ export default {
                 this.$page.props.errors = []
             })
             .catch((error) => {
-                this.$swal('Error', 'Something went wrong', 'error');
-
                 this.$page.props.errors = error.response.data.errors
+
+                let list = '<ul>'
+
+                this.$page.props.errors?.forEach(el => {
+                    list += `<li>${el}</li>`
+                });
+
+                list += '</ul>'
+
+                this.$swal({
+                    title: 'Error!',
+                    html: list,
+                    icon: 'error',
+                });
             })
         }
     }

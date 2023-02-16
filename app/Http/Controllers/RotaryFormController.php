@@ -34,7 +34,13 @@ class RotaryFormController extends Controller
             'project_name' => 'required',
             'type' => 'required',
             'contacts' => 'nullable',
-        ]);
+        ],
+        [
+            'project_name' => 'Nombre del proyecto es requerido',
+            'type' => 'Tipo de proyecto es requerido',
+            'contacts' => 'Contactos es requerido',
+        ]
+        );
 
         if ($validate->fails()) {
             return response()->json([
@@ -66,6 +72,11 @@ class RotaryFormController extends Controller
             'local_members' => 'nullable',
             'international_members' => 'nullable',
             'members_conflict' => 'required',
+        ],
+        [
+            'local_members' => 'Miembros locales es requerido',
+            'international_members' => 'Miembros internacionales es requerido',
+            'members_conflict' => 'Conflicto de interes es requerido',
         ]);
 
         if ($validate->fails()) {
@@ -85,7 +96,11 @@ class RotaryFormController extends Controller
         $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'objectives' => 'required',
-        ]);
+        ],
+        [
+            'objectives' => 'Objetivos es requerido',
+        ]
+        );
 
         if ($validate->fails()) {
             return response()->json([
@@ -104,6 +119,9 @@ class RotaryFormController extends Controller
         $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'interest_area' => 'required',
+        ],
+        [
+            'interest_area' => 'Area de interes es requerido',
         ]);
 
         if ($validate->fails()) {
@@ -125,6 +143,11 @@ class RotaryFormController extends Controller
             'interest_area_goals' => 'required',
             'measures' => 'nullable',
             'evaluation' => 'required',
+        ],
+        [
+            'interest_area_goals' => 'Objetivos de área de interés es requerido',
+            'measures' => 'Medidas es requerido',
+            'evaluation' => 'Evaluación es requerido',
         ]);
 
         if ($validate->fails()) {
@@ -148,6 +171,13 @@ class RotaryFormController extends Controller
             'country' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+        ],
+        [
+            'city' => 'Ciudad es requerido',
+            'state' => 'Estado es requerido',
+            'country' => 'País es requerido',
+            'start_date' => 'Fecha de inicio es requerido',
+            'end_date' => 'Fecha de finalización es requerido',
         ]);
 
         if ($validate->fails()) {
@@ -167,10 +197,15 @@ class RotaryFormController extends Controller
         $validate = Validator::make($request->all(), [
             'current_step' => 'required',
             'measures' => 'nullable',
-            'members' => 'required',
+            'members' => 'nullable',
             'travellers' => 'nullable',
             'local_sponsors' => 'required',
             'international_sponsors' => 'required',
+        ],
+        [
+            'members' => 'Miembros es requerido',
+            'local_sponsors' => 'Patrocinadores locales es requerido',
+            'international_sponsors' => 'Patrocinadores internacionales es requerido',
         ]);
 
         if ($validate->fails()) {
@@ -193,6 +228,9 @@ class RotaryFormController extends Controller
             'exchange_rate' => 'nullable',
             'headings' => 'nullable',
             'budget_step8' => 'nullable',
+        ],
+        [
+            'currency' => 'Moneda es requerido',
         ]);
 
         if ($validate->fails()) {
@@ -253,6 +291,27 @@ class RotaryFormController extends Controller
             'has_microcredit' => 'required',
             'has_local_founds' => 'required',
             'generate_income' => 'required',
+        ],
+        [
+            'necesities' => 'Necesidades de la comunidad es requerido',
+            'necesities_process' => 'Proceso de necesidades es requerido',
+            'participants1' => 'Integrantes de la comunidad beneficiaria es requerido',
+            'participants2' => 'Integrantes de la comunidad local es requerido',
+            'coo_work' => 'Coordinación con otras iniciativas de trabajo es requerido',
+            'capacitation' => 'Programas de capacitación es requerido',
+            'determinate_necesities' => 'Determinación de necesidades es requerido',
+            'incentives' => 'Incentivos es requerido',
+            'supervisors_names' => 'Nombres de supervisores es requerido',
+            'use_providers' => 'Uso de proveedores es requerido',
+            'use_tender' => 'Uso de licitaciones es requerido',
+            'has_conflict_providers' => 'Conflictos con proveedores es requerido',
+            'equipment_included' => 'Equipo incluido es requerido',
+            'equipment_maintenance' => 'Mantenimiento de equipo es requerido',
+            'use_founds' => 'Uso de fondos es requerido',
+            'completed_proyect' => 'Proyecto completado es requerido',
+            'has_microcredit' => 'Microcrédito es requerido',
+            'has_local_founds' => 'Fondos locales es requerido',
+            'generate_income' => 'Generación de ingresos es requerido',
         ]);
 
         if ($validate->fails()) {
