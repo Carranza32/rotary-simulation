@@ -141,6 +141,10 @@
                         <Step10 />
                     </accordion>
 
+                    <accordion id="step-doc" title="Documentos justificantes">
+                        <Step11Documents />
+                    </accordion>
+
                     <accordion id="step-11" title="Paso #11 Documentos justificantes">
                         <Step11Documents />
                     </accordion>

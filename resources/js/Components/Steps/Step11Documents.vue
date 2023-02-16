@@ -8,8 +8,10 @@
             <tr>
                 <td>
                     <div class="d-flex justify-content-between">
-                        <a href="#!"><i class="fa-solid fa-arrow-up-from-line"></i> Agregar archivo</a>
-                        <i class="fa-solid fa-paperclip"></i>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Agregar archivo</label>
+                            <input class="form-control w-100" type="file" id="formFile">
+                        </div>
                     </div>
                 </td>
             </tr>
