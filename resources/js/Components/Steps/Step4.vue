@@ -23,42 +23,42 @@
                 </label>
             </div>
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="2" id="prev" name="prev">
+                <input class="form-check-input" type="checkbox" value="2" id="prev" name="prev" >
                 <label class="form-check-label" for="prev">
                     <img src="../../assets/images/prevencionenfermedades.png" height="40" class="rounded-circle">
                     Prevención y tratamiento de enfermedades
                 </label>
             </div>
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="3"  id="agua" name="agua">
+                <input class="form-check-input" type="checkbox" value="3"  id="agua" name="agua" >
                 <label class="form-check-label" for="agua">
                     <img src="../../assets/images/aguaysaneamiento.png" height="40" class="rounded-circle">
                     Agua, saneamiento e higiene
                 </label>
             </div>
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="4"  id="salud" name="salud">
+                <input class="form-check-input" type="checkbox" value="4"  id="salud" name="salud" >
                 <label class="form-check-label" for="salud">
                     <img src="../../assets/images/saludmaternoinfantil.png" height="40" class="rounded-circle">
                     Salud materno-infantil
                 </label>
             </div>
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="5"  id="alf" name="alf">
+                <input class="form-check-input" type="checkbox" value="5"  id="alf" name="alf" >
                 <label class="form-check-label" for="alf">
                     <img src="../../assets/images/alfabetizacion.png" height="40" class="rounded-circle">
                     Alfabetización y educación básica
                 </label>
             </div>
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="6"  id="des" name="des">
+                <input class="form-check-input" type="checkbox" value="6"  id="des" name="des" >
                 <label class="form-check-label" for="des">
                     <img src="../../assets/images/desarrolloeconomico.png" height="40" class="rounded-circle">
                     Desarrollo económico de la comunidad
                 </label>
             </div>
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="7"  id="ambiente" name="ambiente">
+                <input class="form-check-input" type="checkbox" value="7"  id="ambiente" name="ambiente" >
                 <label class="form-check-label" for="ambiente">
                     <img src="../../assets/images/medioambiente.png" height="40" class="rounded-circle">
                     Medioambiente
@@ -94,27 +94,30 @@ export default {
             this.$store.state.step4.interest_area = []
         }
 
+        var mi_array = this.$store.state.step4.interest_area;
+
+        //Array
+        console.log("mi raayy", mi_array);
+
         document.querySelectorAll('.step-4-checks input').forEach((input) => {
             input.addEventListener('change', (e) => {
-                console.log("Despues del try 2", );
-
                 if (e.target.checked) {
-                    console.log(this.$store.state.step4.interest_area);
-                    Object.values(this.$store.state.step4.interest_area)?.push(parseInt(e.target.value))
+                    mi_array.push(e.target.value)
                 } else {
-                    this.$store.state.step4.interest_area = Object.values(this.$store.state.step4.interest_area)?.filter((item) => item !== parseInt(e.target.value))
+                    mi_array = mi_array?.filter((item) => item !== e.target.value)
                 }
 
-                console.log(this.$store.state.step4.interest_area);
+                this.$store.state.step4.interest_area = mi_array
+                console.log("mi raayy", mi_array);
             })
         })
 
-        if (this.$page.props.form?.interest_area != null) {
-
-            Object.values(this.$store.state.step4.interest_area).forEach((item) => {
-                console.log(item);
+        if (mi_array.length > 0) {
+            mi_array.forEach((item) => {
+                console.log('item', item);
                 let el = document.querySelector(`.step-4-checks input[value="${item}"]`)
-                el.checked = true
+                el.setAttribute('checked', true)
+                console.log(el);
             })
 
             /*JSON.parse(this.$page.props.form?.interest_area)?.forEach((item) => {

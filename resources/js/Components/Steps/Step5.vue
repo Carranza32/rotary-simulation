@@ -12,14 +12,14 @@
         {{ $store.state.step4.interest_area }}
 
         <div class="step-5-checks">
-            <Step5PazPrev v-if="$store.state.step4.interest_area.includes(1)" />
+            <!-- <Step5PazPrev v-if="$store.state.step4.interest_area.includes(1)" />
             <Step52PrevTrat v-if="$store.state.step4.interest_area.includes(2)" />
             <Step53AguaSan v-if="$store.state.step4.interest_area.includes(3)" />
             <Step54SaludMatern v-if="$store.state.step4.interest_area.includes(4)" />
             <Step55AlfEdu v-if="$store.state.step4.interest_area.includes(5)" />
             <Step55AlfEdu v-if="$store.state.step4.interest_area.includes(6)" />
             <Step56DesaEcono v-if="$store.state.step4.interest_area.includes(7)" />
-            <Step57Ambiente v-if="$store.state.step4.interest_area.includes(8)" />
+            <Step57Ambiente v-if="$store.state.step4.interest_area.includes(8)" /> -->
         </div>
 
         <hr>
