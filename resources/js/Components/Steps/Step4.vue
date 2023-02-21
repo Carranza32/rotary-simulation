@@ -8,6 +8,8 @@
             </ul>
         </div>
 
+        {{ $store.state.step4.interest_area }}
+
         <p class="fw-bold">¿A qué áreas de interés pertenece el proyecto?</p>
         <p>Selecciona al menos un área. Te pediremos que establezcas metas y respondas a ciertas preguntas para cada área de interés que selecciones. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
@@ -86,32 +88,44 @@ export default {
         data: Object,
     },
     mounted() {
-        if (this.$store.state.step4.interest_area == null || this.$store.state.step4.interest_area?.length == 0) {
+        try {
+            this.$store.state.step4.interest_area = JSON.parse(this.$page.props.form?.interest_area)
+        } catch (error) {
             this.$store.state.step4.interest_area = []
-        }
-
-        if (this.$page.props.form?.interest_area != null) {
-            JSON.parse(this.$page.props.form?.interest_area)?.forEach((item) => {
-                document.querySelector(`.step-4-checks input[value="${item}"]`).checked = true
-            })
         }
 
         document.querySelectorAll('.step-4-checks input').forEach((input) => {
             input.addEventListener('change', (e) => {
-                if (this.$store.state.step4.interest_area == null || this.$store.state.step4.interest_area?.length == 0) {
-                    this.$store.state.step4.interest_area = []
-                }
+                console.log("Despues del try 2", );
 
                 if (e.target.checked) {
                     console.log(this.$store.state.step4.interest_area);
-                    this.$store.state.step4.interest_area?.push(parseInt(e.target.value))
+                    Object.values(this.$store.state.step4.interest_area)?.push(parseInt(e.target.value))
                 } else {
-                    this.$store.state.step4.interest_area = this.$store.state.step4.interest_area?.filter((item) => item !== parseInt(e.target.value))
+                    this.$store.state.step4.interest_area = Object.values(this.$store.state.step4.interest_area)?.filter((item) => item !== parseInt(e.target.value))
                 }
 
                 console.log(this.$store.state.step4.interest_area);
             })
         })
+
+        if (this.$page.props.form?.interest_area != null) {
+
+            Object.values(this.$store.state.step4.interest_area).forEach((item) => {
+                console.log(item);
+                let el = document.querySelector(`.step-4-checks input[value="${item}"]`)
+                el.checked = true
+            })
+
+            /*JSON.parse(this.$page.props.form?.interest_area)?.forEach((item) => {
+                console.log(item);
+                let el = document.querySelector(`.step-4-checks input[value="${item}"]`)
+                //el.checked = true
+                el.click()
+                //el.fireEvent("onchange")
+                console.log(el);
+            })*/
+        }
     },
     methods: {
         submit() {

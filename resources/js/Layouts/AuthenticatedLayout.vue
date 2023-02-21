@@ -49,14 +49,14 @@ const showingNavigationDropdown = ref(false);
                 <div class="container">
                     <div class="w-100 d-flex justify-content-between align-items-start">
                         <div class="mw-100">
-                            <a class="d-block hover:shadow-none" title="Volver a la página principal" href="/es/">
+                            <a class="d-block hover:shadow-none" title="Volver a la página principal" :href="route('dashboard')">
                                 <img src="https://my.rotary.org/logo.png" alt="Rotary International" class="DesktopHeaderLogo"/>
                             </a>
                         </div>
                         <div>
                             <ul class="CallToActionContainer">
                                 <li class="CallToActionItem">
-                                    <a href="/es/donate" class="CallToActionButton bg-dark-blue-400 font-bold text-bright-blue-100 text-center text-decoration-none hover:underline focus:underline"
+                                    <a href="https://www.rotary.org/es/donate" class="CallToActionButton bg-dark-blue-400 font-bold text-bright-blue-100 text-center text-decoration-none hover:underline focus:underline"
                                         >Dona
                                     </a>
                                 </li>

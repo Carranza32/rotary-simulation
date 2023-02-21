@@ -9,8 +9,17 @@
             </ul>
         </div>
 
+        {{ $store.state.step4.interest_area }}
+
         <div class="step-5-checks">
-            <Step5PazPrev />
+            <Step5PazPrev v-if="$store.state.step4.interest_area.includes(1)" />
+            <Step52PrevTrat v-if="$store.state.step4.interest_area.includes(2)" />
+            <Step53AguaSan v-if="$store.state.step4.interest_area.includes(3)" />
+            <Step54SaludMatern v-if="$store.state.step4.interest_area.includes(4)" />
+            <Step55AlfEdu v-if="$store.state.step4.interest_area.includes(5)" />
+            <Step55AlfEdu v-if="$store.state.step4.interest_area.includes(6)" />
+            <Step56DesaEcono v-if="$store.state.step4.interest_area.includes(7)" />
+            <Step57Ambiente v-if="$store.state.step4.interest_area.includes(8)" />
         </div>
 
         <hr>
@@ -172,13 +181,25 @@
 </template>
 
 <script>
-import Step5PazPrev from '@/Components/Steps/Step51PazPrev.vue';
 import axios from 'axios'
+import Step5PazPrev from '@/Components/Steps/Step51PazPrev.vue';
+import Step52PrevTrat from '@/Components/Steps/Step52PrevTrat.vue';
+import Step53AguaSan from '@/Components/Steps/Step53AguaSan.vue';
+import Step54SaludMatern from '@/Components/Steps/Step54SaludMatern.vue';
+import Step55AlfEdu from '@/Components/Steps/Step55AlfEdu.vue';
+import Step56DesaEcono from '@/Components/Steps/Step56DesaEcono.vue';
+import Step57Ambiente from '@/Components/Steps/Step57Ambiente.vue';
 
 export default {
     components: {
-        Step5PazPrev,
-    },
+    Step5PazPrev,
+    Step52PrevTrat,
+    Step53AguaSan,
+    Step54SaludMatern,
+    Step55AlfEdu,
+    Step56DesaEcono,
+    Step57Ambiente,
+},
     props: {
         errors: [],
         data: Object,
