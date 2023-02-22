@@ -21,8 +21,13 @@
                 </tr>
             </thead>
             <tbody>
+                <tr v-for="organize in $store.state.step7.organizers" :key="organize.id">
+                    <td>{{ organize.name }}</td>
+                    <td>{{ organize.website }}</td>
+                    <td>{{ organize.address }}</td>
+                </tr>
                 <tr>
-                    <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal" >+ Agregar organización</a></td>
+                    <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep7" @click="showModalStep7()">+ Agregar organización</a></td>
                 </tr>
             </tbody>
         </table>
@@ -88,6 +93,38 @@
             </a>
         </div>
     </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalStep7" tabindex="-1" aria-labelledby="modalStep7Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalStep7Label"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="" class="form-label">Nombre de la organización</label>
+                            <input type="text" id="organ_name" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <label for="" class="form-label">Sitio web</label>
+                            <input type="text" id="organ_web" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <label for="" class="form-label">Dirección</label>
+                            <textarea class="form-control" id="organ_address" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" @click="addAddress()" data-bs-dismiss="modal">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -99,6 +136,27 @@ export default {
         data: Object,
     },
     methods: {
+        showModalStep7(){
+            document.body.appendChild( document.querySelector('#modalStep7') )
+        },
+
+        addAddress() {
+            if (this.$store.state.step7.organizers == null) {
+                this.$store.state.step7.organizers = []
+            }
+
+            this.$store.state.step7.organizers.push({
+                id: this.$store.state.step7.organizers.length + 1,
+                name: document.querySelector('#modalStep7 #organ_name').value,
+                website: document.querySelector('#modalStep7 #organ_web').value,
+                address: document.querySelector('#modalStep7 #organ_address').value
+            })
+
+            console.log(document.querySelector('#modalStep7 #organ_address'));
+
+            console.log(this.$store.state.step7.organizers);
+        },
+
         submit() {
             axios.post(route('simulation.save.step7'), {
                 ...this.$store.state.step7,

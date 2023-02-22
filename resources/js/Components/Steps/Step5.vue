@@ -9,17 +9,16 @@
             </ul>
         </div>
 
-        {{ $store.state.step4.interest_area }}
+        {{ $store.state.step5.interest_area_goals }}
 
         <div class="step-5-checks">
-            <!-- <Step5PazPrev v-if="$store.state.step4.interest_area.includes(1)" />
-            <Step52PrevTrat v-if="$store.state.step4.interest_area.includes(2)" />
-            <Step53AguaSan v-if="$store.state.step4.interest_area.includes(3)" />
-            <Step54SaludMatern v-if="$store.state.step4.interest_area.includes(4)" />
-            <Step55AlfEdu v-if="$store.state.step4.interest_area.includes(5)" />
-            <Step55AlfEdu v-if="$store.state.step4.interest_area.includes(6)" />
-            <Step56DesaEcono v-if="$store.state.step4.interest_area.includes(7)" />
-            <Step57Ambiente v-if="$store.state.step4.interest_area.includes(8)" /> -->
+            <Step5PazPrev v-if="$store.state.step4.interest_area.includes('1')" />
+            <Step52PrevTrat v-if="$store.state.step4.interest_area.includes('2')" />
+            <Step53AguaSan v-if="$store.state.step4.interest_area.includes('3')" />
+            <Step54SaludMatern v-if="$store.state.step4.interest_area.includes('4')" />
+            <Step55AlfEdu v-if="$store.state.step4.interest_area.includes('5')" />
+            <Step56DesaEcono v-if="$store.state.step4.interest_area.includes('6')" />
+            <Step57Ambiente v-if="$store.state.step4.interest_area.includes('7')" />
         </div>
 
         <hr>
@@ -206,32 +205,42 @@ export default {
     },
     mounted() {
         try {
-            if (this.$store.state.step5.interest_area_goals == null || this.$store.state.step5.interest_area_goals.length == 0) {
-                this.$store.state.step5.interest_area_goals = []
-            }else{
-                JSON.parse(this.$page.props.form.interest_area_goals)?.forEach((item) => {
-                    document.querySelector(`.step-5-checks input[value="${item}"]`).checked = true
-                })
-            }
-
-            document.querySelectorAll('.step-5-checks input')?.forEach((input) => {
-                input.addEventListener('change', (e) => {
-                    if (this.$store.state.step5.interest_area_goals == null || this.$store.state.step5.interest_area_goals?.length == 0) {
-                        this.$store.state.step5.interest_area_goals = []
-                    }
-
-                    if (e.target.checked) {
-                        console.log(this.$store.state.step5.interest_area_goals);
-                        this.$store.state.step5.interest_area_goals.push(parseInt(e.target.value))
-                    } else {
-                        this.$store.state.step5.interest_area_goals = this.$store.state.step5.interest_area_goals.filter((item) => item !== parseInt(e.target.value))
-                    }
-
-                    console.log(this.$store.state.step5.interest_area_goals);
-                })
-            })
+            this.$store.state.step5.interest_area_goals = JSON.parse(this.$page.props.form.interest_area_goals)
         } catch (error) {
+            this.$store.state.step5.interest_area_goals = []
+        }
 
+        var mi_array_step5 = this.$store.state.step5.interest_area_goals ?? []
+
+        console.log('mi_array_step5', mi_array_step5);
+
+
+
+        document.querySelectorAll('.step-5-checks input.form-check-input')?.forEach((input) => {
+            console.log(input);
+            input.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    mi_array_step5.push(e.target.value)
+                } else {
+                    mi_array_step5 = mi_array_step5?.filter((item) => item !== e.target.value)
+                }
+
+                this.$store.state.step5.interest_area_goals = mi_array_step5
+                console.log(this.$store.state.step5.interest_area_goals);
+            })
+        })
+
+        if (mi_array_step5.length > 0) {
+            try {
+                mi_array_step5.forEach((item) => {
+                    console.log(`.step-5-checks input[value='${item}']`);
+                    let el = document.querySelector(`.step-5-checks input.form-check-input[value='${item}']`)
+                    console.log(el);
+                    el.checked = true
+                })
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
     methods: {

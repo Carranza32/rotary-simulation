@@ -97,7 +97,6 @@ export default {
         var mi_array = this.$store.state.step4.interest_area;
 
         //Array
-        console.log("mi raayy", mi_array);
 
         document.querySelectorAll('.step-4-checks input').forEach((input) => {
             input.addEventListener('change', (e) => {
@@ -108,7 +107,6 @@ export default {
                 }
 
                 this.$store.state.step4.interest_area = mi_array
-                console.log("mi raayy", mi_array);
             })
         })
 
@@ -116,8 +114,7 @@ export default {
             mi_array.forEach((item) => {
                 console.log('item', item);
                 let el = document.querySelector(`.step-4-checks input[value="${item}"]`)
-                el.setAttribute('checked', true)
-                console.log(el);
+                el.click()
             })
 
             /*JSON.parse(this.$page.props.form?.interest_area)?.forEach((item) => {

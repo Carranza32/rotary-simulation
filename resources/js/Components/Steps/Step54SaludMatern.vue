@@ -7,32 +7,32 @@
         <hr>
 
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="" id="paz">
-            <label class="form-check-label" for="paz">
+            <input class="form-check-input" type="checkbox" value="54_1">
+            <label class="form-check-label">
                 Reducir la tasa de mortalidad neonatal.
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="" id="paz">
-            <label class="form-check-label" for="paz">
+            <input class="form-check-input" type="checkbox" value="54_2">
+            <label class="form-check-label">
                 Reducir la tasa de mortalidad y morbilidad de los niños menores de cinco años.
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="" id="paz">
-            <label class="form-check-label" for="paz">
+            <input class="form-check-input" type="checkbox" value="54_3">
+            <label class="form-check-label">
                 Reducir la tasa de mortalidad y morbilidad materna.
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="" id="paz">
-            <label class="form-check-label" for="paz">
+            <input class="form-check-input" type="checkbox" value="54_4">
+            <label class="form-check-label">
                 Mejorar el acceso a los servicios médicos esenciales, los trabajadores comunitarios de salud capacitados y a los proveedores de servicios de atención de la salud.
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="" id="paz">
-            <label class="form-check-label" for="paz">
+            <input class="form-check-input" type="checkbox" value="54_5">
+            <label class="form-check-label">
                 Financiar becas de postgrado para profesionales en campos relacionados con la salud materno-infantil.
             </label>
         </div>
