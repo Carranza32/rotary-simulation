@@ -90,6 +90,16 @@ return new class extends Migration
             $table->boolean('has_local_founds')->nullable();
             $table->text('generate_income')->nullable();
 
+            //Step 11 documents
+            $table->text('files')->nullable();
+
+            //Step 12
+            $table->text('primary_contact_authorization')->nullable();
+            $table->text('district_committee_authorization')->nullable();
+            $table->text('fdd_authorization')->nullable();
+            $table->text('legal_agreement')->nullable();
+
+
             $table->softDeletes();
             $table->timestamps();
         });

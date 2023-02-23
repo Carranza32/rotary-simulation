@@ -155,8 +155,19 @@
                         <div class="progress mb-3" v-show="loading">
                             <div class="progress-bar bg-success" role="progressbar" aria-label="Example with label" :style="{ 'width': loading + '%' }" :aria-valuenow="loading" aria-valuemin="0" aria-valuemax="100">Generando: {{ loading }}%</div>
                         </div>
-                        <div @click="generatePDF()" class="btn btn-primary">
-                            Generar PDF
+
+                        <div class="d-flex justify-content-start gap-3 mt-4">
+                            <a class="btn btn-primary" @click="submit12()">
+                                Guardar y finalizar
+                            </a>
+
+                            <button class="btn btn-outline-primary" @click="generatePDF()">
+                                Generar PDF
+                            </button>
+
+                            <a class="btn btn-link" :href="route('dashboard')">
+                                Salir
+                            </a>
                         </div>
 
                     </accordion>
@@ -188,10 +199,13 @@
     import Step11 from '@/Components/Steps/Step11.vue';
     import Step12 from '@/Components/Steps/Step12.vue';
     import Vue3Html2pdf from 'vue3-html2pdf'
+    import axios from 'axios'
 
     export default {
         props: {
             form: Object,
+            errors: [],
+            data: Object,
         },
         data() {
             return {
@@ -241,11 +255,58 @@
             generatePDF() {
                 this.$refs.html2Pdf.generatePdf()
             },
+
+            submit12() {
+                axios.post(route('simulation.save.step12'), {
+                    ...this.$store.state.step12,
+                    current_step: 12,
+                    id: this.$page.props?.form?.id
+                })
+                .then((response) => {
+                    this.$swal('Step 11 saved successfully', '', 'success');
+                    console.log(response);
+                    //redirect to dashboard
+                    window.location.href = route('dashboard')
+                })
+                .catch((error) => {
+                    this.$page.props.errors = error.response.data.errors
+
+                    let list = '<ul>'
+
+                    this.$page.props.errors?.forEach(el => {
+                        list += `<li>${el}</li>`
+                    });
+
+                    list += '</ul>'
+
+                    this.$swal({
+                        title: 'Error!',
+                        html: list,
+                        icon: 'error',
+                    });
+                })
+            }
         },
         mounted() {
             if (this.form) {
                 this.$store.commit('setFormState', this.form)
                 this.$store.commit('setFormId', this.form?.id)
+
+                if (this.form?.primary_contact_authorization) {
+                    this.$store.state.step12.primary_contact_authorization = JSON.parse(this.form?.primary_contact_authorization)
+                }
+
+                if (this.form?.district_committee_authorization) {
+                    this.$store.state.step12.district_committee_authorization = JSON.parse(this.form?.district_committee_authorization)
+                }
+
+                if (this.form?.fdd_authorization) {
+                    this.$store.state.step12.fdd_authorization = JSON.parse(this.form?.fdd_authorization)
+                }
+
+                if (this.form?.legal_agreement) {
+                    this.$store.state.step12.legal_agreement = JSON.parse(this.form?.legal_agreement)
+                }
             }
 
             let button = document.querySelector('#collapsestep-' + this.$store.state.currentStep + ' button')
@@ -260,7 +321,7 @@
             '$store.state.currentStep': function (val) {
                 let button = document.querySelector('#collapsestep-' + val + ' button')
 
-                // button.disabled = false
+                button.disabled = false
 
                 button.click()
 

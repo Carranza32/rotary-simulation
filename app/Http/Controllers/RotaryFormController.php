@@ -344,10 +344,43 @@ class RotaryFormController extends Controller
         return redirect()->route('simulation.form');
     }
 
+    public function saveStep11Documents(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'current_step' => 'required',
+        ]);
+
+        if ($validate->fails()) {
+            return response()->json([
+                'errors' => $validate->errors()->all(),
+                'status' => false
+            ], 400);
+        }
+
+        $data = $validate->validated();
+
+        if ($request->hasFile('files')) {
+            $uploadedFiles = $request->file('files');
+
+            foreach ($uploadedFiles as $uploadedFile) {
+                $path = $uploadedFile->store('public/documents');
+                $data['files'][] = $path;
+            }
+        }
+
+        $rotary = RotaryForm::find($request->id)->update($data);
+
+        return redirect()->route('simulation.form');
+    }
+
     public function saveStep12(Request $request)
     {
         $validate = Validator::make($request->all(), [
             'current_step' => 'required',
+            'primary_contact_authorization' => 'nullable',
+            'district_committee_authorization' => 'nullable',
+            'fdd_authorization' => 'nullable',
+            'legal_agreement' => 'nullable',
         ]);
 
         if ($validate->fails()) {

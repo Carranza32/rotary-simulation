@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="submit">
-        <div class="alert alert-danger" role="alert" v-if="$page.props.errors.length">
+        <div class="alert alert-danger" role="alert" v-if="$page.props.errors?.length">
             <ul>
                 <li v-for="error in $page.props.errors" :key="error">
                     {{ error }}
@@ -215,7 +215,7 @@ export default {
                 id: this.$page.props?.form?.id
             })
             .then((response) => {
-                this.$store.state.currentStep++
+                this.$store.state.currentStep = 'documents'
                 this.$swal('Step 10 saved successfully', '', 'success');
                 this.$page.props.errors = []
             })

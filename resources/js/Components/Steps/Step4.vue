@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="submit">
-        <div class="alert alert-danger" role="alert" v-if="$page.props.errors.length">
+        <div class="alert alert-danger" role="alert" v-if="$page.props.errors?.length">
             <ul>
                 <li v-for="error in $page.props.errors" :key="error">
                     {{ error }}
@@ -114,7 +114,9 @@ export default {
             mi_array.forEach((item) => {
                 console.log('item', item);
                 let el = document.querySelector(`.step-4-checks input[value="${item}"]`)
-                el.click()
+                if (el) {
+                    el.click()
+                }
             })
 
             /*JSON.parse(this.$page.props.form?.interest_area)?.forEach((item) => {

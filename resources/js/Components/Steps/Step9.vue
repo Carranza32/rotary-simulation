@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="submit">
-        <div class="alert alert-danger" role="alert" v-if="$page.props.errors.length">
+        <div class="alert alert-danger" role="alert" v-if="$page.props.errors?.length">
             <ul>
                 <li v-for="error in $page.props.errors" :key="error">
                     {{ error }}
@@ -167,7 +167,9 @@ export default {
         },
 
         addFontSource() {
-            this.$store.state.step9.sources = []
+            if (this.$store.state.step9.sources == null) {
+                this.$store.state.step9.sources = []
+            }
 
             this.$store.state.step9.sources.push({
                 id: this.$store.state.step9.sources.length + 1,

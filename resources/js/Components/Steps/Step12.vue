@@ -34,5 +34,114 @@
             19. To the best of our knowledge and belief, all relationships between grant committee members, district officers, and other members of the sponsor clubs or districts and any scholarship recipients, cooperating organizations, project vendors, or other individuals or organizations that will benefit from the grant have been disclosed in this application. Except as disclosed here, neither we nor any person with whom we have or had a personal or business relationship will benefit or intends to benefit from Rotary Foundation grant funds or have any interest that may represent a potential conflicting interest. A conflict of interest occurs when someone is in a position to make or influence a decision about a grant or scholarship that could benefit them, their family, their business, or an entity in which they serve in a paid or voluntary leadership or advisory position.
 
         </pre>
+
+        <div class="my-4">
+            <h6>Autorización del contacto principal</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Club</th>
+                        <th scope="col">Distrito</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.primary_contact_authorization[0]['name']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.primary_contact_authorization[0]['contact_club']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.primary_contact_authorization[0]['contact_distric']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.primary_contact_authorization[0]['contact_status']"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.primary_contact_authorization[1]['name']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.primary_contact_authorization[1]['contact_club']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.primary_contact_authorization[1]['contact_distric']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.primary_contact_authorization[1]['contact_status']"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="my-4">
+            <h6>Autorización del presidente del comité distrital de la fundación rotaria</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Club</th>
+                        <th scope="col">Distrito</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.district_committee_authorization[0]['name']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.district_committee_authorization[0]['contact_club']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.district_committee_authorization[0]['contact_distric']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.district_committee_authorization[0]['contact_status']"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.district_committee_authorization[1]['name']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.district_committee_authorization[1]['contact_club']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.district_committee_authorization[1]['contact_distric']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.district_committee_authorization[1]['contact_status']"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="my-4">
+            <h6>Autorización para el uso del FDD</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Club</th>
+                        <th scope="col">Distrito</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.fdd_authorization[0]['name']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.fdd_authorization[0]['contact_club']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.fdd_authorization[0]['contact_distric']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.fdd_authorization[0]['contact_status']"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.fdd_authorization[1]['name']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.fdd_authorization[1]['contact_club']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.fdd_authorization[1]['contact_distric']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.fdd_authorization[1]['contact_status']"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="my-4">
+            <h6>Acuerdo legal</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Club</th>
+                        <th scope="col">Distrito</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.legal_agreement[0]['name']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.legal_agreement[0]['contact_club']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.legal_agreement[0]['contact_distric']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.legal_agreement[0]['contact_status']"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.legal_agreement[1]['name']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.legal_agreement[1]['contact_club']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.legal_agreement[1]['contact_distric']"></td>
+                        <td><input type="text" class="form-control" v-model="$store.state.step12.legal_agreement[1]['contact_status']"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>

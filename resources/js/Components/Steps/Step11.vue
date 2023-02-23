@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form @submit.prevent="submit">
         <img src="../../assets/images/step11_1.png" alt="step11_1">
         <img src="../../assets/images/step11_2.png" alt="step11_2">
         <img src="../../assets/images/step11_3.png" alt="step11_3">

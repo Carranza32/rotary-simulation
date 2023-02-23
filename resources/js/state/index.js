@@ -87,8 +87,66 @@ const store = {
             has_local_founds: false,
             generate_income: '',
         },
-        step11: {
-            documents: [],
+        stepDocuments: {
+            files: [],
+        },
+        step12: {
+            primary_contact_authorization: [
+                {
+                    name: '',
+                    contact_club: '',
+                    contact_distric: '',
+                    contact_status: '',
+                },
+                {
+                    name: '',
+                    contact_club: '',
+                    contact_distric: '',
+                    contact_status: '',
+                },
+            ],
+            district_committee_authorization: [
+                {
+                    name: '',
+                    contact_club: '',
+                    contact_distric: '',
+                    contact_status: '',
+                },
+                {
+                    name: '',
+                    contact_club: '',
+                    contact_distric: '',
+                    contact_status: '',
+                },
+            ],
+            fdd_authorization: [
+                {
+                    name: '',
+                    contact_club: '',
+                    contact_distric: '',
+                    contact_status: '',
+                },
+                {
+                    name: '',
+                    contact_club: '',
+                    contact_distric: '',
+                    contact_status: '',
+                },
+            ],
+            legal_agreement: [
+                {
+                    name: '',
+                    contact_club: '',
+                    contact_distric: '',
+                    contact_status: '',
+                },
+                {
+                    name: '',
+                    contact_club: '',
+                    contact_distric: '',
+                    contact_status: '',
+                },
+            ],
         },
     },
     mutations: {
