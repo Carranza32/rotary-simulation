@@ -86,6 +86,12 @@ const store = {
             has_microcredit: false,
             has_local_founds: false,
             generate_income: '',
+            activities: [
+                {
+                    name: '',
+                    duration: '',
+                },
+            ],
         },
         stepDocuments: {
             files: [],

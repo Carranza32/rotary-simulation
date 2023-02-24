@@ -37,7 +37,6 @@
 
         <p class="fw-bold">Resume cada etapa de la implementación del proyecto.</p>
         <small>Do not include sensitive personal data, such as government ID numbers, religion, race, health information, etc. If you include personal data, you are responsible for informing those whose personal data is included that you are providing it to Rotary and that it will be processed in accordance with Rotary’s Privacy Policy.</small>
-
         <table class="table">
             <thead>
                 <tr>
@@ -47,7 +46,8 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal" >+ Agregar actividad</a></td>
+                    <td><input type="text" class="form-control" v-model="activities[0]['name']"></td>
+                    <td><input type="text" class="form-control" v-model="activities[0]['duration']"></td>
                 </tr>
             </tbody>
         </table>
@@ -207,12 +207,26 @@ export default {
         errors: [],
         data: Object,
     },
+    data() {
+        return {
+            activities: [
+                {
+                    name: '',
+                    duration: '',
+                },
+            ],
+        }
+    },
     methods: {
+        mounted() {
+            this.activities = this.$store.state.step10.activities
+        },
         submit() {
             axios.post(route('simulation.save.step10'), {
                 ...this.$store.state.step10,
                 current_step: this.$store.state.currentStep,
-                id: this.$page.props?.form?.id
+                id: this.$page.props?.form?.id,
+                activities: this.activities,
             })
             .then((response) => {
                 this.$store.state.currentStep = 'documents'

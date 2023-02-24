@@ -291,6 +291,7 @@ class RotaryFormController extends Controller
             'has_microcredit' => 'required',
             'has_local_founds' => 'required',
             'generate_income' => 'required',
+            'activities' => 'nullable',
         ],
         [
             'necesities' => 'Necesidades de la comunidad es requerido',

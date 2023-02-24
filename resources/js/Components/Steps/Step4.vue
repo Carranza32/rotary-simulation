@@ -8,8 +8,6 @@
             </ul>
         </div>
 
-        {{ $store.state.step4.interest_area }}
-
         <p class="fw-bold">¿A qué áreas de interés pertenece el proyecto?</p>
         <p>Selecciona al menos un área. Te pediremos que establezcas metas y respondas a ciertas preguntas para cada área de interés que selecciones. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
@@ -94,7 +92,7 @@ export default {
             this.$store.state.step4.interest_area = []
         }
 
-        var mi_array = this.$store.state.step4.interest_area;
+        var mi_array = this.$store.state.step4.interest_area ?? [];
 
         //Array
 
@@ -110,7 +108,7 @@ export default {
             })
         })
 
-        if (mi_array.length > 0) {
+        if (mi_array?.length > 0) {
             mi_array.forEach((item) => {
                 console.log('item', item);
                 let el = document.querySelector(`.step-4-checks input[value="${item}"]`)
