@@ -129,7 +129,7 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="" class="form-label">Fuente</label>
-                            <select class="form-select" id="source_money" aria-label="Default select example">
+                            <select class="form-select" id="source_money" aria-label="Default select example" v-model="sources.source">
                                 <option value="Fondo Distrital Designado (FDD)">Fondo Distrital Designado (FDD)</option>
                                 <option value="Efectivo procedente del distrito">Efectivo procedente del distrito</option>
                                 <option value="Efectivo procedente del club">Efectivo procedente del club</option>
@@ -140,7 +140,7 @@
                         </div>
                         <div class="col-12">
                             <label for="" class="form-label">Monto en US$</label>
-                            <input type="number" min="0" value="0" class="form-control">
+                            <input type="number" min="0" class="form-control" v-model="sources.amount">
                         </div>
                     </div>
                 </div>
@@ -161,6 +161,18 @@ export default {
         errors: [],
         data: Object,
     },
+    data() {
+        return {
+            sources: {
+                id: 0,
+                source: 0,
+                detail: '',
+                amount: 0,
+                support: '',
+                total: 0,
+            },
+        }
+    },
     methods: {
         showModalStep9(){
             document.body.appendChild( document.querySelector('#modalStep9') )
@@ -173,11 +185,11 @@ export default {
 
             this.$store.state.step9.sources.push({
                 id: this.$store.state.step9.sources.length + 1,
-                source: document.querySelector('select#source_money').value,
+                source: this.sources.source,
                 detail: '',
-                amount: 9999.99,
+                amount: this.sources.amount,
                 support: '',
-                total: 9999.99,
+                total: this.sources.amount,
             })
         },
 

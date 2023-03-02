@@ -56,8 +56,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr v-for="travel in $store.state.step7.travellers" :key="travel.id">
+                        <td>{{ travel.name }}</td>
+                        <td>{{ travel.email }}</td>
+                    </tr>
                     <tr>
-                        <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal" >+ Agregar viajero</a></td>
+                        <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep72" @click="showModalStep72()">+ Agregar viajero</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -106,21 +110,48 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="" class="form-label">Nombre de la organización</label>
-                            <input type="text" id="organ_name" class="form-control">
+                            <input type="text" id="organ_name" class="form-control" v-model="org.name">
                         </div>
                         <div class="col-12">
                             <label for="" class="form-label">Sitio web</label>
-                            <input type="text" id="organ_web" class="form-control">
+                            <input type="text" id="organ_web" class="form-control" v-model="org.website">
                         </div>
                         <div class="col-12">
                             <label for="" class="form-label">Dirección</label>
-                            <textarea class="form-control" id="organ_address" rows="3"></textarea>
+                            <textarea class="form-control" id="organ_address" rows="3" v-model="org.address"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-primary" @click="addAddress()" data-bs-dismiss="modal">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalStep72" tabindex="-1" aria-labelledby="modalStep72Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalStep72Label"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" v-model="travelers.name">
+                        </div>
+                        <div class="col-12">
+                            <label for="" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" v-model="travelers.email">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" @click="addTraveler()" data-bs-dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>
@@ -135,9 +166,28 @@ export default {
         errors: [],
         data: Object,
     },
+	data(){
+        return {
+            org: {
+                id: 1,
+                name: '',
+                website: '',
+                address: '',
+            },
+            travelers: {
+                id: 1,
+                name: '',
+                email: '',
+            }
+        }
+    },
     methods: {
         showModalStep7(){
             document.body.appendChild( document.querySelector('#modalStep7') )
+        },
+
+        showModalStep72(){
+            document.body.appendChild( document.querySelector('#modalStep72') )
         },
 
         addAddress() {
@@ -147,14 +197,26 @@ export default {
 
             this.$store.state.step7.organizers.push({
                 id: this.$store.state.step7.organizers.length + 1,
-                name: document.querySelector('#modalStep7 #organ_name').value,
-                website: document.querySelector('#modalStep7 #organ_web').value,
-                address: document.querySelector('#modalStep7 #organ_address').value
+                name: this.org.name,
+                website: this.org.website,
+                address: this.org.address
             })
 
-            console.log(document.querySelector('#modalStep7 #organ_address'));
-
             console.log(this.$store.state.step7.organizers);
+        },
+
+        addTraveler() {
+            if (this.$store.state.step7.travellers == null) {
+                this.$store.state.step7.travellers = []
+            }
+
+            this.$store.state.step7.travellers.push({
+                id: this.$store.state.step7.travellers + 1,
+                name: this.travelers.name,
+                email: this.travelers.email,
+            })
+
+            console.log(this.$store.state.step7.travellers);
         },
 
         submit() {

@@ -9,8 +9,6 @@
             </ul>
         </div>
 
-        {{ $store.state.step5.interest_area_goals }}
-
         <div class="step-5-checks" v-if="$store.state.step4.interest_area">
             <Step5PazPrev v-if="$store.state.step4.interest_area.includes('1')" />
             <Step52PrevTrat v-if="$store.state.step4.interest_area.includes('2')" />
@@ -76,18 +74,6 @@
         </div>
 
         <div class="my-3" v-if="$store.state.step5.evaluation == false">
-            <div class="mb-3">
-                <label class="form-label">¿Ya sabes quién recopilará la información necesaria para la evaluación y el monitoreo?</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="evaluation_false_step5" value="1">
-                    <label class="form-check-label">Sí</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="evaluation_false_step5" value="0">
-                    <label class="form-check-label">No</label>
-                </div>
-            </div>
-
             <div class="mb-3">
                 <label for="textarea" class="form-label">
                     Indica cómo buscarás a la persona u organización que se encargará de realizar esta tarea.
@@ -214,8 +200,7 @@ export default {
 
         console.log('mi_array_step5', mi_array_step5);
 
-        document.querySelectorAll('.step-5-checks input.form-check-input')?.forEach((input) => {
-            console.log(input);
+        document.querySelectorAll('#accordionStepper .step-5-checks input.form-check-input')?.forEach((input) => {
             input.addEventListener('change', (e) => {
                 if (e.target.checked) {
                     mi_array_step5?.push(e.target.value)
@@ -231,10 +216,11 @@ export default {
         if (mi_array_step5?.length > 0) {
             try {
                 mi_array_step5.forEach((item) => {
-                    console.log(`.step-5-checks input[value='${item}']`);
-                    let el = document.querySelector(`.step-5-checks input.form-check-input[value='${item}']`)
+                    let el = document.querySelector(`#accordionStepper .step-5-checks input[value='${item}']`)
+                    let el2 = document.querySelector(`#pdf-content .step-5-checks input[value='${item}']`)
                     console.log(el);
                     el.checked = true
+                    el2.checked = true
                 })
             } catch (error) {
                 console.log(error);
@@ -255,8 +241,7 @@ export default {
 
                 console.log('mi_array_step5', mi_array_step5);
 
-                document.querySelectorAll('.step-5-checks input.form-check-input')?.forEach((input) => {
-                    console.log(input);
+                document.querySelectorAll('#accordionStepper .step-5-checks input.form-check-input')?.forEach((input) => {
                     input.addEventListener('change', (e) => {
                         if (e.target.checked) {
                             mi_array_step5?.push(e.target.value)
@@ -272,10 +257,11 @@ export default {
                 if (mi_array_step5?.length > 0) {
                     try {
                         mi_array_step5.forEach((item) => {
-                            console.log(`.step-5-checks input[value='${item}']`);
-                            let el = document.querySelector(`.step-5-checks input.form-check-input[value='${item}']`)
+                            let el = document.querySelector(`#accordionStepper .step-5-checks input[value='${item}']`)
+                            let el2 = document.querySelector(`#pdf-content .step-5-checks input[value='${item}']`)
                             console.log(el);
                             el.checked = true
+                            el2.checked = true
                         })
                     } catch (error) {
                         console.log(error);

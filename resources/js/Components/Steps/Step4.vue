@@ -107,25 +107,6 @@ export default {
                 this.$store.state.step4.interest_area = mi_array
             })
         })
-
-        if (mi_array?.length > 0) {
-            mi_array.forEach((item) => {
-                console.log('item', item);
-                let el = document.querySelector(`.step-4-checks input[value="${item}"]`)
-                if (el) {
-                    el.click()
-                }
-            })
-
-            /*JSON.parse(this.$page.props.form?.interest_area)?.forEach((item) => {
-                console.log(item);
-                let el = document.querySelector(`.step-4-checks input[value="${item}"]`)
-                //el.checked = true
-                el.click()
-                //el.fireEvent("onchange")
-                console.log(el);
-            })*/
-        }
     },
     methods: {
         submit() {
@@ -157,6 +138,28 @@ export default {
                 });
             })
         }
-    }
+    },
+	watch:{
+		"$store.state.currentStep": function (val) {
+            console.log(val);
+			if (val == 4) {
+                let interest_area = this.$store.state.step4.interest_area ?? [];
+
+                console.log(interest_area);
+
+                if (interest_area?.length > 0) {
+                    console.log("no esta vacio");
+                    JSON.parse(interest_area)?.forEach((item) => {
+                        let el = document.querySelector(`#accordionStepper .step-4-checks input[value="${item}"]`)
+                        let el2 = document.querySelector(`#pdf-content .step-4-checks input[value="${item}"]`)
+                        el.checked = true
+                        el2.checked = true
+
+                        console.log(el);
+                    })
+                }
+            }
+		},
+	}
 }
 </script>
