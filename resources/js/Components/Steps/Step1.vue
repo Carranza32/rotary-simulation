@@ -105,11 +105,11 @@
                             <label for="name" class="form-label">Tu papel</label>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="contacto1_papel" id="local" value="local" checked>
+                                <input class="form-check-input" type="radio" name="contacto1_papel" id="local" value="Local" v-model="prin_contact.papel" checked>
                                 <label class="form-check-label" for="local">Local</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="contacto1_papel" id="internacional" value="internacional">
+                                <input class="form-check-input" type="radio" name="contacto1_papel" id="internacional" v-model="prin_contact.papel" value="Internacional">
                                 <label class="form-check-label" for="internacional">Internacional</label>
                             </div>
                         </div>
@@ -117,12 +117,12 @@
                             <label for="name" class="form-label">Tu patrocinador</label>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="contacto1_patrocinador" id="local" value="local" checked>
-                                <label class="form-check-label" for="local">Local</label>
+                                <input class="form-check-input" type="radio" name="contacto1_patrocinador" id="patrocinador_local" v-model="prin_contact.patrocinador" value="Local" checked>
+                                <label class="form-check-label" for="patrocinador_local">Local</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="contacto1_patrocinador" id="internacional" value="internacional">
-                                <label class="form-check-label" for="internacional">Internacional</label>
+                                <input class="form-check-input" type="radio" name="contacto1_patrocinador" id="patrocinador_internacional" v-model="prin_contact.patrocinador" value="Internacional">
+                                <label class="form-check-label" for="patrocinador_internacional">Internacional</label>
                             </div>
                         </div>
 
@@ -135,24 +135,24 @@
                             <label for="name" class="form-label">Su patrocinador</label>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="local" value="local" checked>
-                                <label class="form-check-label" for="local">Distrito</label>
+                                <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="distrito" v-model="secun_contact.patrocinador" value="Distrito" checked>
+                                <label class="form-check-label" for="distrito">Distrito</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="internacional" value="internacional">
-                                <label class="form-check-label" for="internacional">Rotarac Club</label>
+                                <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="rotarac_club" v-model="secun_contact.patrocinador" value="Rotarac Club">
+                                <label class="form-check-label" for="rotarac_club">Rotarac Club</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="internacional" value="internacional">
-                                <label class="form-check-label" for="internacional">Rotary Club</label>
+                                <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="rotary_club" v-model="secun_contact.patrocinador" value="Rotary Club">
+                                <label class="form-check-label" for="rotary_club">Rotary Club</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label for="" class="form-label">Su distrito</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="4060">4060</option>
+                                <select class="form-select" aria-label="Default select example" v-model="secun_contact.district">
+                                    <option value="4060" selected>4060</option>
                                     <option value="4100">4100</option>
                                     <option value="4110">4110</option>
                                     <option value="4130">4130</option>
@@ -170,11 +170,11 @@
                             </div>
                             <div class="col">
                                 <label for="" class="form-label">Su club</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="1">1010</option>
-                                    <option value="1">1010</option>
-                                    <option value="1">1010</option>
-                                    <option value="1">1010</option>
+                                <select class="form-select" aria-label="Default select example" v-model="secun_contact.club">
+                                    <option value="1010" selected>1010</option>
+                                    <option value="1010">1010</option>
+                                    <option value="1010">1010</option>
+                                    <option value="1010">1010</option>
                                 </select>
                             </div>
                         </div>
@@ -254,6 +254,16 @@ export default {
     },
     data() {
         return {
+            prin_contact: {
+                patrocinador: '',
+                papel: '',
+            },
+            secun_contact: {
+                club: '',
+                district: '',
+                patrocinador: '',
+                papel: '',
+            },
         }
     },
     mounted: function () {
@@ -271,7 +281,6 @@ export default {
             //         lastname: item[2]
             //     })
             // }
-
             this.$store.state.step1.contacts = []
 
             this.$store.state.step1.contacts?.push({
@@ -279,17 +288,17 @@ export default {
                 name: this.$page.props.auth.user.name,
                 club: this.$page.props.auth.user.club,
                 district: this.$page.props.auth.user.district,
-                patrocinador: 'Distrito',
-                papel: 'Local',
+                patrocinador: this.prin_contact.patrocinador ?? 'Local',
+                papel: this.prin_contact.papel ?? 'Local',
             })
 
             this.$store.state.step1.contacts?.push({
                 id: 2,
                 name: 'John Doe',
-                club: 'New York',
-                district: '7230',
-                patrocinador: 'Distrito',
-                papel: 'Internacional',
+                club: this.secun_contact.club ?? 'New York',
+                district: this.secun_contact.district ?? '4060',
+                patrocinador: this.secun_contact.patrocinador ?? 'Distrito',
+                papel: this.prin_contact.papel ?? 'Local',
             })
 
             console.log(this.$store.state.step1.contacts);
