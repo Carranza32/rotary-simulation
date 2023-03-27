@@ -92,7 +92,7 @@
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -105,11 +105,11 @@
                             <label for="name" class="form-label">Tu papel</label>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="papel" id="local" value="local" checked>
+                                <input class="form-check-input" type="radio" name="contacto1_papel" id="local" value="local" checked>
                                 <label class="form-check-label" for="local">Local</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="papel" id="internacional" value="internacional">
+                                <input class="form-check-input" type="radio" name="contacto1_papel" id="internacional" value="internacional">
                                 <label class="form-check-label" for="internacional">Internacional</label>
                             </div>
                         </div>
@@ -117,11 +117,11 @@
                             <label for="name" class="form-label">Tu patrocinador</label>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="papel" id="local" value="local" checked>
+                                <input class="form-check-input" type="radio" name="contacto1_patrocinador" id="local" value="local" checked>
                                 <label class="form-check-label" for="local">Local</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="papel" id="internacional" value="internacional">
+                                <input class="form-check-input" type="radio" name="contacto1_patrocinador" id="internacional" value="internacional">
                                 <label class="form-check-label" for="internacional">Internacional</label>
                             </div>
                         </div>
@@ -135,15 +135,15 @@
                             <label for="name" class="form-label">Su patrocinador</label>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="papel" id="local" value="local" checked>
+                                <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="local" value="local" checked>
                                 <label class="form-check-label" for="local">Distrito</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="papel" id="internacional" value="internacional">
+                                <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="internacional" value="internacional">
                                 <label class="form-check-label" for="internacional">Rotarac Club</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="papel" id="internacional" value="internacional">
+                                <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="internacional" value="internacional">
                                 <label class="form-check-label" for="internacional">Rotary Club</label>
                             </div>
                         </div>
@@ -152,10 +152,20 @@
                             <div class="col">
                                 <label for="" class="form-label">Su distrito</label>
                                 <select class="form-select" aria-label="Default select example">
-                                    <option value="1">1010</option>
-                                    <option value="1">1010</option>
-                                    <option value="1">1010</option>
-                                    <option value="1">1010</option>
+                                    <option value="4060">4060</option>
+                                    <option value="4100">4100</option>
+                                    <option value="4110">4110</option>
+                                    <option value="4130">4130</option>
+                                    <option value="4140">4140</option>
+                                    <option value="4170">4170</option>
+                                    <option value="4185">4185</option>
+                                    <option value="4195">4195</option>
+                                    <option value="4240">4240</option>
+                                    <option value="4250">4250</option>
+                                    <option value="4271">4271</option>
+                                    <option value="4281">4281</option>
+                                    <option value="4370">4370</option>
+                                    <option value="4380">4380</option>
                                 </select>
                             </div>
                             <div class="col">
