@@ -17,16 +17,16 @@
                 <div class="mb-3">
                     <label for="name" class="form-label">Modena local</label>
                     <select class="form-select" aria-label="Default select example" v-model="$store.state.step8.currency">
-                        <option value="1">USD</option>
-                        <option value="1">EUR</option>
-                        <option value="1">CLP</option>
+                        <option value="USD" selected>USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="CLP">CLP</option>
                     </select>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="exchange_rate" class="form-label"><a href="#!">Tipo de cambio</a> (por dólar estadounidense)</label>
-                    <input type="text" class="form-control" id="exchange_rate" v-model="$store.state.step8.exchange_rate" >
+                    <input type="number" class="form-control" id="exchange_rate" v-model="$store.state.step8.exchange_rate" >
                     <small>Guardado el 18/01/2023</small>
                 </div>
             </div>
@@ -35,6 +35,7 @@
         <hr>
         <p class="fw-bold">Presupuesto de la subveción</p>
         <p>Indica todos los rubros del presupuesto. El presupuesto total debe coincidir con el monto de los fondos el cual se calculará en el noveno paso. Por tal motivo, los presupuestos de las subvenciones, incluida la aportación del Fondo Mundial, deberán ser al menos US$ 30.000. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
+
 
         <div class="table-responsive">
             <table class="table table-bordered">
@@ -50,33 +51,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
+                    <tr v-for="item in budget_table" :key="item.id" >
+                        <td>{{ item.id }}</td>
                         <td>
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" aria-label="Default select example" v-model="item.category">
                                 <option disabled>--Please Select--</option>
-                                <option value="1">Accommodation</option>
-                                <option value="1">Equipments</option>
-                                <option value="1">Monitoring/evaluation</option>
-                                <option value="1">Operaations</option>
-                                <option value="1">Personnel</option>
-                                <option value="1">Project management</option>
-                                <option value="1">Publicity</option>
-                                <option value="1">Signage</option>
-                                <option value="1">Supplies</option>
-                                <option value="1">Trainig</option>
-                                <option value="1">Travel</option>
-                                <option value="1">Tuition</option>
+                                <option value="Accommodation">Accommodation</option>
+                                <option value="Equipments">Equipments</option>
+                                <option value="Monitoring/evaluation">Monitoring/evaluation</option>
+                                <option value="Operaations">Operaations</option>
+                                <option value="Personnel">Personnel</option>
+                                <option value="Project management">Project management</option>
+                                <option value="Publicity">Publicity</option>
+                                <option value="Signage">Signage</option>
+                                <option value="Supplies">Supplies</option>
+                                <option value="Trainig">Trainig</option>
+                                <option value="Travel">Travel</option>
+                                <option value="Tuition">Tuition</option>
                             </select>
                         </td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><label for="">0.00</label></td>
+                        <td><input type="text" name="" id="" v-model="item.description"></td>
+                        <td><input type="text" name="" id="" v-model="item.provider"></td>
+                        <td><input type="number" min="0" name="" id="" v-model="item.cost"></td>
+                        <td><label for="">{{ item.cost }}</label></td>
                         <td>
                             <div class="d-flex justify-content-between w-100">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                                <i class="fa-solid fa-circle-xmark"></i>
+                                <button type="button" @click="deleteBudgetTableItem(item.id)"><i class="fa-solid fa-circle-xmark"></i></button>
                             </div>
                         </td>
                     </tr>
@@ -84,7 +84,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="7">
-                            <a href="#!">+ Agregar rubro</a>
+                            <button type="button" @click="addBudgetTableItem()">+ Agregar rubro</button>
                         </td>
                     </tr>
                     <tr class="table-light">
@@ -93,7 +93,7 @@
                         </td>
 
                         <td>
-                            {{ $store.state.step8.exchange_rate }}
+                            {{ sumBudgetTable() }}
                         </td>
 
                         <td colspan="2">
@@ -131,7 +131,35 @@ export default {
         errors: [],
         data: Object,
     },
+    data() {
+        return {
+            budget_table: [
+                {
+                    id: 1,
+                    category: 'Accommodation',
+                    description: '',
+                    provider: '',
+                    cost: 0,
+                }
+            ],
+        }
+    },
     methods: {
+        addBudgetTableItem() {
+            this.budget_table.push({
+                id: this.budget_table.length + 1,
+                category: 'Accommodation',
+                description: '',
+                provider: '',
+                cost: 0,
+            })
+        },
+        deleteBudgetTableItem(id) {
+            this.budget_table = this.budget_table.filter(item => item.id !== id)
+        },
+        sumBudgetTable() {
+            return this.budget_table.reduce((acc, item) => acc + item.cost, 0)
+        },
         submit() {
             axios.post(route('simulation.save.step8'), {
                 ...this.$store.state.step8,

@@ -39,7 +39,7 @@ const store = {
             international_sponsors: '',
         },
         step8: {
-            currency: '',
+            currency: 'USD',
             exchange_rate: 1,
             headings: [
                 {

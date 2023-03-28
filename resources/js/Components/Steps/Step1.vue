@@ -255,14 +255,14 @@ export default {
     data() {
         return {
             prin_contact: {
-                patrocinador: '',
-                papel: '',
+                patrocinador: 'Local',
+                papel: 'Local',
             },
             secun_contact: {
-                club: '',
-                district: '',
-                patrocinador: '',
-                papel: '',
+                club: '1010',
+                district: '4060',
+                patrocinador: 'Local',
+                papel: 'Local',
             },
         }
     },

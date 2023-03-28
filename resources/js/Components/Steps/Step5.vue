@@ -109,37 +109,37 @@
                         <div class="col-6">
                             <label for="" class="form-label">Medida</label>
                             <select class="form-select" id="measure" aria-label="Default select example">
-                                <option value="Number of groups and organizations participating in peace-building efforts">Number of groups and organizations participating in peace-building efforts</option>
-                                <option value="Number of individuals trained">Number of individuals trained</option>
-                                <option value="Number of conflicts mediated">Number of conflicts mediated</option>
-                                <option value="Number of communities reporting reduction in level of conflict">Number of communities reporting reduction in level of conflict</option>
-                                <option value="Other">Other</option>
+                                <option value="Número de grupos y organizaciones que participan en los esfuerzos de consolidación de la paz">Número de grupos y organizaciones que participan en los esfuerzos de consolidación de la paz</option>
+                                <option value="Número de personas capacitadas">Número de personas capacitadas</option>
+                                <option value="Número de conflictos mediados">Número de conflictos mediados</option>
+                                <option value="Número de comunidades que informan una reducción en el nivel de conflicto">Número de comunidades que informan una reducción en el nivel de conflicto</option>
+                                <option value="Otro">Otro</option>
                             </select>
                         </div>
                         <div class="col-6">
                             <label for="" class="form-label">Método para obtener la información</label>
                             <select class="form-select" id="method" aria-label="Default select example">
-                                <option value="Direct observation">Direct observation</option>
-                                <option value="Focus groups/interviews">Focus groups/interviews</option>
-                                <option value="Grant records and reports">Grant records and reports</option>
-                                <option value="Public records">Public records</option>
-                                <option value="Satellite imagery">Satellite imagery</option>
-                                <option value="Surveys/questionnaires">Surveys/questionnaires</option>
-                                <option value="Testing">Testing</option>
+                                <option value="Observación directa">Observación directa</option>
+                                <option value="Grupos focales/entrevistas">Grupos focales/entrevistas</option>
+                                <option value="Registros e informes de subvenciones">Registros e informes de subvenciones</option>
+                                <option value="Registros Públicos">Registros Públicos</option>
+                                <option value="Imágenes de satélite">Imágenes de satélite</option>
+                                <option value="Encuestas/cuestionarios">Encuestas/cuestionarios</option>
+                                <option value="Pruebas">Pruebas</option>
                             </select>
                         </div>
 
                         <div class="col-6">
                             <label for="" class="form-label">Frecuencia</label>
                             <select class="form-select" id="frecuencie" aria-label="Default select example">
-                                <option value="Every week">Every week</option>
-                                <option value="Every two weeks">Every two weeks</option>
-                                <option value="Every month">Every month</option>
-                                <option value="Every two months">Every two months</option>
-                                <option value="Every three months">Every three months</option>
-                                <option value="Every four months">Every four months</option>
-                                <option value="Every six months">Every six months</option>
-                                <option value="Every year">Every year</option>
+                                <option value="Cada semana">Cada semana</option>
+                                <option value="Cada dos semanas">Cada dos semanas</option>
+                                <option value="Cada mes">Cada mes</option>
+                                <option value="Cada dos meses">Cada dos meses</option>
+                                <option value="Cada tres meses">Cada tres meses</option>
+                                <option value="Cada cuatro meses">Cada cuatro meses</option>
+                                <option value="Cada cinco meses">Cada cinco meses</option>
+                                <option value="Cada Año">Cada Año</option>
                             </select>
                         </div>
                         <div class="col-6">
