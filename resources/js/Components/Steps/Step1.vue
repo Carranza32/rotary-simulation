@@ -187,43 +187,43 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>230344</td>
+                                    <td>José</td>
+                                    <td>Perla</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>320912</td>
+                                    <td>Carlos</td>
+                                    <td>Castaneda</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>230933</td>
+                                    <td>Karla</td>
+                                    <td>Zepeda</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>093323</td>
+                                    <td>Claudia</td>
+                                    <td>Castillo</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>652332</td>
+                                    <td>Pedro</td>
+                                    <td>Jimenez</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -324,7 +324,7 @@ export default {
             })
             .then((response) => {
                 this.$store.state.currentStep++
-                this.$swal('Step 1 saved successfully', '', 'success');
+                this.$swal('Paso 1 guardado con éxito', '', 'success');
 
                 let url = `${window.location.origin}/simulation/${response?.data?.data?.id}`;
 

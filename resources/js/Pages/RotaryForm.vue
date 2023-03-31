@@ -263,7 +263,7 @@
                     id: this.$page.props?.form?.id
                 })
                 .then((response) => {
-                    this.$swal('Step 11 saved successfully', '', 'success');
+                    this.$swal('Paso 12 guardado con éxito', '', 'success');
                     console.log(response);
                     //redirect to dashboard
                     window.location.href = route('dashboard')

@@ -33,12 +33,12 @@
         </div>
 
         <hr>
-        <p class="fw-bold">Presupuesto de la subveción</p>
+        <p class="fw-bold">Presupuesto de la subvención</p>
         <p>Indica todos los rubros del presupuesto. El presupuesto total debe coincidir con el monto de los fondos el cual se calculará en el noveno paso. Por tal motivo, los presupuestos de las subvenciones, incluida la aportación del Fondo Mundial, deberán ser al menos US$ 30.000. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
 
 
-        <div class="table-responsive">
-            <table class="table table-bordered">
+        <div class="table-responsiv">
+            <table class="table table-bordered" width="100%">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -55,19 +55,19 @@
                         <td>{{ item.id }}</td>
                         <td>
                             <select class="form-select" aria-label="Default select example" v-model="item.category">
-                                <option disabled>--Please Select--</option>
-                                <option value="Accommodation">Accommodation</option>
-                                <option value="Equipments">Equipments</option>
-                                <option value="Monitoring/evaluation">Monitoring/evaluation</option>
-                                <option value="Operaations">Operaations</option>
-                                <option value="Personnel">Personnel</option>
-                                <option value="Project management">Project management</option>
-                                <option value="Publicity">Publicity</option>
-                                <option value="Signage">Signage</option>
-                                <option value="Supplies">Supplies</option>
-                                <option value="Trainig">Trainig</option>
-                                <option value="Travel">Travel</option>
-                                <option value="Tuition">Tuition</option>
+                                <option disabled>--Selecciona una opción--</option>
+                                <option value="Accommodation">Alojamiento</option>
+                                <option value="Equipos">Equipos</option>
+                                <option value="Monitoreo / evaluación">Monitoreo / evaluación</option>
+                                <option value="Operaciones">Operaciones</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Administración de proyecto">Administración de proyecto</option>
+                                <option value="Publicidad">Publicidad</option>
+                                <option value="Señalización">Señalización</option>
+                                <option value="Suministros">Suministros</option>
+                                <option value="Entrenamiento">Entrenamiento</option>
+                                <option value="Viajes">Viajes</option>
+                                <option value="Matrícula">Matrícula</option>
                             </select>
                         </td>
                         <td><input type="text" name="" id="" v-model="item.description"></td>
@@ -98,11 +98,6 @@
 
                         <td colspan="2">
                             {{ $store.state.step8.exchange_rate }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="7" cl>
-                            <a href="#!" class="float-end"><i class="fa-solid fa-down-from-line"></i> Exportar a excel</a>
                         </td>
                     </tr>
                 </tfoot>
@@ -168,7 +163,7 @@ export default {
             })
             .then((response) => {
                 this.$store.state.currentStep++
-                this.$swal('Step 8 saved successfully', '', 'success');
+                this.$swal('Paso 8 guardado con éxito', '', 'success');
                 this.$page.props.errors = []
             })
             .catch((error) => {

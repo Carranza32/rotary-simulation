@@ -98,10 +98,20 @@
                             <div class="col-12">
                                 <label for="" class="form-label">Su distrito</label>
                                 <select class="form-select" aria-label="Default select example" v-model="local_members.district">
+                                    <option value="4060" selected>4060</option>
+                                    <option value="4100">4100</option>
+                                    <option value="4110">4110</option>
+                                    <option value="4130">4130</option>
+                                    <option value="4140">4140</option>
+                                    <option value="4170">4170</option>
+                                    <option value="4185">4185</option>
+                                    <option value="4195">4195</option>
                                     <option value="4240">4240</option>
-                                    <option value="4240">4240</option>
-                                    <option value="4240">4240</option>
-                                    <option value="4240">4240</option>
+                                    <option value="4250">4250</option>
+                                    <option value="4271">4271</option>
+                                    <option value="4281">4281</option>
+                                    <option value="4370">4370</option>
+                                    <option value="4380">4380</option>
                                 </select>
                             </div>
 
@@ -137,43 +147,43 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>230344</td>
+                                    <td>José</td>
+                                    <td>Perla</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>320912</td>
+                                    <td>Carlos</td>
+                                    <td>Castaneda</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>230933</td>
+                                    <td>Karla</td>
+                                    <td>Zepeda</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>093323</td>
+                                    <td>Claudia</td>
+                                    <td>Castillo</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>652332</td>
+                                    <td>Pedro</td>
+                                    <td>Jimenez</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -200,10 +210,20 @@
                             <div class="col-12">
                                 <label for="" class="form-label">Su distrito</label>
                                 <select class="form-select" aria-label="Default select example" v-model="internacional_members.district">
+                                    <option value="4060" selected>4060</option>
+                                    <option value="4100">4100</option>
+                                    <option value="4110">4110</option>
+                                    <option value="4130">4130</option>
+                                    <option value="4140">4140</option>
+                                    <option value="4170">4170</option>
+                                    <option value="4185">4185</option>
+                                    <option value="4195">4195</option>
                                     <option value="4240">4240</option>
-                                    <option value="4240">4240</option>
-                                    <option value="4240">4240</option>
-                                    <option value="4240">4240</option>
+                                    <option value="4250">4250</option>
+                                    <option value="4271">4271</option>
+                                    <option value="4281">4281</option>
+                                    <option value="4370">4370</option>
+                                    <option value="4380">4380</option>
                                 </select>
                             </div>
 
@@ -239,43 +259,43 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>230344</td>
+                                    <td>José</td>
+                                    <td>Perla</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>320912</td>
+                                    <td>Carlos</td>
+                                    <td>Castaneda</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>230933</td>
+                                    <td>Karla</td>
+                                    <td>Zepeda</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>093323</td>
+                                    <td>Claudia</td>
+                                    <td>Castillo</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>5879654</td>
-                                    <td>Adrian</td>
-                                    <td>Blake</td>
+                                    <td>652332</td>
+                                    <td>Pedro</td>
+                                    <td>Jimenez</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Select</button>
+                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -382,7 +402,7 @@ export default {
             })
             .then((response) => {
                 this.$store.state.currentStep++
-                this.$swal('Step 2 saved successfully', '', 'success');
+                this.$swal('Paso 2 guardado con éxito', '', 'success');
                 this.$page.props.errors = []
             })
             .catch((error) => {

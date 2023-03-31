@@ -38,7 +38,7 @@ export default {
             })
             .then((response) => {
                 this.$store.state.currentStep++
-                this.$swal('Step 11 saved successfully', '', 'success');
+                this.$swal('Paso 11 guardado con éxito', '', 'success');
                 console.log(response);
             })
             .catch((error) => {

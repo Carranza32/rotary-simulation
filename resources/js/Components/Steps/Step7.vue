@@ -8,7 +8,7 @@
             </ul>
         </div>
 
-        <p class="fw-bold text-uppercase">Organizadores y colaboradoras (optitivo)
+        <p class="fw-bold text-uppercase">Organizadores y colaboradoras (OPTATIVO)
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
 
@@ -32,7 +32,7 @@
             </tbody>
         </table>
 
-        <p class="fw-bold text-uppercase">Colaboradores (optitivo)</p>
+        <p class="fw-bold text-uppercase">Colaboradores (OPTATIVO)</p>
 
         <div class="mb-3">
             <label for="textarea" class="form-label">
@@ -227,7 +227,7 @@ export default {
             })
             .then((response) => {
                 this.$store.state.currentStep++
-                this.$swal('Step 7 saved successfully', '', 'success');
+                this.$swal('Paso 7 guardado con éxito', '', 'success');
                 this.$page.props.errors = []
             })
             .catch((error) => {

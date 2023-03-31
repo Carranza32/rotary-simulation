@@ -230,7 +230,7 @@ export default {
             })
             .then((response) => {
                 this.$store.state.currentStep = 'documents'
-                this.$swal('Step 10 saved successfully', '', 'success');
+                this.$swal('Paso 10 guardado con éxito', '', 'success');
                 this.$page.props.errors = []
             })
             .catch((error) => {

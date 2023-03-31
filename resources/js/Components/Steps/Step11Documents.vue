@@ -71,7 +71,7 @@ export default {
             })
             .then((response) => {
                 this.$store.state.currentStep = 11
-                this.$swal('Document saved successfully', '', 'success');
+                this.$swal('Documento guardado con éxito', '', 'success');
             })
             .catch((error) => {
                 this.$page.props.errors = []
