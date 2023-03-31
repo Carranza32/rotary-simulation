@@ -171,10 +171,7 @@
                             <div class="col">
                                 <label for="" class="form-label">Su club</label>
                                 <select class="form-select" aria-label="Default select example" v-model="secun_contact.club">
-                                    <option value="1010" selected>1010</option>
-                                    <option value="1010">1010</option>
-                                    <option value="1010">1010</option>
-                                    <option value="1010">1010</option>
+                                    <option v-for="(item, index) in clubs" :key="index" :value="item" >{{ item }}</option>
                                 </select>
                             </div>
                         </div>
@@ -246,6 +243,8 @@
 
 <script>
 import axios from 'axios'
+import clubs from '@/Utils/clubes.json'
+import club_rotarac from '@/Utils/clubes_rotarac.json'
 
 export default {
     props: {
@@ -259,11 +258,14 @@ export default {
                 papel: 'Local',
             },
             secun_contact: {
-                club: '1010',
+                club: 'Aguadulce (89493)',
                 district: '4060',
                 patrocinador: 'Local',
                 papel: 'Local',
             },
+            clubs: clubs,
+            clubs_rotary: clubs,
+            club_rotarac: club_rotarac,
         }
     },
     mounted: function () {
@@ -348,6 +350,18 @@ export default {
                 });
             })
         }
-    }
+    },
+    watch:{
+		"secun_contact.patrocinador": function (val) {
+            console.log(val);
+            this.clubs = []
+
+			if (val == "Rotarac Club") {
+                this.clubs = this.club_rotarac
+            }else{
+                this.clubs = this.clubs_rotary
+            }
+		},
+	}
 }
 </script>

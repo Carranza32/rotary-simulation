@@ -109,11 +109,11 @@
                                 <label for="name" class="form-label">Tipo de club</label>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="club1" value="Club Rotary">
+                                    <input class="form-check-input" type="radio" id="club1" value="Club Rotary" v-model="local_members.type">
                                     <label class="form-check-label" for="local">Club Rotary</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="club2" value="Club Rotaract">
+                                    <input class="form-check-input" type="radio" id="club2" value="Club Rotaract" v-model="local_members.type">
                                     <label class="form-check-label" for="internacional">Club Rotaract</label>
                                 </div>
                             </div>
@@ -121,10 +121,7 @@
                             <div class="col-12">
                                 <label for="" class="form-label">Su club</label>
                                 <select class="form-select" aria-label="Default select example" v-model="local_members.club">
-                                    <option value="1010" selected>1010</option>
-                                    <option value="1010">1010</option>
-                                    <option value="1010">1010</option>
-                                    <option value="1010">1010</option>
+                                    <option v-for="(item, index) in clubs" :key="index" :value="item" >{{ item }}</option>
                                 </select>
                             </div>
                         </div>
@@ -214,11 +211,11 @@
                                 <label for="name" class="form-label">Tipo de club</label>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="club1" value="rotary">
+                                    <input class="form-check-input" type="radio" id="club1" value="Club Rotary" v-model="internacional_members.type">
                                     <label class="form-check-label" for="local">Club Rotary</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="club2" value="rotaract">
+                                    <input class="form-check-input" type="radio" id="club2" value="Club Rotaract" v-model="internacional_members.type">
                                     <label class="form-check-label" for="internacional">Club Rotaract</label>
                                 </div>
                             </div>
@@ -226,10 +223,7 @@
                             <div class="col-12">
                                 <label for="" class="form-label">Selecciona el club</label>
                                 <select class="form-select" aria-label="Default select example" v-model="internacional_members.club">
-                                    <option value="Harlem" selected>Harlem</option>
-                                    <option value="Harlem">Harlem</option>
-                                    <option value="Harlem">Harlem</option>
-                                    <option value="Harlem">Harlem</option>
+                                    <option v-for="(item, index) in clubs" :key="index" :value="item" >{{ item }}</option>
                                 </select>
                             </div>
                         </div>
@@ -301,6 +295,9 @@
 
 <script>
 import axios from 'axios'
+import clubs from '@/Utils/clubes.json'
+import club_rotarac from '@/Utils/clubes_rotarac.json'
+
 export default {
     props: {
         errors: [],
@@ -309,13 +306,18 @@ export default {
     data() {
         return {
             local_members: {
-                club: '1010',
+                club: 'Aguadulce (89493)',
                 district: '4240',
+                type: 'Club Rotary',
             },
             internacional_members: {
-                club: 'Harlem',
+                club: 'Aguadulce (89493)',
                 district: '4240',
+                type: 'Club Rotary',
             },
+            clubs: clubs,
+            clubs_rotary: clubs,
+            club_rotarac: club_rotarac,
         }
     },
     methods: {
@@ -401,6 +403,29 @@ export default {
                 });
             })
         }
-    }
+    },
+    watch:{
+		"local_members.type": function (val) {
+            console.log(val);
+            this.clubs = []
+
+			if (val == "Club Rotaract") {
+                this.clubs = this.club_rotarac
+            }else{
+                this.clubs = this.clubs_rotary
+            }
+		},
+
+		"internacional_members.type": function (val) {
+            console.log(val);
+            this.clubs = []
+
+			if (val == "Club Rotaract") {
+                this.clubs = this.club_rotarac
+            }else{
+                this.clubs = this.clubs_rotary
+            }
+		},
+	}
 }
 </script>

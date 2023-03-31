@@ -11,6 +11,9 @@
             <button class="btn btn-outline-primary" type="submit">
                 Guardar
             </button>
+            <button class="btn btn-outline-primary" type="button">
+                Bloqueo de solicitud
+            </button>
             <a class="btn btn-link" :href="route('dashboard')">
                 Salir
             </a>
