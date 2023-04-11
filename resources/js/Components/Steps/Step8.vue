@@ -37,7 +37,7 @@
         <p>Indica todos los rubros del presupuesto. El presupuesto total debe coincidir con el monto de los fondos el cual se calculará en el noveno paso. Por tal motivo, los presupuestos de las subvenciones, incluida la aportación del Fondo Mundial, deberán ser al menos US$ 30.000. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
 
 
-        <div class="table-responsiv">
+        <div class="table-responsive">
             <table class="table table-bordered" width="100%">
                 <thead>
                     <tr>
@@ -153,7 +153,11 @@ export default {
             this.budget_table = this.budget_table.filter(item => item.id !== id)
         },
         sumBudgetTable() {
-            return this.budget_table.reduce((acc, item) => acc + item.cost, 0)
+            let sum = this.budget_table.reduce((acc, item) => acc + item.cost, 0);
+
+            this.$store.state.step8.total = sum
+
+            return sum;
         },
         submit() {
             axios.post(route('simulation.save.step8'), {

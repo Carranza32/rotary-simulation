@@ -32,6 +32,28 @@
             </tbody>
         </table>
 
+        <div class="mb-3">
+            <label for="name" class="form-label">¿Tiene alguno de los integrantes del comité un posible conflicto de interés con una de las organizaciones colaboradoras?</label>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="papel" id="has_interes_conflict" value="1" v-model="$store.state.step7.has_interes_conflict">
+                <label class="form-check-label" for="has_interes_conflict">Si</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="papel" id="has_interes_conflict" value="0" v-model="$store.state.step7.has_interes_conflict">
+                <label class="form-check-label" for="has_interes_conflict">No</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="textarea" class="form-label">
+                ¿Por qué decidiste colaborar con esta organización y qué papel desempeñará?
+                <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
+            </label>
+
+            <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.colaboration_org"></textarea>
+        </div>
+
         <p class="fw-bold text-uppercase">Colaboradores (OPTATIVO)</p>
 
         <div class="mb-3">
@@ -53,12 +75,16 @@
                     <tr>
                         <th scope="col">Nombre</th>
                         <th scope="col">Correo electrónico</th>
+                        <th scope="col">Nacionalidad</th>
+                        <th scope="col">Es socio</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="travel in $store.state.step7.travellers" :key="travel.id">
                         <td>{{ travel.name }}</td>
                         <td>{{ travel.email }}</td>
+                        <td>{{ travel.nacionalidad }}</td>
+                        <td>{{ (travel.is_socio == 0) ? 'No' : 'Si' }}</td>
                     </tr>
                     <tr>
                         <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep72" @click="showModalStep72()">+ Agregar viajero</a></td>
@@ -134,11 +160,23 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalStep72Label"></h1>
+                    <h1 class="modal-title fs-5" id="modalStep72Label">Agregar viajeros</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
+                        <div class="col-12 mb-3">
+                            <label for="name" class="form-label">¿La persona que viaja es socio/a de Rotary?</label>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="is_socio" :value="0" v-model="travelers.is_socio">
+                                <label class="form-check-label" for="is_socio">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="is_socio" :value="1" v-model="travelers.is_socio">
+                                <label class="form-check-label" for="is_socio">Si</label>
+                            </div>
+                        </div>
                         <div class="col-12">
                             <label for="" class="form-label">Nombre</label>
                             <input type="text" class="form-control" v-model="travelers.name">
@@ -146,6 +184,10 @@
                         <div class="col-12">
                             <label for="" class="form-label">Correo electrónico</label>
                             <input type="email" class="form-control" v-model="travelers.email">
+                        </div>
+                        <div class="col-12">
+                            <label for="" class="form-label">Nacionalidad</label>
+                            <input type="text" class="form-control" v-model="travelers.nacionalidad">
                         </div>
                     </div>
                 </div>
@@ -178,6 +220,8 @@ export default {
                 id: 1,
                 name: '',
                 email: '',
+                nacionalidad: '',
+                is_socio: false,
             }
         }
     },
@@ -214,6 +258,8 @@ export default {
                 id: this.$store.state.step7.travellers + 1,
                 name: this.travelers.name,
                 email: this.travelers.email,
+                nacionalidad: this.travelers.nacionalidad,
+                is_socio: this.travelers.is_socio
             })
 
             console.log(this.$store.state.step7.travellers);

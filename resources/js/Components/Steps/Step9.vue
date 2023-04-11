@@ -33,8 +33,8 @@
                         <td>{{ source.total }}</td>
                         <td>
                             <div class="d-flex justify-content-between w-100">
-                                <i class="fa-solid fa-pen"></i>
-                                <i class="fa-solid fa-circle-xmark"></i>
+                                <a style="cursor: pointer;" @click="editRowTable(source)" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep9"><i class="fa-solid fa-pen text-secondary"></i></a>
+                                <a style="cursor: pointer;" @click="deleteRowTable(source)"><i class="fa-solid fa-circle-xmark text-secondary ms-2"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -42,7 +42,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="7">
-                            <a href="#!" @click="showModalStep9()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep9" >+ Agregar fuente de financiamiento</a>
+                            <a href="#!" @click="newFontSource()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep9" >+ Agregar fuente de financiamiento</a>
                         </td>
                     </tr>
                 </tfoot>
@@ -70,7 +70,7 @@
         <p class="fw-bold">Resumen de la financiación
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
-        <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <div class="alert alert-warning d-flex align-items-center" role="alert" v-if="show_alert">
             <i class="fa-solid fa-circle-exclamation"></i>
             <div class="ms-3">
                 <span class="text-uppercase">Atencion:</span><br>
@@ -83,8 +83,12 @@
             <div class="col">
                 <table class="w-100">
                     <tr>
+                        <td class="text-end">Contribuciones procedentes del FDD:</td>
+                        <td class="text-end">{{ sumFDD() }}</td>
+                    </tr>
+                    <tr>
                         <td class="text-end">Contribuciones en efectivo:</td>
-                        <td class="text-end">{{ $store.state.step9.total_contributions }}</td>
+                        <td class="text-end">{{ sumClub() }}</td>
                     </tr>
                     <tr>
                         <td class="text-end">Fondo mundial:</td>
@@ -96,7 +100,7 @@
                     </tr>
                     <tr>
                         <td class="text-end">Presupuesto total:</td>
-                        <td class="text-end">{{ $store.state.step9.total_budget }}</td>
+                        <td class="text-end">{{ sumTotal() }}</td>
                     </tr>
                 </table>
             </div>
@@ -122,14 +126,14 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalStep9Label"></h1>
+                    <h1 class="modal-title fs-5" id="modalStep9Label">Agregar fuente de financiamiento</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">
                             <label for="" class="form-label">Fuente</label>
-                            <select class="form-select" id="source_money" aria-label="Default select example" v-model="sources.source">
+                            <select class="form-select" id="source_money" aria-label="Default select example" v-model="source">
                                 <option value="Fondo Distrital Designado (FDD)">Fondo Distrital Designado (FDD)</option>
                                 <option value="Efectivo procedente del distrito">Efectivo procedente del distrito</option>
                                 <option value="Efectivo procedente del club">Efectivo procedente del club</option>
@@ -140,7 +144,15 @@
                         </div>
                         <div class="col-12">
                             <label for="" class="form-label">Monto en US$</label>
-                            <input type="number" min="0" class="form-control" v-model="sources.amount">
+                            <input type="number" min="0" class="form-control" v-model="amount">
+                        </div>
+                        <div class="col-12">
+                            <label for="" class="form-label">Detalles</label>
+                            <input type="text" class="form-control" v-model="detail">
+                        </div>
+                        <div class="col-12">
+                            <label for="" class="form-label">Apoyo</label>
+                            <input type="text" class="form-control" v-model="support">
                         </div>
                     </div>
                 </div>
@@ -163,19 +175,36 @@ export default {
     },
     data() {
         return {
-            sources: {
-                id: 0,
-                source: 0,
-                detail: '',
-                amount: 0,
-                support: '',
-                total: 0,
-            },
+            source: 'Fondo Distrital Designado (FDD)',
+            detail: '',
+            amount: 0,
+            support: '',
+            total: 0,
+            show_alert: this.$store.state.step9.total_financed != this.sumTotal(),
         }
+    },
+    mounted() {
+        this.$store.state.step9.total_financed = 0;
+
+        //this.show_alert = this.$store.state.step9.total_financed == this.sumTotal();
     },
     methods: {
         showModalStep9(){
             document.body.appendChild( document.querySelector('#modalStep9') )
+        },
+
+        newFontSource() {
+            this.$store.state.step9.is_editing = false;
+
+            this.$store.state.step9.selected_source = {
+                source: '',
+                detail: '',
+                amount: '',
+                support: '',
+                total: '',
+            };
+
+            this.showModalStep9()
         },
 
         addFontSource() {
@@ -183,14 +212,81 @@ export default {
                 this.$store.state.step9.sources = []
             }
 
+            if (this.$store.state.step9.is_editing == true) {
+                let index = this.$store.state.step9.sources.findIndex(x => x.id == this.$store.state.step9.editing_id);
+
+                this.$store.state.step9.sources[index] = {
+                    id: this.$store.state.step9.editing_id,
+                    source: this.source,
+                    detail: this.detail,
+                    amount: this.amount,
+                    support: this.support,
+                    total: this.amount,
+                }
+
+                return;
+            }
+
             this.$store.state.step9.sources.push({
                 id: this.$store.state.step9.sources.length + 1,
-                source: this.sources.source,
-                detail: '',
-                amount: this.sources.amount,
-                support: '',
-                total: this.sources.amount,
+                source: this.source,
+                detail: this.detail,
+                amount: this.amount,
+                support: this.support,
+                total: this.amount,
             })
+        },
+
+        deleteRowTable(item) {
+            this.$store.state.step9.sources.splice(this.$store.state.step9.sources.indexOf(item), 1)
+        },
+
+        editRowTable(item) {
+            this.$store.state.step9.is_editing = true;
+            this.$store.state.step9.editing_id = item.id;
+            this.$store.state.step9.selected_source = item;
+
+            this.showModalStep9()
+        },
+
+        sumFDD() {
+            let sum = 0;
+
+            this.$store.state.step9?.sources?.forEach(el => {
+                if (el.source == 'Fondo Distrital Designado (FDD)') {
+                    sum += parseInt(el.amount)
+                }
+            });
+
+            this.$store.state.step9.world_donation = ((sum * 80) / 100).toFixed(2)
+
+            return sum;
+        },
+
+        sumClub() {
+            let sum = 0;
+
+            this.$store.state.step9?.sources?.forEach(el => {
+                if (el.source == 'Efectivo procedente del club') {
+                    sum += parseInt(el.amount)
+                }
+            });
+
+            return sum;
+        },
+
+        sumTotal() {
+            let sum = 0;
+
+            this.$store.state.step9?.sources?.forEach(el => {
+                sum += parseInt(el.amount)
+            });
+
+            this.$store.state.step9.total_budget = sum
+
+            this.show_alert = this.$store.state.step8.total != sum;
+
+            return sum;
         },
 
         submit() {
@@ -222,6 +318,19 @@ export default {
                 });
             })
         }
-    }
+    },
+
+    watch: {
+        '$store.state.step9.selected_source': function (val) {
+            console.log(val);
+            if (val != undefined) {
+                this.source = val?.source
+                this.detail = val?.detail
+                this.amount = val?.amount
+                this.support = val?.support
+                this.total = val?.total
+            }
+        },
+    },
 }
 </script>

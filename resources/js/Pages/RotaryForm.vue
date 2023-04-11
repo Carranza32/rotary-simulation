@@ -3,7 +3,7 @@
 
     <AuthenticatedLayout>
         <div class="row mt-5">
-            <div class="col-8">
+            <div class="col-lg-10 col-sm-12">
                 <div class="primary-bg">
                     <p class="p-3 text-white fw-bold" >
                         <span class="mx-4">District Number: {{ user?.district }}</span>
@@ -173,7 +173,7 @@
                     </accordion>
                 </div>
             </div>
-            <aside class="col-4 p-4">
+            <aside class="col-2 p-4">
                 Paso actual: {{ $store.state.currentStep }}
             </aside>
         </div>

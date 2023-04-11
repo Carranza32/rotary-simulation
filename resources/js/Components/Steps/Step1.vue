@@ -182,48 +182,16 @@
                                     <th>Número de socio</th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
-                                    <th></th>
+                                    <th>{{ secun_contact.names.length }} seleccionados</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>230344</td>
-                                    <td>José</td>
-                                    <td>Perla</td>
+                                <tr v-for="(item, index) in step1_contacts" :key="index">
+                                    <td>{{ item.code }}</td>
+                                    <td>{{ item.firstname }}</td>
+                                    <td>{{ item.lastname }}</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>320912</td>
-                                    <td>Carlos</td>
-                                    <td>Castaneda</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>230933</td>
-                                    <td>Karla</td>
-                                    <td>Zepeda</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>093323</td>
-                                    <td>Claudia</td>
-                                    <td>Castillo</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>652332</td>
-                                    <td>Pedro</td>
-                                    <td>Jimenez</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
+                                        <button class="btn btn-outline-primary my-2" :class="(this.secun_contact.names.indexOf(item) === -1) ? 'btn-outline-primary' : 'btn-primary text-white' " @click="addContactName(item)">Seleccionar</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -231,7 +199,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" @click="addContacts()" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button type="button" class="btn btn-primary" @click="addContacts()" data-bs-dismiss="modal">Guardar</button>
                     </div>
                 </div>
@@ -245,6 +213,7 @@
 import axios from 'axios'
 import clubs from '@/Utils/clubes.json'
 import club_rotarac from '@/Utils/clubes_rotarac.json'
+import step1_contacts from '@/Utils/step1_contacts.json'
 
 export default {
     props: {
@@ -262,10 +231,12 @@ export default {
                 district: '4060',
                 patrocinador: 'Local',
                 papel: 'Local',
+                names: [],
             },
             clubs: clubs,
             clubs_rotary: clubs,
             club_rotarac: club_rotarac,
+            step1_contacts: step1_contacts,
         }
     },
     mounted: function () {
@@ -273,16 +244,15 @@ export default {
         console.log(this.$page);
     },
     methods: {
-        addContacts() {
-            // let find = this.$store.state.step1.contacts?.find(c => c.id == item[0])
+        addContactName(item) {
+            if (this.secun_contact.names.indexOf(item) === -1) {
+                this.secun_contact.names.push(item)
+            }else{
+                this.secun_contact.names.splice(this.secun_contact.names.indexOf(item), 1)
+            }
+        },
 
-            // if (find?.length == 0 || find == undefined) {
-            //     this.$store.state.step1.contacts?.push({
-            //         id: item[0],
-            //         name: item[1],
-            //         lastname: item[2]
-            //     })
-            // }
+        addContacts() {
             this.$store.state.step1.contacts = []
 
             this.$store.state.step1.contacts?.push({
@@ -294,13 +264,15 @@ export default {
                 papel: this.prin_contact.papel ?? 'Local',
             })
 
-            this.$store.state.step1.contacts?.push({
-                id: 2,
-                name: 'John Doe',
-                club: this.secun_contact.club ?? 'New York',
-                district: this.secun_contact.district ?? '4060',
-                patrocinador: this.secun_contact.patrocinador ?? 'Distrito',
-                papel: this.prin_contact.papel ?? 'Local',
+            this.secun_contact.names.forEach((el, i) => {
+                this.$store.state.step1.contacts?.push({
+                    id: i,
+                    name: `${el.firstname} ${el.lastname}`,
+                    club: this.secun_contact.club ?? 'Harlem',
+                    district: this.secun_contact.district ?? '4240',
+                    patrocinador: this.secun_contact.patrocinador ?? 'Local',
+                    papel: this.secun_contact.papel ?? 'Local',
+                })
             })
 
             console.log(this.$store.state.step1.contacts);

@@ -142,48 +142,16 @@
                                     <th>Número de socio</th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
-                                    <th></th>
+                                    <th>{{ local_members.names.length }} seleccionados</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>230344</td>
-                                    <td>José</td>
-                                    <td>Perla</td>
+                                <tr v-for="(item, index) in step2_local_members" :key="index">
+                                    <td>{{ item.code }}</td>
+                                    <td>{{ item.firstname }}</td>
+                                    <td>{{ item.lastname }}</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>320912</td>
-                                    <td>Carlos</td>
-                                    <td>Castaneda</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>230933</td>
-                                    <td>Karla</td>
-                                    <td>Zepeda</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>093323</td>
-                                    <td>Claudia</td>
-                                    <td>Castillo</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>652332</td>
-                                    <td>Pedro</td>
-                                    <td>Jimenez</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
+                                        <button class="btn btn-outline-primary my-2" :class="(this.local_members.names.indexOf(item) === -1) ? 'btn-outline-primary' : 'btn-primary text-white' " @click="addLocalMemberName(item)">Seleccionar</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -254,48 +222,16 @@
                                     <th>Número de socio</th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
-                                    <th></th>
+                                    <th>{{ internacional_members.names.length }} seleccionados</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>230344</td>
-                                    <td>José</td>
-                                    <td>Perla</td>
+                                <tr v-for="(item, index) in step2_internacional_members" :key="index">
+                                    <td>{{ item.code }}</td>
+                                    <td>{{ item.firstname }}</td>
+                                    <td>{{ item.lastname }}</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>320912</td>
-                                    <td>Carlos</td>
-                                    <td>Castaneda</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>230933</td>
-                                    <td>Karla</td>
-                                    <td>Zepeda</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>093323</td>
-                                    <td>Claudia</td>
-                                    <td>Castillo</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>652332</td>
-                                    <td>Pedro</td>
-                                    <td>Jimenez</td>
-                                    <td>
-                                        <button class="btn btn-outline-primary my-2">Seleccionar</button>
+                                        <button class="btn btn-outline-primary my-2" :class="(this.internacional_members.names.indexOf(item) === -1) ? 'btn-outline-primary' : 'btn-primary text-white' " @click="addInternacionalMemberName(item)">Seleccionar</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -317,6 +253,8 @@
 import axios from 'axios'
 import clubs from '@/Utils/clubes.json'
 import club_rotarac from '@/Utils/clubes_rotarac.json'
+import step2_local_members from '@/Utils/step2_local_members.json'
+import step2_internacional_members from '@/Utils/step2_internacional_members.json'
 
 export default {
     props: {
@@ -329,15 +267,19 @@ export default {
                 club: 'Aguadulce (89493)',
                 district: '4240',
                 type: 'Club Rotary',
+                names: [],
             },
             internacional_members: {
                 club: 'Aguadulce (89493)',
                 district: '4240',
                 type: 'Club Rotary',
+                names: [],
             },
             clubs: clubs,
             clubs_rotary: clubs,
             club_rotarac: club_rotarac,
+            step2_local_members: step2_local_members,
+            step2_internacional_members: step2_internacional_members,
         }
     },
     methods: {
@@ -349,48 +291,50 @@ export default {
             document.body.appendChild( document.querySelector('#modalStep22') )
         },
 
+        addLocalMemberName(item) {
+            if (this.local_members.names.indexOf(item) === -1) {
+                this.local_members.names.push(item)
+            }else{
+                this.local_members.names.splice(this.local_members.names.indexOf(item), 1)
+            }
+        },
+
+        addInternacionalMemberName(item) {
+            if (this.internacional_members.names.indexOf(item) === -1) {
+                this.internacional_members.names.push(item)
+            }else{
+                this.internacional_members.names.splice(this.internacional_members.names.indexOf(item), 1)
+            }
+        },
+
         addNational() {
             this.$store.state.step2.local_members = []
 
-            this.$store.state.step2.local_members?.push({
-                id: 1,
-                name: this.$page.props.auth.user.name,
-                club: this.$page.props.auth.user.club,
-                district: this.$page.props.auth.user.district,
-                papel: 'Contacto secundario',
+            this.local_members.names.forEach((el, i) => {
+                this.$store.state.step2.local_members?.push({
+                    id: i,
+                    name: `${el.firstname} ${el.lastname}`,
+                    club: this.local_members.club ?? 'Harlem',
+                    district: this.local_members.district ?? '4240',
+                    papel: 'Contacto secundario',
+                })
             })
 
-            this.$store.state.step2.local_members?.push({
-                id: 2,
-                name: 'John Doe',
-                club: this.local_members.club ?? 'Harlem',
-                district: this.local_members.district ?? '4240',
-                papel: 'Contacto secundario',
-            })
 
-            console.log(this.$store.state.step2.local_members);
         },
 
         addInternational() {
             this.$store.state.step2.international_members = []
 
-            this.$store.state.step2.international_members?.push({
-                id: 1,
-                name: this.$page.props.auth.user.name,
-                club: this.$page.props.auth.user.club,
-                district: this.$page.props.auth.user.district,
-                papel: 'Contacto secundario',
+            this.internacional_members.names.forEach((el, i) => {
+                this.$store.state.step2.international_members?.push({
+                    id: i,
+                    name: `${el.firstname} ${el.lastname}`,
+                    club: this.internacional_members.club ?? '1010',
+                    district: this.internacional_members.district ?? '4240',
+                    papel: 'Internacional',
+                })
             })
-
-            this.$store.state.step2.international_members?.push({
-                id: 2,
-                name: 'John Doe',
-                club: this.internacional_members.club ?? '1010',
-                district: this.internacional_members.district ?? '4240',
-                papel: 'Internacional',
-            })
-
-            console.log(this.$store.state.step2.international_members);
         },
 
         submit() {

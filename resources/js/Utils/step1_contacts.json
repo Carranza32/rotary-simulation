@@ -1,0 +1,27 @@
+[
+    {
+        "code": "230344",
+        "firstname": "John",
+        "lastname": "Doe"
+    },
+    {
+        "code": "320912",
+        "firstname": "Sara",
+        "lastname": "Smith"
+    },
+    {
+        "code": "230933",
+        "firstname": "Robert",
+        "lastname": "Brown"
+    },
+    {
+        "code": "093323",
+        "firstname": "James",
+        "lastname": "Miller"
+    },
+    {
+        "code": "652332",
+        "firstname": "Richard",
+        "lastname": "Johnson"
+    }
+]

@@ -142,6 +142,19 @@ class RotaryFormController extends Controller
             'current_step' => 'required',
             'interest_area_goals' => 'required',
             'measures' => 'nullable',
+            'measures52' => 'nullable',
+            'measures53' => 'nullable',
+            'measures54' => 'nullable',
+            'measures55' => 'nullable',
+            'measures56' => 'nullable',
+            'measures57' => 'nullable',
+            'monitoring_51' => 'nullable',
+            'monitoring_52' => 'nullable',
+            'monitoring_53' => 'nullable',
+            'monitoring_54' => 'nullable',
+            'monitoring_55' => 'nullable',
+            'monitoring_56' => 'nullable',
+            'monitoring_57' => 'nullable',
             'evaluation' => 'required',
         ],
         [
@@ -201,11 +214,15 @@ class RotaryFormController extends Controller
             'travellers' => 'nullable',
             'local_sponsors' => 'required',
             'international_sponsors' => 'required',
+            'has_interes_conflict' => 'required',
+            'colaboration_org' => 'required',
         ],
         [
             'members' => 'Miembros es requerido',
             'local_sponsors' => 'Patrocinadores locales es requerido',
             'international_sponsors' => 'Patrocinadores internacionales es requerido',
+            'has_interes_conflict' => 'Conflicto de interes es requerido',
+            'colaboration_org' => 'El por qué decidiste colaborar con esta organización y qué papel desempeñará es requerido',
         ]);
 
         if ($validate->fails()) {
@@ -360,18 +377,51 @@ class RotaryFormController extends Controller
 
         $data = $validate->validated();
 
+        $form = RotaryForm::find($request->id);
+        $savedFiles = json_decode($form->files);
+
         if ($request->hasFile('files')) {
             $uploadedFiles = $request->file('files');
 
             foreach ($uploadedFiles as $uploadedFile) {
                 $path = $uploadedFile->store('public/documents');
-                $data['files'][] = $path;
+                $savedFiles[] = $path;
             }
         }
 
-        $rotary = RotaryForm::find($request->id)->update($data);
+        $form->files = $savedFiles;
+        $form->save();
 
         return redirect()->route('simulation.form');
+    }
+
+    function saveStep11DeleteDocuments(Request $request){
+        $form = RotaryForm::find($request->id);
+        $savedFiles = json_decode($form->files);
+        $deleteFiles = $request->selected;
+        $key = null;
+
+        foreach ($deleteFiles as $deleteFile) {
+            $key = array_search($deleteFile, $savedFiles);
+            unset($savedFiles[$key]);
+        }
+
+        $form->files = $savedFiles;
+        $form->save();
+
+        return response()->json([
+            'data' => $form->files,
+            'status' => true
+        ], 200);
+    }
+
+    function saveStep11DocumentsUploaded(Request $request){
+        $form = RotaryForm::find($request->id);
+
+        return response()->json([
+            'data' => json_decode($form->files),
+            'status' => true
+        ], 200);
     }
 
     public function saveStep12(Request $request)

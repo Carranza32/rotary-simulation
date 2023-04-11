@@ -36,6 +36,19 @@ return new class extends Migration
             //Step 5
             $table->text('interest_area_goals')->nullable();
             $table->longText('measures')->nullable();
+            $table->longText('measures52')->nullable();
+            $table->longText('measures53')->nullable();
+            $table->longText('measures54')->nullable();
+            $table->longText('measures55')->nullable();
+            $table->longText('measures56')->nullable();
+            $table->longText('measures57')->nullable();
+            $table->longText('monitoring_51')->nullable();
+            $table->longText('monitoring_52')->nullable();
+            $table->longText('monitoring_53')->nullable();
+            $table->longText('monitoring_54')->nullable();
+            $table->longText('monitoring_55')->nullable();
+            $table->longText('monitoring_56')->nullable();
+            $table->longText('monitoring_57')->nullable();
             $table->boolean('evaluation')->nullable();
 
             //Step 6

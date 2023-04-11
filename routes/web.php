@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/simulation/step/10', 'saveStep10')->name('save.step10');
         Route::post('/simulation/step/11', 'saveStep11')->name('save.step11');
         Route::post('/simulation/step/11/documents', 'saveStep11Documents')->name('save.step11.documents');
+        Route::get('/simulation/step/11/documents/uploaded', 'saveStep11DocumentsUploaded')->name('save.step11.documents.uploaded');
+        Route::post('/simulation/step/11/documents/deleteDocuments', 'saveStep11DeleteDocuments')->name('save.step11.documents.delete');
         Route::post('/simulation/step/12', 'saveStep12')->name('save.step12');
     });
 });

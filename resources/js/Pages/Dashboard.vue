@@ -1,6 +1,6 @@
 <template>
+    <Head title="demo-subvenciones globales" />
     <AuthenticatedLayout>
-        <Head title="Dashboard" />
         <div class="py-5">
             <div class="d-flex justify-content-between">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-5">Mis formularios creados</h2>
@@ -33,6 +33,7 @@ export default {
     components: {
         AuthenticatedLayout,
         Link,
+        Head,
     },
 }
 </script>

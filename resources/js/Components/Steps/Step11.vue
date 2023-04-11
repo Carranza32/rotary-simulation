@@ -4,6 +4,8 @@
         <img src="../../assets/images/step11_2.png" alt="step11_2">
         <img src="../../assets/images/step11_3.png" alt="step11_3">
 
+        <button type="button" disabled class="btn btn-secondary"><i class="fa-solid fa-lock"></i> Bloquear la solicitud</button>
+
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
                 Guardar y continuar
