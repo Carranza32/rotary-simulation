@@ -105,7 +105,7 @@
                             <label for="name" class="form-label">Tu papel</label>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="contacto1_papel" id="local" value="Local" v-model="prin_contact.papel" checked>
+                                <input class="form-check-input" type="radio" name="contacto1_papel" id="local" value="Local" v-model="prin_contact.papel">
                                 <label class="form-check-label" for="local">Local</label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -223,7 +223,7 @@ export default {
     data() {
         return {
             prin_contact: {
-                patrocinador: 'Local',
+                patrocinador: 'Internacional',
                 papel: 'Local',
             },
             secun_contact: {
@@ -260,8 +260,8 @@ export default {
                 name: this.$page.props.auth.user.name,
                 club: this.$page.props.auth.user.club,
                 district: this.$page.props.auth.user.district,
-                patrocinador: this.prin_contact.patrocinador ?? 'Local',
-                papel: this.prin_contact.papel ?? 'Local',
+                patrocinador: this.prin_contact.patrocinador ?? 'Internacional',
+                papel: this.prin_contact.papel ?? 'Internacional',
             })
 
             this.secun_contact.names.forEach((el, i) => {
