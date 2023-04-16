@@ -152,7 +152,8 @@
                             <div class="col">
                                 <label for="" class="form-label">Su distrito</label>
                                 <select class="form-select" aria-label="Default select example" v-model="secun_contact.district">
-                                    <option value="4060" selected>4060</option>
+                                    <option value="6990" selected>6990</option>
+                                    <!-- <option value="4060" selected>4060</option>
                                     <option value="4100">4100</option>
                                     <option value="4110">4110</option>
                                     <option value="4130">4130</option>
@@ -165,13 +166,14 @@
                                     <option value="4271">4271</option>
                                     <option value="4281">4281</option>
                                     <option value="4370">4370</option>
-                                    <option value="4380">4380</option>
+                                    <option value="4380">4380</option> -->
                                 </select>
                             </div>
                             <div class="col">
                                 <label for="" class="form-label">Su club</label>
                                 <select class="form-select" aria-label="Default select example" v-model="secun_contact.club">
-                                    <option v-for="(item, index) in clubs" :key="index" :value="item" >{{ item }}</option>
+                                    <!-- <option v-for="(item, index) in clubs" :key="index" :value="item" >{{ item }}</option> -->
+                                    <option value="Miami" selected>Miami</option>
                                 </select>
                             </div>
                         </div>
@@ -227,8 +229,8 @@ export default {
                 papel: 'Local',
             },
             secun_contact: {
-                club: 'Aguadulce (89493)',
-                district: '4060',
+                club: 'Miami',
+                district: '6990',
                 patrocinador: 'Local',
                 papel: 'Local',
                 names: [],
@@ -258,6 +260,27 @@ export default {
             this.$store.state.step1.contacts?.push({
                 id: 1,
                 name: this.$page.props.auth.user.name,
+                club: "Miami",
+                district: "6990",
+                patrocinador: 'Internacional',
+                papel: 'Internacional',
+            })
+
+            this.secun_contact.names.forEach((el, i) => {
+                this.$store.state.step1.contacts?.push({
+                    id: i,
+                    name: `${el.firstname} ${el.lastname}`,
+                    club: 'Miami',
+                    district: '6990',
+                    patrocinador: 'Internacional',
+                    papel: 'Internacional',
+                })
+            })
+
+            /*
+            this.$store.state.step1.contacts?.push({
+                id: 1,
+                name: this.$page.props.auth.user.name,
                 club: this.$page.props.auth.user.club,
                 district: this.$page.props.auth.user.district,
                 patrocinador: this.prin_contact.patrocinador ?? 'Internacional',
@@ -274,6 +297,7 @@ export default {
                     papel: this.secun_contact.papel ?? 'Local',
                 })
             })
+            */
 
             console.log(this.$store.state.step1.contacts);
         },

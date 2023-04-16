@@ -178,7 +178,8 @@
                             <div class="col-12">
                                 <label for="" class="form-label">Su distrito</label>
                                 <select class="form-select" aria-label="Default select example" v-model="internacional_members.district">
-                                    <option value="4060" selected>4060</option>
+                                    <option value="7230" selected>7230</option>
+                                    <option value="4060">4060</option>
                                     <option value="4100">4100</option>
                                     <option value="4110">4110</option>
                                     <option value="4130">4130</option>
@@ -211,7 +212,7 @@
                             <div class="col-12">
                                 <label for="" class="form-label">Selecciona el club</label>
                                 <select class="form-select" aria-label="Default select example" v-model="internacional_members.club">
-                                    <option v-for="(item, index) in clubs" :key="index" :value="item" >{{ item }}</option>
+                                    <option v-for="(item, index) in international_clubs" :key="index" :value="item" >{{ item }}</option>
                                 </select>
                             </div>
                         </div>
@@ -255,6 +256,7 @@ import clubs from '@/Utils/clubes.json'
 import club_rotarac from '@/Utils/clubes_rotarac.json'
 import step2_local_members from '@/Utils/step2_local_members.json'
 import step2_internacional_members from '@/Utils/step2_internacional_members.json'
+import step2_international_clubs from '@/Utils/international_clubs.json'
 
 export default {
     props: {
@@ -271,11 +273,12 @@ export default {
             },
             internacional_members: {
                 club: 'Aguadulce (89493)',
-                district: '4240',
+                district: '7230',
                 type: 'Club Rotary',
                 names: [],
             },
             clubs: clubs,
+            international_clubs: step2_international_clubs,
             clubs_rotary: clubs,
             club_rotarac: club_rotarac,
             step2_local_members: step2_local_members,
@@ -380,16 +383,16 @@ export default {
             }
 		},
 
-		"internacional_members.type": function (val) {
+		/*"internacional_members.type": function (val) {
             console.log(val);
-            this.clubs = []
+            this.international_clubs = []
 
 			if (val == "Club Rotaract") {
-                this.clubs = this.club_rotarac
+                this.international_clubs = this.club_rotarac
             }else{
-                this.clubs = this.clubs_rotary
+                this.international_clubs = this.clubs_rotary
             }
-		},
+		},*/
 	}
 }
 </script>

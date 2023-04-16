@@ -155,7 +155,7 @@ class RotaryFormController extends Controller
             'monitoring_55' => 'nullable',
             'monitoring_56' => 'nullable',
             'monitoring_57' => 'nullable',
-            'evaluation' => 'required',
+            'evaluation' => 'nullable',
         ],
         [
             'interest_area_goals' => 'Objetivos de área de interés es requerido',
