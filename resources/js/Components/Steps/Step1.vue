@@ -260,10 +260,10 @@ export default {
             this.$store.state.step1.contacts?.push({
                 id: 1,
                 name: this.$page.props.auth.user.name,
-                club: "Miami",
-                district: "6990",
-                patrocinador: 'Internacional',
-                papel: 'Internacional',
+                club: this.$page.props.auth.user.club,
+                district: this.$page.props.auth.user.district,
+                patrocinador: 'Local',
+                papel: 'Local',
             })
 
             this.secun_contact.names.forEach((el, i) => {

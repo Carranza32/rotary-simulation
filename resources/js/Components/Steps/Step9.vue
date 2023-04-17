@@ -267,7 +267,7 @@ export default {
             let sum = 0;
 
             this.$store.state.step9?.sources?.forEach(el => {
-                if (el.source == 'Efectivo procedente del club') {
+                if (el.source == 'Efectivo procedente del club' || el.source == 'Efectivo procedente del distrito') {
                     sum += parseInt(el.amount)
                 }
             });
