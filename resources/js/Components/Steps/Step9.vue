@@ -96,7 +96,7 @@
                     </tr>
                     <tr class="p-3">
                         <td class="text-end fw-bold my-3">Total financiado:</td>
-                        <td class="text-end">{{ $store.state.step9.total_financed }}</td>
+                        <td class="text-end">{{ totalFinanciado() }}</td>
                     </tr>
                     <tr>
                         <td class="text-end">Presupuesto total:</td>
@@ -285,11 +285,21 @@ export default {
                 sum += parseInt(el.amount)
             });
 
-            this.$store.state.step9.total_budget = sum
-
             this.show_alert = this.$store.state.step8.total != sum;
 
             return sum;
+        },
+
+        totalFinanciado() {
+            let sum = 0;
+
+            sum += Number(this.sumFDD());
+            sum += Number(this.sumClub());
+            sum += Number(this.$store.state.step9.world_donation);
+
+            this.$store.state.step9.total_budget = Number(sum)
+
+            return sum.toFixed(2);
         },
 
         submit() {
