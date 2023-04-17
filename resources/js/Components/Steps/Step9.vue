@@ -217,23 +217,26 @@ export default {
 
                 this.$store.state.step9.sources[index] = {
                     id: this.$store.state.step9.editing_id,
-                    source: this.source,
+                    source: (this.source?.length > 0) ? this.source : 'Fondo Distrital Designado (FDD)',
                     detail: this.detail,
-                    amount: this.amount,
+                    amount: (this.amount == "") ? 0 : this.amount,
                     support: this.support,
-                    total: this.amount,
+                    amount: (this.amount == "") ? 0 : this.amount,
                 }
 
                 return;
             }
 
+            console.log("Source: " + this.source ?? 'Fondo Distrital Designado (FDD)');
+            console.log("amount: " + this.amount ?? 0);
+
             this.$store.state.step9.sources.push({
                 id: this.$store.state.step9.sources.length + 1,
-                source: this.source,
+                source: (this.source?.length > 0) ? this.source : 'Fondo Distrital Designado (FDD)',
                 detail: this.detail,
-                amount: this.amount,
+                amount: (this.amount == "") ? 0 : this.amount,
                 support: this.support,
-                total: this.amount,
+                total: (this.amount == "") ? 0 : this.amount,
             })
         },
 
