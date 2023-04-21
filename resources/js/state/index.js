@@ -101,13 +101,15 @@ const store = {
             exchange_rate: 1,
             headings: [
                 {
-                    category: '',
+                    id: 1,
+                    category: 'Accommodation',
                     description: '',
                     provider: '',
-                    cost: '',
+                    cost: 0,
                 }
             ],
             total: 0.0,
+            budget_step8: 0.0,
         },
         step9: {
             sources: [

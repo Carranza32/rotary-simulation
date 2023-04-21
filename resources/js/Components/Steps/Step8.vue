@@ -139,6 +139,15 @@ export default {
             ],
         }
     },
+    mounted() {
+        if (this.$page.props.form.headings) {
+            this.budget_table = this.$page.props.form.headings
+        }
+
+        if (this.$page.props.form.budget_step8) {
+            this.$store.state.step8.budget_step8 = this.$page.props.form.budget_step8
+        }
+    },
     methods: {
         addBudgetTableItem() {
             this.budget_table.push({
@@ -155,11 +164,13 @@ export default {
         sumBudgetTable() {
             let sum = this.budget_table.reduce((acc, item) => acc + item.cost, 0);
 
-            this.$store.state.step8.total = sum
+            this.$store.state.step8.budget_step8 = sum
 
             return sum;
         },
         submit() {
+            this.$store.state.step8.headings = this.budget_table
+
             axios.post(route('simulation.save.step8'), {
                 ...this.$store.state.step8,
                 current_step: this.$store.state.currentStep,

@@ -100,7 +100,7 @@
                     </tr>
                     <tr>
                         <td class="text-end">Presupuesto total:</td>
-                        <td class="text-end">{{ sumTotal() }}</td>
+                        <td class="text-end">{{ $store.state.step8.budget_step8 }}</td>
                     </tr>
                 </table>
             </div>
@@ -180,7 +180,7 @@ export default {
             amount: 0,
             support: '',
             total: 0,
-            show_alert: this.$store.state.step9.total_financed != this.sumTotal(),
+            show_alert: false,
         }
     },
     mounted() {
@@ -278,18 +278,6 @@ export default {
             return sum;
         },
 
-        sumTotal() {
-            let sum = 0;
-
-            this.$store.state.step9?.sources?.forEach(el => {
-                sum += parseInt(el.amount)
-            });
-
-            this.show_alert = this.$store.state.step8.total != sum;
-
-            return sum;
-        },
-
         totalFinanciado() {
             let sum = 0;
 
@@ -342,6 +330,17 @@ export default {
                 this.amount = val?.amount
                 this.support = val?.support
                 this.total = val?.total
+            }
+        },
+        "$store.state.step8.budget_step8": function (val) {
+            if (val != undefined) {
+                let sum = 0;
+
+                this.$store.state.step9?.sources?.forEach(el => {
+                    sum += parseInt(el.amount)
+                });
+
+                this.show_alert = val != sum;
             }
         },
     },
