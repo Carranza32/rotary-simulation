@@ -70,7 +70,7 @@
         <p class="fw-bold">Resumen de la financiación
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
-        <div class="alert alert-warning d-flex align-items-center" role="alert" v-if="show_alert">
+        <div class="alert alert-warning d-flex align-items-center" role="alert" v-if="showAlert()">
             <i class="fa-solid fa-circle-exclamation"></i>
             <div class="ms-3">
                 <span class="text-uppercase">Atencion:</span><br>
@@ -180,7 +180,7 @@ export default {
             amount: 0,
             support: '',
             total: 0,
-            show_alert: false,
+            show_alert: this.showAlert(),
         }
     },
     mounted() {
@@ -288,6 +288,16 @@ export default {
             this.$store.state.step9.total_budget = Number(sum)
 
             return sum.toFixed(2);
+        },
+
+        showAlert() {
+            let sum = 0;
+
+            this.$store.state.step9?.sources?.forEach(el => {
+                sum += parseInt(el.amount)
+            });
+
+            return this.$store.state.step8.budget_step8 != sum;;
         },
 
         submit() {
