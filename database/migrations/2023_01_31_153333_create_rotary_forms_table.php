@@ -64,6 +64,8 @@ return new class extends Migration
             $table->text('travellers')->nullable();
             $table->text('local_sponsors')->nullable();
             $table->text('international_sponsors')->nullable();
+            $table->boolean('has_interes_conflict')->nullable();
+            $table->text('colaboration_org')->nullable();
 
             //Step 8
             $table->string('currency')->nullable();
@@ -102,6 +104,7 @@ return new class extends Migration
             $table->boolean('has_microcredit')->nullable();
             $table->boolean('has_local_founds')->nullable();
             $table->text('generate_income')->nullable();
+            $table->text('activities')->nullable();
 
             //Step 11 documents
             $table->text('files')->nullable();

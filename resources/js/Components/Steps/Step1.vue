@@ -173,7 +173,7 @@
                                 <label for="" class="form-label">Su club</label>
                                 <select class="form-select" aria-label="Default select example" v-model="secun_contact.club">
                                     <!-- <option v-for="(item, index) in clubs" :key="index" :value="item" >{{ item }}</option> -->
-                                    <option value="Miami" selected>Miami</option>
+                                    <option value="New York" selected>New York</option>
                                 </select>
                             </div>
                         </div>
@@ -229,7 +229,7 @@ export default {
                 papel: 'Local',
             },
             secun_contact: {
-                club: 'Miami',
+                club: 'New York',
                 district: '6990',
                 patrocinador: 'Local',
                 papel: 'Local',
@@ -270,7 +270,7 @@ export default {
                 this.$store.state.step1.contacts?.push({
                     id: i,
                     name: `${el.firstname} ${el.lastname}`,
-                    club: 'Miami',
+                    club: 'New York',
                     district: '6990',
                     patrocinador: 'Internacional',
                     papel: 'Internacional',

@@ -378,7 +378,7 @@ class RotaryFormController extends Controller
         $data = $validate->validated();
 
         $form = RotaryForm::find($request->id);
-        $savedFiles = json_decode($form->files);
+        $savedFiles = json_decode($form->files, true);
 
         if ($request->hasFile('files')) {
             $uploadedFiles = $request->file('files');
@@ -397,7 +397,7 @@ class RotaryFormController extends Controller
 
     function saveStep11DeleteDocuments(Request $request){
         $form = RotaryForm::find($request->id);
-        $savedFiles = json_decode($form->files);
+        $savedFiles = json_decode($form->files, true);
         $deleteFiles = $request->selected;
         $key = null;
 

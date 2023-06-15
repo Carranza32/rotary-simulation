@@ -28,8 +28,8 @@
 
         <div class="mb-3">
             <label for="name" class="form-label">País</label>
-            <select class="form-select" aria-label="Default select example" v-model="$store.state.step6.country">
-                <option v-for="country in countries" :value="country" :key="country.code">
+            <select class="form-select" aria-label="Default select example" v-model="selected_country">
+                <option v-for="country in countries" :value="country.code" :key="country.code">
                     {{ country.name }}
                 </option>
             </select>
@@ -76,13 +76,20 @@ export default {
     },
     data() {
         return {
-            countries: countries
+            countries: countries,
+            selected_country: null,
+        }
+    },
+    mounted() {
+        if (this.$page.props?.form?.country) {
+            this.selected_country = JSON.parse(this.$page.props?.form?.country)?.code
         }
     },
     methods: {
         submit() {
             axios.post(route('simulation.save.step6'), {
                 ...this.$store.state.step6,
+                country: this.countries.find(el => el.code == this.selected_country),
                 current_step: this.$store.state.currentStep,
                 id: this.$page.props?.form?.id
             })

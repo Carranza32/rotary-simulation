@@ -297,6 +297,8 @@ export default {
                 sum += parseInt(el.amount)
             });
 
+            console.log(this.$store.state.step8.budget_step8, sum);
+
             return this.$store.state.step8.budget_step8 != sum;;
         },
 

@@ -42,14 +42,27 @@
                 <tr>
                     <th scope="col"># Actividad</th>
                     <th scope="col">Duración</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><input type="text" class="form-control" v-model="activities[0]['name']"></td>
-                    <td><input type="text" class="form-control" v-model="activities[0]['duration']"></td>
+                <tr v-for="(item, i) in activities" :key="item.id">
+                    <td><input type="text" class="form-control" v-model="item.name"></td>
+                    <td><input type="text" class="form-control" v-model="item.duration"></td>
+                    <td>
+                        <div class="d-flex justify-content-between w-100">
+                            <button type="button" :data-id="item.id" @click="removeActivity(i)"><i class="fa-solid fa-circle-xmark"></i></button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <button type="button" @click="addActivity()">+ Agregar actividad</button>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
 
         <div class="mb-3">
@@ -211,15 +224,27 @@ export default {
         return {
             activities: [
                 {
+                    id: 1,
                     name: '',
                     duration: '',
                 },
             ],
         }
     },
+    mounted() {
+        if (this.$page.props.form?.activities) {
+            this.activities = JSON.parse(this.$page.props.form.activities)
+        }
+    },
     methods: {
-        mounted() {
-            this.activities = this.$store.state.step10.activities
+        addActivity() {
+            this.activities.push({
+                name: '',
+                duration: '',
+            })
+        },
+        removeActivity(index) {
+            this.activities = this.activities.filter((el, i) => i !== index)
         },
         submit() {
             axios.post(route('simulation.save.step10'), {
