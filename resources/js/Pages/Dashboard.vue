@@ -3,8 +3,8 @@
     <AuthenticatedLayout>
         <div class="py-5">
             <div class="d-flex justify-content-between">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-5">Mis formularios creados</h2>
-                <a :href="route('simulation.form')" class="btn btn-primary ms-auto align-self-baseline">Crear formulario</a>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-5">{{ $lang?.dashboard?.created_forms }}</h2>
+                <a :href="route('simulation.form')" class="btn btn-primary ms-auto align-self-baseline">{{ $lang?.dashboard?.create }}</a>
             </div>
 
             <div class="row row-cols-1 row-cols-md-3 g-4">

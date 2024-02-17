@@ -35,13 +35,13 @@
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                Guardar y continuar
+                {{ $lang?.layout?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                Guardar
+                {{ $lang?.layout?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                Salir
+                {{ $lang?.layout?.out }}
             </a>
         </div>
     </form>

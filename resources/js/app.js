@@ -9,9 +9,10 @@ import { createStore } from 'vuex';
 import store from './state/index.js';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import axios from 'axios'
-import jsPDF from 'jspdf'
 import Vue3Html2pdf from 'vue3-html2pdf'
+import { Lang } from 'vue-lang';
+import lang_en from './lang/en.js';
+import lang_es from './lang/es.js';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -25,6 +26,14 @@ createInertiaApp({
             .use( createStore(store) )
             .use( VueSweetalert2 )
             .use( Vue3Html2pdf )
+            .use( Lang, {
+                locale: 'es',
+                fallback: 'en',
+                messages: {
+                    es: lang_es,
+                    en: lang_en,
+                }
+            })
             .mount(el);
     },
     progress: {

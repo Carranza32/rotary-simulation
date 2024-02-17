@@ -70,11 +70,11 @@
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="coo_work_yes" value="1" v-model="$store.state.step10.coo_work">
-                <label class="form-check-label" for="coo_work_yes">Si</label>
+                <label class="form-check-label" for="coo_work_yes">{{ $lang?.layout?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="coo_work_no" value="0" v-model="$store.state.step10.coo_work">
-                <label class="form-check-label" for="coo_work_no">No</label>
+                <label class="form-check-label" for="coo_work_no">{{ $lang?.layout?.no }}</label>
             </div>
         </div>
 
@@ -104,11 +104,11 @@
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="use_providers_yes" value="1" v-model="$store.state.step10.use_providers">
-                <label class="form-check-label" for="use_providers_yes">Si</label>
+                <label class="form-check-label" for="use_providers_yes">{{ $lang?.layout?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="use_providers_no" value="0" v-model="$store.state.step10.use_providers">
-                <label class="form-check-label" for="use_providers_no">No</label>
+                <label class="form-check-label" for="use_providers_no">{{ $lang?.layout?.no }}</label>
             </div>
         </div>
 
@@ -117,11 +117,11 @@
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="use_tender_yes" value="1" v-model="$store.state.step10.use_tender">
-                <label class="form-check-label" for="use_tender_yes">Si</label>
+                <label class="form-check-label" for="use_tender_yes">{{ $lang?.layout?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="use_tender_no" value="0" v-model="$store.state.step10.use_tender">
-                <label class="form-check-label" for="use_tender_no">No</label>
+                <label class="form-check-label" for="use_tender_no">{{ $lang?.layout?.no }}</label>
             </div>
         </div>
 
@@ -130,11 +130,11 @@
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="has_conflict_providers_yes" value="1" v-model="$store.state.step10.has_conflict_providers">
-                <label class="form-check-label" for="has_conflict_providers_yes">Si</label>
+                <label class="form-check-label" for="has_conflict_providers_yes">{{ $lang?.layout?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="has_conflict_providers_no" value="0" v-model="$store.state.step10.has_conflict_providers">
-                <label class="form-check-label" for="has_conflict_providers_no">No</label>
+                <label class="form-check-label" for="has_conflict_providers_no">{{ $lang?.layout?.no }}</label>
             </div>
         </div>
 
@@ -153,11 +153,11 @@
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="local" value="1" v-model="$store.state.step10.use_founds">
-                <label class="form-check-label" for="local">Si</label>
+                <label class="form-check-label" for="local">{{ $lang?.layout?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="internacional" value="0" v-model="$store.state.step10.use_founds">
-                <label class="form-check-label" for="internacional">No</label>
+                <label class="form-check-label" for="internacional">{{ $lang?.layout?.no }}</label>
             </div>
         </div>
 
@@ -172,11 +172,11 @@
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="local" value="1" v-model="$store.state.step10.has_microcredit">
-                <label class="form-check-label" for="local">Si</label>
+                <label class="form-check-label" for="local">{{ $lang?.layout?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="internacional" value="0" v-model="$store.state.step10.has_microcredit">
-                <label class="form-check-label" for="internacional">No</label>
+                <label class="form-check-label" for="internacional">{{ $lang?.layout?.no }}</label>
             </div>
         </div>
 
@@ -185,11 +185,11 @@
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="local" value="1" v-model="$store.state.step10.has_local_founds">
-                <label class="form-check-label" for="local">Si</label>
+                <label class="form-check-label" for="local">{{ $lang?.layout?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="internacional" value="0" v-model="$store.state.step10.has_local_founds">
-                <label class="form-check-label" for="internacional">No</label>
+                <label class="form-check-label" for="internacional">{{ $lang?.layout?.no }}</label>
             </div>
         </div>
 
@@ -200,13 +200,13 @@
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                Guardar y continuar
+                {{ $lang?.layout?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                Guardar
+                {{ $lang?.layout?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                Salir
+                {{ $lang?.layout?.out }}
             </a>
         </div>
     </form>

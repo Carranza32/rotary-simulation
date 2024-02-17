@@ -36,8 +36,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" @click="addMeasure()" data-bs-dismiss="modal">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $lang?.layout?.cancel }}</button>
+                    <button type="button" class="btn btn-primary" @click="addMeasure()" data-bs-dismiss="modal">{{ $lang?.layout?.save }}</button>
                 </div>
             </div>
         </div>

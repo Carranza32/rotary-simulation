@@ -8,16 +8,16 @@
             </ul>
         </div>
 
-        <p class="fw-bold text-uppercase">Organizadores y colaboradoras (OPTATIVO)
+        <p class="fw-bold text-uppercase">{{ $lang?.step7?.collaborators }}
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Sitio web</th>
-                    <th scope="col">Dirección</th>
+                    <th scope="col">{{ $lang?.step7?.name }}</th>
+                    <th scope="col">{{ $lang?.step7?.web }}</th>
+                    <th scope="col">{{ $lang?.step7?.address }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,56 +27,56 @@
                     <td>{{ organize.address }}</td>
                 </tr>
                 <tr>
-                    <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep7" @click="showModalStep7()">+ Agregar organización</a></td>
+                    <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep7" @click="showModalStep7()">+ {{ $lang?.step7?.add_org }}</a></td>
                 </tr>
             </tbody>
         </table>
 
         <div class="mb-3">
-            <label for="name" class="form-label">¿Tiene alguno de los integrantes del comité un posible conflicto de interés con una de las organizaciones colaboradoras?</label>
+            <label for="name" class="form-label">{{ $lang?.step7?.integrants }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="papel" id="has_interes_conflict" value="1" v-model="$store.state.step7.has_interes_conflict">
-                <label class="form-check-label" for="has_interes_conflict">Si</label>
+                <label class="form-check-label" for="has_interes_conflict">{{ $lang?.layout?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="papel" id="has_interes_conflict" value="0" v-model="$store.state.step7.has_interes_conflict">
-                <label class="form-check-label" for="has_interes_conflict">No</label>
+                <label class="form-check-label" for="has_interes_conflict">{{ $lang?.layout?.no }}</label>
             </div>
         </div>
 
         <div class="mb-3">
             <label for="textarea" class="form-label">
-                ¿Por qué decidiste colaborar con esta organización y qué papel desempeñará?
+                {{ $lang?.step7?.why_you_collaborate }}
                 <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
             </label>
 
             <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.colaboration_org"></textarea>
         </div>
 
-        <p class="fw-bold text-uppercase">Colaboradores (OPTATIVO)</p>
+        <p class="fw-bold text-uppercase">{{ $lang?.step7?.collaborators_optional }}</p>
 
         <div class="mb-3">
             <label for="textarea" class="form-label">
-                Indica los demás colaboradores que participarán en este proyecto
+                {{ $lang?.step7?.project_participants }}
                 <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
             </label>
 
             <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.members"></textarea>
         </div>
 
-        <p class="fw-bold text-uppercase">VIAJEROS VOLUNTARIOS (OPTATIVO)</p>
+        <p class="fw-bold text-uppercase">{{ $lang?.step7?.travelers_volunteers }}</p>
 
         <div class="mb-3">
-            <p>Las subvenciones para proyectos humanitarios pueden financiar los viajes de un máximo de dos personas para que proporcionen capacitación o contribuyan a la implementación del proyecto (siempre que en el ámbito local no pudieran encontrarse personas con tales competencias). Cargar un currículum para cada viajero voluntario. No incluyas datos personales confidenciales, como números de identificación gubernamentales, religión, raza, información de salud, etc. Eres responsable de informar a los viajeros voluntarios sobre los datos personales que has proporcionado sobre ellos a Rotary y de que serán procesados de conformidad con la <a href="https://my.rotary.org/es/privacy-policy">política de privacidad</a>  de Rotary.</p>
+            <p>{{ $lang?.step7?.travelers_volunteers_description }} <a href="https://my.rotary.org/es/privacy-policy">{{ $lang?.step7?.privacy_policy }}</a>  {{ $lang?.step7?.from_rotary }}</p>
 
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Correo electrónico</th>
-                        <th scope="col">Nacionalidad</th>
-                        <th scope="col">Es socio</th>
+                        <th scope="col">{{ $lang?.step7?.name }}</th>
+                        <th scope="col">{{ $lang?.step7?.email }}</th>
+                        <th scope="col">{{ $lang?.step7?.nationality }}</th>
+                        <th scope="col">{{ $lang?.step7?.is_member }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,17 +87,17 @@
                         <td>{{ (travel.is_socio == 0) ? 'No' : 'Si' }}</td>
                     </tr>
                     <tr>
-                        <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep72" @click="showModalStep72()">+ Agregar viajero</a></td>
+                        <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep72" @click="showModalStep72()">+ {{ $lang?.step7?.add_traveler }}</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
 
-        <p class="fw-bold text-uppercase">Participantes de rotary</p>
+        <p class="fw-bold text-uppercase">{{ $lang?.step7?.rotary_participants }}</p>
         <div class="mb-3">
             <label for="textarea" class="form-label">
-                Describe el papel que desempeñarán los patrocinadores locales en el proyecto:
+                {{ $lang?.step7?.participants_role }}
             </label>
 
             <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.local_sponsors"></textarea>
@@ -105,7 +105,7 @@
 
         <div class="mb-3">
             <label for="textarea" class="form-label">
-                Describe el papel que desempeñarán los patrocinadores internacionales en el proyecto:
+                {{ $lang?.step7?.patreon_role }}
             </label>
 
             <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.international_sponsors"></textarea>
@@ -113,13 +113,13 @@
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                Guardar y continuar
+                {{ $lang?.layout?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                Guardar
+                {{ $lang?.layout?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                Salir
+                {{ $lang?.layout?.out }}
             </a>
         </div>
     </form>
@@ -135,22 +135,22 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">
-                            <label for="" class="form-label">Nombre de la organización</label>
+                            <label for="" class="form-label">{{ $lang?.step7?.org_name }}</label>
                             <input type="text" id="organ_name" class="form-control" v-model="org.name">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">Sitio web</label>
+                            <label for="" class="form-label">{{ $lang?.step7?.web }}</label>
                             <input type="text" id="organ_web" class="form-control" v-model="org.website">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">Dirección</label>
+                            <label for="" class="form-label">{{ $lang?.step7?.address }}</label>
                             <textarea class="form-control" id="organ_address" rows="3" v-model="org.address"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" @click="addAddress()" data-bs-dismiss="modal">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $lang?.layout?.cancel }}</button>
+                    <button type="button" class="btn btn-primary" @click="addAddress()" data-bs-dismiss="modal">{{ $lang?.layout?.save }}</button>
                 </div>
             </div>
         </div>
@@ -160,40 +160,40 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalStep72Label">Agregar viajeros</h1>
+                    <h1 class="modal-title fs-5" id="modalStep72Label">{{ $lang?.step7?.add_traveler }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 mb-3">
-                            <label for="name" class="form-label">¿La persona que viaja es socio/a de Rotary?</label>
+                            <label for="name" class="form-label">{{ $lang?.step7?.traveler_is_member }}</label>
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" id="is_socio" :value="0" v-model="travelers.is_socio">
-                                <label class="form-check-label" for="is_socio">No</label>
+                                <label class="form-check-label" for="is_socio">{{ $lang?.layout?.no }}</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" id="is_socio" :value="1" v-model="travelers.is_socio">
-                                <label class="form-check-label" for="is_socio">Si</label>
+                                <label class="form-check-label" for="is_socio">{{ $lang?.layout?.yes }}</label>
                             </div>
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">Nombre</label>
+                            <label for="" class="form-label">{{ $lang?.step7?.name }}</label>
                             <input type="text" class="form-control" v-model="travelers.name">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">Correo electrónico</label>
+                            <label for="" class="form-label">{{ $lang?.step7?.email }}</label>
                             <input type="email" class="form-control" v-model="travelers.email">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">Nacionalidad</label>
+                            <label for="" class="form-label">{{ $lang?.step7?.nationality }}</label>
                             <input type="text" class="form-control" v-model="travelers.nacionalidad">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" @click="addTraveler()" data-bs-dismiss="modal">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $lang?.layout?.cancel }}</button>
+                    <button type="button" class="btn btn-primary" @click="addTraveler()" data-bs-dismiss="modal">{{ $lang?.layout?.save }}</button>
                 </div>
             </div>
         </div>

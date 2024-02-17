@@ -8,54 +8,54 @@
             </ul>
         </div>
 
-        <p class="mt-3 mb-4">Proporciónanos cierta información básica y asignaremos un número a tu solicitud.</p>
+        <p class="mt-3 mb-4">{{ $lang?.step1?.page_title }}</p>
 
         <div class="mb-3">
-            <label for="name" class="form-label">Indica el nombre del proyecto.</label>
+            <label for="name" class="form-label">{{ $lang?.step1?.project_name }}</label>
             <input  type="text" name="project_name" class="form-control" id="name" v-model="$store.state.step1.project_name" maxlength="100">
-            <small class="float-end">{{ $store.state.step1.project_name.length }}/100 caracteres</small>
+            <small class="float-end">{{ $store.state.step1.project_name.length }}/{{ $lang?.step1?.caracter_limit }}</small>
         </div>
 
-        <p class="fw-bold">¿Qué tipo de proyecto piensas llevar a cabo?</p>
-        <p>Marca todas las opciones que correspondan, a fin de determinar qué otros datos se necesitan.</p>
+        <p class="fw-bold">{{ $lang?.step1?.project_type }}</p>
+        <p>{{ $lang?.step1?.project_type_description }}</p>
         <hr>
 
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="1" v-model="$store.state.step1.type" id="check_type1">
             <label class="form-check-label" for="check_type1">
-                Proyecto humanitario
+                {{ $lang?.step1?.humanitarian }}
             </label>
-            <small>Aborda necesidades de la comunidad con resultados mensurables y sostenibles.</small>
+            <small>{{ $lang?.step1?.humanitarian_description }}</small>
         </div>
 
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="2" v-model="$store.state.step1.type" id="check_type2">
             <label class="form-check-label" for="check_type2">
-                Equipo de capacitación profesional
+                {{ $lang?.step1?.team }}
             </label>
-            <small>Mejorar las competencias de la comunidad mediante el financiamiento del viaje de un grupo de profesionales para que capaciten a sus pares locales o adquieran nuevas habilidades.</small>
+            <small>{{ $lang?.step1?.team_description }}</small>
         </div>
 
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="3" v-model="$store.state.step1.type" id="check_type3">
             <label class="form-check-label" for="check_type3">
-                Beca
+                {{ $lang?.step1?.beca }}
             </label>
-            <small>Financia estudios de postgrado de personas interesadas en seguir una carrera profesional en una de las áreas de interés de Rotary.</small>
+            <small>{{ $lang?.step1?.beca_description }}</small>
         </div>
 
         <hr>
 
-        <p class="fw-bold">Selecciona a los contactos principales (local e internacional) del proyecto <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
+        <p class="fw-bold">{{ $lang?.step1?.contacts }} <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Club</th>
-                    <th scope="col">Distrito</th>
-                    <th scope="col">Patrocinador</th>
-                    <th scope="col">Papel</th>
+                    <th scope="col">{{ $lang?.step1?.contact_name }}</th>
+                    <th scope="col">{{ $lang?.step1?.contact_club }}</th>
+                    <th scope="col">{{ $lang?.step1?.contact_district }}</th>
+                    <th scope="col">{{ $lang?.step1?.contact_patro }}</th>
+                    <th scope="col">{{ $lang?.step1?.contact_paper }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,7 +67,7 @@
                     <td>{{ contact.papel }}</td>
                 </tr>
                 <tr>
-                    <td ><a href="#!" @click="showModal()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal" >+ Añadir contacto principal</a></td>
+                    <td ><a href="#!" @click="showModal()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal" >+ {{ $lang?.step1?.add_contact }}</a></td>
                 </tr>
             </tbody>
         </table>
@@ -76,13 +76,13 @@
 
         <div class="d-flex justify-content-start gap-3">
             <button class="btn btn-primary" type="submit">
-                Guardar y continuar
+                {{ $lang?.layout?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                Guardar
+                {{ $lang?.layout?.cancel }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                Salir
+                {{ $lang?.layout?.out }}
             </a>
         </div>
 
@@ -96,61 +96,61 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h3 class="mb-3">Contactos principales</h3>
-                        <h6 class="text-uppercase">Primer contacto principal</h6>
-                        <small>Has sido designado automáticamente como contacto principal del proyecto. Antes de seleccionar al segundo, háblanos sobre tu papel y los patrocinadores del proyecto.</small>
+                        <h3 class="mb-3">{{ $lang?.step1?.modal?.title }}</h3>
+                        <h6 class="text-uppercase">{{ $lang?.step1?.modal?.first_contact }}</h6>
+                        <small>{{ $lang?.step1?.modal?.default }}</small>
                         <hr>
 
                         <div class="mb-3">
-                            <label for="name" class="form-label">Tu papel</label>
+                            <label for="name" class="form-label">{{ $lang?.step1?.modal?.role }}</label>
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="contacto1_papel" id="local" value="Local" v-model="prin_contact.papel">
-                                <label class="form-check-label" for="local">Local</label>
+                                <label class="form-check-label" for="local">{{ $lang?.step1?.modal?.local }}</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="contacto1_papel" id="internacional" v-model="prin_contact.papel" value="Internacional">
-                                <label class="form-check-label" for="internacional">Internacional</label>
+                                <label class="form-check-label" for="internacional">{{ $lang?.step1?.modal?.international }}</label>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="name" class="form-label">Tu patrocinador</label>
+                            <label for="name" class="form-label">{{ $lang?.step1?.modal?.your_patro }}</label>
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="contacto1_patrocinador" id="patrocinador_local" v-model="prin_contact.patrocinador" value="Local" checked>
-                                <label class="form-check-label" for="patrocinador_local">Local</label>
+                                <label class="form-check-label" for="patrocinador_local">{{ $lang?.step1?.modal?.local }}</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="contacto1_patrocinador" id="patrocinador_internacional" v-model="prin_contact.patrocinador" value="Internacional">
-                                <label class="form-check-label" for="patrocinador_internacional">Internacional</label>
+                                <label class="form-check-label" for="patrocinador_internacional">{{ $lang?.step1?.modal?.international }}</label>
                             </div>
                         </div>
 
 
-                        <h6 class="text-uppercase">Segundo contacto principal</h6>
-                        <small>¿Quién es el contacto principal internacional? Búscalo en los campos de búsqueda que figuran continuación.</small>
+                        <h6 class="text-uppercase">{{ $lang?.step1?.modal?.second_contact }}</h6>
+                        <small>{{ $lang?.step1?.modal?.second_contact_description }}</small>
                         <hr>
 
                         <div class="mb-3">
-                            <label for="name" class="form-label">Su patrocinador</label>
+                            <label for="name" class="form-label">{{ $lang?.step1?.modal?.his_patro }}</label>
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="distrito" v-model="secun_contact.patrocinador" value="Distrito" checked>
-                                <label class="form-check-label" for="distrito">Distrito</label>
+                                <label class="form-check-label" for="distrito">{{ $lang?.step1?.modal?.district }}</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="rotarac_club" v-model="secun_contact.patrocinador" value="Rotarac Club">
-                                <label class="form-check-label" for="rotarac_club">Rotarac Club</label>
+                                <label class="form-check-label" for="rotarac_club">{{ $lang?.step1?.modal?.rotarac_club }}</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="contacto2_patrocinador" id="rotary_club" v-model="secun_contact.patrocinador" value="Rotary Club">
-                                <label class="form-check-label" for="rotary_club">Rotary Club</label>
+                                <label class="form-check-label" for="rotary_club">{{ $lang?.step1?.modal?.rotary_club }}</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
-                                <label for="" class="form-label">Su distrito</label>
+                                <label for="" class="form-label">{{ $lang?.step1?.modal?.his_district }}</label>
                                 <select class="form-select" aria-label="Default select example" v-model="secun_contact.district">
                                     <option value="6990" selected>6990</option>
                                     <!-- <option value="4060" selected>4060</option>
@@ -170,7 +170,7 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="" class="form-label">Su club</label>
+                                <label for="" class="form-label">{{ $lang?.step1?.modal?.his_club }}</label>
                                 <select class="form-select" aria-label="Default select example" v-model="secun_contact.club">
                                     <!-- <option v-for="(item, index) in clubs" :key="index" :value="item" >{{ item }}</option> -->
                                     <option value="New York" selected>New York</option>
@@ -181,10 +181,10 @@
                         <table class="display mt-5" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Número de socio</th>
-                                    <th>Nombres</th>
-                                    <th>Apellidos</th>
-                                    <th>{{ secun_contact.names.length }} seleccionados</th>
+                                    <th>{{ $lang?.step1?.modal?.member_number }}</th>
+                                    <th>{{ $lang?.step1?.modal?.names }}</th>
+                                    <th>{{ $lang?.step1?.modal?.last_names }}</th>
+                                    <th>{{ secun_contact.names.length }} {{ $lang?.step1?.modal?.selected }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -193,7 +193,7 @@
                                     <td>{{ item.firstname }}</td>
                                     <td>{{ item.lastname }}</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2" :class="(this.secun_contact.names.indexOf(item) === -1) ? 'btn-outline-primary' : 'btn-primary text-white' " @click="addContactName(item)">Seleccionar</button>
+                                        <button class="btn btn-outline-primary my-2" :class="(this.secun_contact.names.indexOf(item) === -1) ? 'btn-outline-primary' : 'btn-primary text-white' " @click="addContactName(item)">{{ $lang?.step1?.modal?.select }}</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -201,8 +201,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" @click="addContacts()" data-bs-dismiss="modal">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $lang?.layout?.cancel }}</button>
+                        <button type="button" class="btn btn-primary" @click="addContacts()" data-bs-dismiss="modal">{{ $lang?.layout?.save }}</button>
                     </div>
                 </div>
             </div>
@@ -225,14 +225,14 @@ export default {
     data() {
         return {
             prin_contact: {
-                patrocinador: 'Internacional',
-                papel: 'Local',
+                patrocinador: this.$lang?.step1?.modal?.international,
+                papel: this.$lang?.step1?.modal?.local,
             },
             secun_contact: {
                 club: 'New York',
                 district: '6990',
-                patrocinador: 'Local',
-                papel: 'Local',
+                patrocinador: this.$lang?.step1?.modal?.local,
+                papel: this.$lang?.step1?.modal?.local,
                 names: [],
             },
             clubs: clubs,
@@ -262,8 +262,8 @@ export default {
                 name: this.$page.props.auth.user.name,
                 club: this.$page.props.auth.user.club,
                 district: this.$page.props.auth.user.district,
-                patrocinador: 'Local',
-                papel: 'Local',
+                patrocinador: this.$lang?.step1?.modal?.local,
+                papel: this.$lang?.step1?.modal?.local,
             })
 
             this.secun_contact.names.forEach((el, i) => {
@@ -272,8 +272,8 @@ export default {
                     name: `${el.firstname} ${el.lastname}`,
                     club: 'New York',
                     district: '6990',
-                    patrocinador: 'Internacional',
-                    papel: 'Internacional',
+                    patrocinador: this.$lang?.step1?.modal?.international,
+                    papel: this.$lang?.step1?.modal?.international,
                 })
             })
 
@@ -320,7 +320,7 @@ export default {
             })
             .then((response) => {
                 this.$store.state.currentStep++
-                this.$swal('Paso 1 guardado con éxito', '', 'success');
+                this.$swal(this.$lang?.step1?.success_message, '', 'success');
 
                 let url = `${window.location.origin}/simulation/${response?.data?.data?.id}`;
 

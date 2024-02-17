@@ -8,17 +8,17 @@
             </ul>
         </div>
 
-        <p class="fw-bold">¿Quiénes son los integrantes locales del comité del proyecto?
+        <p class="fw-bold">{{ $lang?.step2?.team }}
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Club</th>
-                    <th scope="col">Distrito</th>
-                    <th scope="col">Papel</th>
+                    <th scope="col">{{ $lang?.step1?.contact_name }}</th>
+                    <th scope="col">{{ $lang?.step1?.contact_club }}</th>
+                    <th scope="col">{{ $lang?.step1?.contact_district }}</th>
+                    <th scope="col">{{ $lang?.step1?.contact_paper }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,22 +29,22 @@
                     <td>{{ contact.papel }}</td>
                 </tr>
                 <tr>
-                    <td><a href="#!"  @click="showModal1()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep21" >+ Añadir contacto principal</a></td>
+                    <td><a href="#!"  @click="showModal1()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep21" >+ {{ $lang?.step1?.add_contact }}</a></td>
                 </tr>
             </tbody>
         </table>
 
-        <p class="fw-bold">¿Quiénes son los integrantes internacionales del comité del proyecto?
+        <p class="fw-bold">{{ $lang?.step2?.team_international }}
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Club</th>
-                    <th scope="col">Distrito</th>
-                    <th scope="col">Papel</th>
+                    <th scope="col">{{ $lang?.step1?.contact_name }}</th>
+                    <th scope="col">{{ $lang?.step1?.contact_club }}</th>
+                    <th scope="col">{{ $lang?.step1?.contact_district }}</th>
+                    <th scope="col">{{ $lang?.step1?.contact_paper }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,7 +55,7 @@
                     <td>{{ contact.papel }}</td>
                 </tr>
                 <tr>
-                    <td><a href="#!" @click="showModal2()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep22" >+ Añadir contacto principal</a></td>
+                    <td><a href="#!" @click="showModal2()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep22" >+ {{ $lang?.step1?.contact_paper }}</a></td>
                 </tr>
             </tbody>
         </table>
@@ -65,23 +65,23 @@
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="papel" id="local" value="0" v-model="$store.state.step2.members_conflict">
-                <label class="form-check-label" for="local">No</label>
+                <label class="form-check-label" for="local">{{ $lang?.layout?.no }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="papel" id="internacional" value="1" v-model="$store.state.step2.members_conflict">
-                <label class="form-check-label" for="internacional">Si</label>
+                <label class="form-check-label" for="internacional">{{ $lang?.layout?.yes }}</label>
             </div>
         </div>
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                Guardar y continuar
+                {{ $lang?.layout?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                Guardar
+                {{ $lang?.layout?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                Salir
+                {{ $lang?.layout?.out }}
             </a>
         </div>
 
@@ -96,7 +96,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12">
-                                <label for="" class="form-label">Su distrito</label>
+                                <label for="" class="form-label">{{ $lang?.step1?.modal?.his_district }}</label>
                                 <select class="form-select" aria-label="Default select example" v-model="local_members.district">
                                     <option value="4060" selected>4060</option>
                                     <option value="4100">4100</option>
@@ -116,20 +116,20 @@
                             </div>
 
                             <div class="col my-3">
-                                <label for="name" class="form-label">Tipo de club</label>
+                                <label for="name" class="form-label">{{ $lang?.step2?.club_type }}</label>
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" id="club1" value="Club Rotary" v-model="local_members.type">
-                                    <label class="form-check-label" for="local">Club Rotary</label>
+                                    <label class="form-check-label" for="local">{{ $lang?.step1?.modal?.rotary_club }}</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" id="club2" value="Club Rotaract" v-model="local_members.type">
-                                    <label class="form-check-label" for="internacional">Club Rotaract</label>
+                                    <label class="form-check-label" for="internacional">{{ $lang?.step1?.modal?.rotarac_club }}</label>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <label for="" class="form-label">Su club</label>
+                                <label for="" class="form-label">{{ $lang?.step1?.modal?.his_club }}</label>
                                 <select class="form-select" aria-label="Default select example" v-model="local_members.club">
                                     <option v-for="(item, index) in clubs" :key="index" :value="item" >{{ item }}</option>
                                 </select>
@@ -139,10 +139,10 @@
                         <table class="display mt-5" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Número de socio</th>
-                                    <th>Nombres</th>
-                                    <th>Apellidos</th>
-                                    <th>{{ local_members.names.length }} seleccionados</th>
+                                    <th>{{ $lang?.step2?.member_number }}</th>
+                                    <th>{{ $lang?.step2?.names }}</th>
+                                    <th>{{ $lang?.step2?.last_names }}</th>
+                                    <th>{{ local_members.names.length }} {{ $lang?.step1?.modal?.selected }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -151,7 +151,7 @@
                                     <td>{{ item.firstname }}</td>
                                     <td>{{ item.lastname }}</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2" :class="(this.local_members.names.indexOf(item) === -1) ? 'btn-outline-primary' : 'btn-primary text-white' " @click="addLocalMemberName(item)">Seleccionar</button>
+                                        <button class="btn btn-outline-primary my-2" :class="(this.local_members.names.indexOf(item) === -1) ? 'btn-outline-primary' : 'btn-primary text-white' " @click="addLocalMemberName(item)">{{ $lang?.step1?.modal?.select }}</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -159,8 +159,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" @click="addNational()" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" @click="addNational()" data-bs-dismiss="modal">Guardar</button>
+                        <button type="button" class="btn btn-secondary" @click="addNational()" data-bs-dismiss="modal">{{ $lang?.layout?.cancel }}</button>
+                        <button type="button" class="btn btn-primary" @click="addNational()" data-bs-dismiss="modal">{{ $lang?.layout?.save }}</button>
                     </div>
                 </div>
             </div>
@@ -170,13 +170,13 @@
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalStep22Label">Patrocinadores internacional</h1>
+                        <h1 class="modal-title fs-5" id="modalStep22Label">{{ $lang?.step2?.international_patro }}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12">
-                                <label for="" class="form-label">Su distrito</label>
+                                <label for="" class="form-label">{{ $lang?.step1?.modal?.his_district }}</label>
                                 <select class="form-select" aria-label="Default select example" v-model="internacional_members.district">
                                     <option value="7230" selected>7230</option>
                                     <option value="4060">4060</option>
@@ -197,20 +197,20 @@
                             </div>
 
                             <div class="col my-3">
-                                <label for="name" class="form-label">Tipo de club</label>
+                                <label for="name" class="form-label">{{ $lang?.step2?.club_type }}</label>
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" id="club1" value="Club Rotary" v-model="internacional_members.type">
-                                    <label class="form-check-label" for="local">Club Rotary</label>
+                                    <label class="form-check-label" for="local">{{ $lang?.step1?.modal?.rotary_club }}</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" id="club2" value="Club Rotaract" v-model="internacional_members.type">
-                                    <label class="form-check-label" for="internacional">Club Rotaract</label>
+                                    <label class="form-check-label" for="internacional">{{ $lang?.step1?.modal?.rotarac_club }}</label>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <label for="" class="form-label">Selecciona el club</label>
+                                <label for="" class="form-label">{{ $lang?.step2?.select_club }}</label>
                                 <select class="form-select" aria-label="Default select example" v-model="internacional_members.club">
                                     <option v-for="(item, index) in international_clubs" :key="index" :value="item" >{{ item }}</option>
                                 </select>
@@ -220,10 +220,10 @@
                         <table class="display mt-5" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Número de socio</th>
-                                    <th>Nombres</th>
-                                    <th>Apellidos</th>
-                                    <th>{{ internacional_members.names.length }} seleccionados</th>
+                                    <th>{{ $lang?.step2?.member_number }}</th>
+                                    <th>{{ $lang?.step2?.names }}</th>
+                                    <th>{{ $lang?.step2?.last_names }}</th>
+                                    <th>{{ internacional_members.names.length }} {{ $lang?.step1?.modal?.selected }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -232,7 +232,7 @@
                                     <td>{{ item.firstname }}</td>
                                     <td>{{ item.lastname }}</td>
                                     <td>
-                                        <button class="btn btn-outline-primary my-2" :class="(this.internacional_members.names.indexOf(item) === -1) ? 'btn-outline-primary' : 'btn-primary text-white' " @click="addInternacionalMemberName(item)">Seleccionar</button>
+                                        <button class="btn btn-outline-primary my-2" :class="(this.internacional_members.names.indexOf(item) === -1) ? 'btn-outline-primary' : 'btn-primary text-white' " @click="addInternacionalMemberName(item)">{{ $lang?.step1?.modal?.select }}</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -240,8 +240,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" @click="addInternational()" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" @click="addInternational()" data-bs-dismiss="modal">Guardar</button>
+                        <button type="button" class="btn btn-secondary" @click="addInternational()" data-bs-dismiss="modal">{{ $lang?.layout?.cancel }}</button>
+                        <button type="button" class="btn btn-primary" @click="addInternational()" data-bs-dismiss="modal">{{ $lang?.layout?.save }}</button>
                     </div>
                 </div>
             </div>
@@ -349,7 +349,7 @@ export default {
             })
             .then((response) => {
                 this.$store.state.currentStep++
-                this.$swal('Paso 2 guardado con éxito', '', 'success');
+                this.$swal(this.$lang?.step2?.success_message, '', 'success');
                 this.$page.props.errors = []
             })
             .catch((error) => {

@@ -38,11 +38,11 @@
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="evaluation_step5" value="1" v-model="evaluation">
-                <label class="form-check-label">Si</label>
+                <label class="form-check-label">{{ $lang?.layout?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="evaluation_step5" value="0" v-model="evaluation">
-                <label class="form-check-label">No</label>
+                <label class="form-check-label">{{ $lang?.layout?.no }}</label>
             </div>
         </div>
 
