@@ -20,6 +20,8 @@
     },
     "dependencies": {
         "datatables.net-vue3": "^2.0.0",
+        "laravel-vue-i18n": "^2.7.6",
+        "vue-i18n": "^8.28.2",
         "vue-lang": "^0.2.5",
         "vue-sweetalert2": "^5.0.5",
         "vue3-html2pdf": "^1.1.2",

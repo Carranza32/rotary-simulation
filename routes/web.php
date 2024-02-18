@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RotaryFormController;
+use App\Http\Controllers\RotaryReportController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -46,6 +47,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/simulation/step/11/documents/uploaded', 'saveStep11DocumentsUploaded')->name('save.step11.documents.uploaded');
         Route::post('/simulation/step/11/documents/deleteDocuments', 'saveStep11DeleteDocuments')->name('save.step11.documents.delete');
         Route::post('/simulation/step/12', 'saveStep12')->name('save.step12');
+    });
+
+    Route::controller(RotaryReportController::class)->prefix('report')->name('report.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/details/{id}', 'show')->name('show');
     });
 });
 
