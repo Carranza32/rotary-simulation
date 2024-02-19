@@ -6,6 +6,7 @@ use App\Http\Controllers\RotaryReportController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,22 @@ use Inertia\Inertia;
 |
 */
 
-// Route::get('/', function () {
-//     return to_route('dashboard');
-// });
+Route::get('/', function () {
+    return to_route('dashboard');
+});
 
-Route::get( '/', fn() => dd( Inertia::getShared() ) );
+Route::get('locale/{locale}', function ($locale) {
+    if(!in_array($locale, ['en', 'es'])) {
+        $locale = 'en';
+    }
 
-Route::middleware('auth')->group(function () {
+    session()->put('locale', $locale);
+
+    return back();
+})->name('locale');
+
+
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [RotaryFormController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

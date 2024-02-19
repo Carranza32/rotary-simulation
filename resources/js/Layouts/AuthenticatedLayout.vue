@@ -6,6 +6,7 @@ import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/vue3";
+import { useTrans } from '@/Composables/trans';
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -25,22 +26,16 @@ const showingNavigationDropdown = ref(false);
                 <span class="LinkDivider">
                     <label data-testid="language-switcher" for="language-switcher" class="text-white LanguageSwitcher">
                         <span class="sr-only">Cambiar idioma:</span>
-                        <select id="language-switcher" class="pe-4 bg-transparent appearance-none rounded-none border-0 text-white">
-                            <option value="de" lang="de" class="text-black">Deutsch</option>
-                            <option value="en" lang="en" class="text-black">English</option>
-                            <option value="es" lang="es" class="text-black">Español</option>
-                            <option value="fr" lang="fr" class="text-black">Français</option>
-                            <option value="it" lang="it" class="text-black">Italiano</option>
-                            <option value="pt" lang="pt" class="text-black">Português</option>
-                            <option value="ko" lang="ko" class="text-black">한국어</option>
-                            <option value="ja" lang="ja" class="text-black">日本語</option>
+                        <select @change="onlanguagechange($event)" id="language-switcher" class="pe-4 bg-transparent appearance-none rounded-none border-0 text-white">
+                            <option value="en" lang="en" :selected="locale === 'en'" class="text-black">English</option>
+                            <option value="es" lang="es" :selected="locale === 'es'" class="text-black">Español</option>
                         </select>
                     </label>
                 </span>
                 <div class="ml-3 d-inline-block">
-                    <a class="me-3 text-white" :href="route('dashboard')">Dashboard</a>
-                    <a class="me-3 text-white" :href="route('profile.edit')">Perfil</a>
-                    <button class="me-3 text-white" @click="logout()">Log Out</button>
+                    <a class="me-3 text-white" :href="route('dashboard')">{{ useTrans('layout').dashboard }}</a>
+                    <a class="me-3 text-white" :href="route('profile.edit')">{{ useTrans('layout').profile }}</a>
+                    <button class="me-3 text-white" @click="logout()">{{ useTrans('layout').logout }}</button>
                 </div>
             </div>
         </div>
@@ -57,11 +52,11 @@ const showingNavigationDropdown = ref(false);
                             <ul class="CallToActionContainer">
                                 <li class="CallToActionItem">
                                     <a href="https://www.rotary.org/es/donate" class="CallToActionButton bg-dark-blue-400 font-bold text-bright-blue-100 text-center text-decoration-none hover:underline focus:underline"
-                                        >Dona
+                                        >{{ useTrans('layout').donate }}
                                     </a>
                                 </li>
                                 <li class="CallToActionItem">
-                                    <a href="https://www.rotary.org/en/get-involved/join" class="CallToActionButton bg-dark-blue-400 font-bold text-bright-blue-100 text-center text-decoration-none hover:underline focus:underline">Únete</a>
+                                    <a href="https://www.rotary.org/en/get-involved/join" class="CallToActionButton bg-dark-blue-400 font-bold text-bright-blue-100 text-center text-decoration-none hover:underline focus:underline">{{ useTrans('layout').join }}</a>
                                 </li>
                                 <nav class="d-inline-block position-relative">
                                     <button type="button" aria-expanded="false" class="w-15 h-15 order-3 border-0">
@@ -113,9 +108,25 @@ const showingNavigationDropdown = ref(false);
 
 <script>
 export default {
+    computed: {
+        locale() {
+            return this.$page.props.locale
+        },
+    },
     methods: {
         logout() {
             this.$inertia.post(this.route('logout'))
+        },
+        onlanguagechange(event) {
+            this.$inertia.get(this.route('locale', event.target.value))
+        },
+        mounted() {
+            console.log(locale)
+            document.addEventListener('click', (event) => {
+                if (showingNavigationDropdown.value && !this.$el.contains(event.target)) {
+                    showingNavigationDropdown.value = false
+                }
+            })
         },
     },
 }

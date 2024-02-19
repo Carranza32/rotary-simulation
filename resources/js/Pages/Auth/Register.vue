@@ -6,6 +6,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 import countries from "@/Utils/countries.json";
+import { useTrans } from '@/Composables/trans';
 
     const form = useForm({
         name: "",
@@ -33,11 +34,11 @@ import countries from "@/Utils/countries.json";
         <Head title="Register" />
 
         <div id="okta-register" data-label="OneColumn" class="container my-5">
-            <h1 class="h2">Crea una cuenta</h1>
+            <h1 class="h2">{{ useTrans('auth')?.create_account }}</h1>
             <p>
-                <span class="mr-3">¿Ya dispones de una cuenta en Mi Rotary?</span>
+                <span class="mr-3">{{ useTrans('auth')?.rotary_account }}</span>
                 <Link :href="route('login')" type="button" class="uppercase inline-flex items-center font-bold text-bright-blue-600 text-xs leading-xs-heading">
-                    Abrir sesión
+                    {{ useTrans('auth')?.singin }}
                     <svg
                         width="12"
                         height="12"
@@ -58,7 +59,7 @@ import countries from "@/Utils/countries.json";
                         <label
                             for="name"
                             class="text-small font-bold block text-gray-600 block"
-                            ><span>Nombre(s)</span
+                            ><span>{{ useTrans('auth')?.names }}</span
                             ><span aria-hidden="true">*</span></label
                         >
                     </div>
@@ -106,7 +107,7 @@ import countries from "@/Utils/countries.json";
                         <label
                             for="country"
                             class="text-small font-bold block text-gray-600 block"
-                            ><span>País</span
+                            ><span>{{ useTrans('auth')?.country }}</span
                             ><span aria-hidden="true"></span></label
                         >
                     </div>
@@ -135,7 +136,7 @@ import countries from "@/Utils/countries.json";
                         <label
                             for="district"
                             class="text-small font-bold block text-gray-600 block"
-                            ><span>Distrito</span
+                            ><span>{{ useTrans('auth')?.district }}</span
                             ><span aria-hidden="true"></span></label
                         >
                     </div>
@@ -160,7 +161,7 @@ import countries from "@/Utils/countries.json";
                         <label
                             for="club"
                             class="text-small font-bold block text-gray-600 block"
-                            ><span>Club Rotario</span
+                            ><span>{{ useTrans('auth')?.club }}</span
                             ><span aria-hidden="true"></span></label
                         >
                     </div>
@@ -184,7 +185,7 @@ import countries from "@/Utils/countries.json";
                         <label
                             for="phone"
                             class="text-small font-bold block text-gray-600 block"
-                            ><span>Teléfono</span
+                            ><span>{{ useTrans('auth')?.phone }}</span
                             ><span aria-hidden="true"></span></label
                         >
                     </div>
@@ -208,7 +209,7 @@ import countries from "@/Utils/countries.json";
                         <label
                             for="position"
                             class="text-small font-bold block text-gray-600 block"
-                            ><span>Cargo</span
+                            ><span>{{ useTrans('auth')?.role }}</span
                             ><span aria-hidden="true"></span></label
                         >
                     </div>
@@ -233,7 +234,7 @@ import countries from "@/Utils/countries.json";
                         <label
                             for="password"
                             class="text-small font-bold block text-gray-600 block"
-                            ><span>Contraseña</span
+                            ><span>{{ useTrans('auth')?.password }}</span
                             ><span aria-hidden="true">*</span></label
                         >
                     </div>
@@ -257,7 +258,7 @@ import countries from "@/Utils/countries.json";
                         <label
                             for="password_confirmation"
                             class="text-small font-bold block text-gray-600 block"
-                            ><span>Confirmar Contraseña</span
+                            ><span>{{ useTrans('auth')?.confirm_password }}</span
                             ><span aria-hidden="true">*</span></label
                         >
                     </div>
@@ -376,7 +377,7 @@ import countries from "@/Utils/countries.json";
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    Continuar
+                {{ useTrans('auth')?.continue }}
                 </button>
             </form>
         </div>

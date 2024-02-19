@@ -6,6 +6,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import { useTrans } from '@/Composables/trans';
 
 defineProps({
     canResetPassword: Boolean,
@@ -39,11 +40,11 @@ const submit = () => {
             </div>
 
             <div class="auth-content">
-                <h2 class="okta-form-title o-form-head">Sign in</h2>
+                <h2 class="okta-form-title o-form-head">{{ useTrans('auth').singin }}</h2>
 
                 <form @submit.prevent="submit">
                     <div>
-                        <InputLabel for="email" value="Email" />
+                        <InputLabel for="email" :value="useTrans('auth').email" />
 
                         <TextInput
                             id="email"
@@ -59,7 +60,7 @@ const submit = () => {
                     </div>
 
                     <div class="mt-4">
-                        <InputLabel for="password" value="Password" />
+                        <InputLabel for="password" :value="useTrans('auth').password" />
 
                         <TextInput
                             id="password"
@@ -76,12 +77,12 @@ const submit = () => {
                     <div class="block mt-4">
                         <label class="flex items-center">
                             <Checkbox name="remember" v-model:checked="form.remember" />
-                            <span class="ms-2 text-sm text-gray-600">Remember me</span>
+                            <span class="ms-2 text-sm text-gray-600">{{ useTrans('auth').remember }}</span>
                         </label>
                     </div>
 
                     <div class="o-form-button-bar mt-3">
-                        <input class="button button-primary" type="submit" value="Sign in" id="okta-signin-submit" data-type="save" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        <input class="button button-primary" type="submit" :value="useTrans('auth').singin" id="okta-signin-submit" data-type="save" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
@@ -90,7 +91,7 @@ const submit = () => {
                             :href="route('password.request')"
                             class="link help js-help"
                         >
-                            Forgot password?
+                        {{ useTrans('auth').forgot_password }}
                         </Link>
                     </div>
                 </form>

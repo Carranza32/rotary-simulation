@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import { useTrans } from '@/Composables/trans';
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
@@ -36,16 +37,16 @@ const updatePassword = () => {
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Update Password</h2>
+            <h2 class="text-lg font-medium text-gray-900">{{ useTrans('profile')?.update_password }}</h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Ensure your account is using a long, random password to stay secure.
+                {{ useTrans('profile')?.update_password_description }}
             </p>
         </header>
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <div class="mb-3">
-                <InputLabel for="current_password" value="Current Password" />
+                <InputLabel for="current_password" :value="useTrans('profile')?.current_password" />
 
                 <TextInput
                     id="current_password"
@@ -60,7 +61,7 @@ const updatePassword = () => {
             </div>
 
             <div class="mb-3">
-                <InputLabel for="password" value="New Password" />
+                <InputLabel for="password" :value="useTrans('profile')?.new_password" />
 
                 <TextInput
                     id="password"
@@ -75,7 +76,7 @@ const updatePassword = () => {
             </div>
 
             <div class="mb-3">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+                <InputLabel for="password_confirmation" :value="useTrans('profile')?.confirm_password" />
 
                 <TextInput
                     id="password_confirmation"
@@ -92,7 +93,7 @@ const updatePassword = () => {
                 <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
-                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
+                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">{{ useTrans('profile')?.save }}</p>
                 </Transition>
             </div>
         </form>

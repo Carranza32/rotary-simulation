@@ -32,7 +32,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        $file = lang_path( App::currentLocale() . ".json" );
+        $file = lang_path( session()->get('locale', config('app.locale')) . ".json" );
 
         return array_merge(parent::share($request), [
             'auth' => [
@@ -49,7 +49,7 @@ class HandleInertiaRequests extends Middleware
                     'data' => $request->session()->get('data'),
                 ];
             },
-            'locale' => App::currentLocale(),
+            'locale' => session()->get('locale', config('app.locale')),
             'locales' => config( 'app.available_locales' ),
             'translations' => File::exists( $file ) ? json_decode( File::get( $file ), true ) : [],
         ]);

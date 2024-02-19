@@ -7,6 +7,7 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { nextTick, ref } from 'vue';
+import { useTrans } from '@/Composables/trans';
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
@@ -40,33 +41,31 @@ const closeModal = () => {
 <template>
     <section class="space-y-6">
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Delete Account</h2>
+            <h2 class="text-lg font-medium text-gray-900">{{ useTrans('profile')?.delete_account }}</h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting
-                your account, please download any data or information that you wish to retain.
+                {{ useTrans('profile')?.delete_account_description }}
             </p>
         </header>
 
-        <DangerButton data-bs-toggle="modal" data-bs-target="#deleteModal" @click="confirmUserDeletion">Delete Account</DangerButton>
+        <DangerButton data-bs-toggle="modal" data-bs-target="#deleteModal" @click="confirmUserDeletion">{{ useTrans('profile')?.delete_account }}</DangerButton>
 
         <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content custom-card-shadow">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="deleteModalLabel">Are you sure you want to delete your account?</h1>
+                        <h1 class="modal-title fs-5" id="deleteModalLabel">{{ useTrans('profile')?.delete_account_warning_title }}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="p-6">
                             <p class="text-sm text-gray-600">
-                                Once your account is deleted, all of its resources and data will be permanently deleted. Please
-                                enter your password to confirm you would like to permanently delete your account.
+                                {{ useTrans('profile')?.delete_account_warning }}
                             </p>
 
                             <div class="my-4">
-                                <InputLabel for="password" value="Password" class="sr-only" />
+                                <InputLabel for="password" :value="useTrans('profile')?.password" class="sr-only" />
 
                                 <TextInput
                                     id="password"
@@ -83,14 +82,14 @@ const closeModal = () => {
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <SecondaryButton data-bs-dismiss="modal"> Cancel </SecondaryButton>
+                        <SecondaryButton data-bs-dismiss="modal"> {{ useTrans('profile')?.cancel }} </SecondaryButton>
 
                         <DangerButton class="ms-1"
                             :class="{ 'opacity-25': form.processing }"
                             :disabled="form.processing"
                             @click="deleteUser"
                             >
-                            Delete Account
+                            {{ useTrans('profile')?.delete_account }}
                         </DangerButton>
                     </div>
                 </div>
