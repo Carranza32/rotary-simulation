@@ -1,90 +1,90 @@
 <template>
     <div>
-        <h3>MEDIOAMBIENTE</h3>
+        <h3>{{ useTrans('step5')?.environment?.title }}</h3>
 
-        <p class="fw-bold">¿Qué metas de esta área de interés apoya el proyecto?</p>
-        <p>Selecciona todas las que correspondan. Te haremos preguntas sobre las que selecciones y, a la conclusión del proyecto, presentarás un informe con los resultados alcanzados en cada una de ellas. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
+        <p class="fw-bold">{{ useTrans('step5')?.prevent?.description }}</p>
+        <p>{{ useTrans('step5')?.prevent?.description2 }}<span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
 
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="57_1">
             <label class="form-check-label">
-                Proteger y restaurar los recursos terrestres, costeros, marinos y de agua dulce.
+                {{ useTrans('step5')?.environment?.check1 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="57_2">
             <label class="form-check-label">
-                Mejorar la capacidad de las comunidades y los gobiernos locales para apoyar la gestión y conservación de los recursos naturales.
+                {{ useTrans('step5')?.environment?.check2 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="57_3">
             <label class="form-check-label">
-                Apoyar la agroecología y las prácticas de agricultura, pesca y acuicultura sostenibles para mejorar la salud ecológica.
+                {{ useTrans('step5')?.environment?.check3 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="57_4">
             <label class="form-check-label">
-                Abordar las causas del cambio climático y de la alteración del clima y apoyar soluciones para reducir la emisión de gases de efecto invernadero.
+                {{ useTrans('step5')?.environment?.check4 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="57_5">
             <label class="form-check-label">
-                Fortalecimiento de la resiliencia de los ecosistemas y las comunidades afectadas por el cambio climático y la alteración del clima.
+                {{ useTrans('step5')?.environment?.check5 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="57_6">
             <label class="form-check-label">
-                Apoyar la educación para promover comportamientos que protejan el medioambiente.
+                {{ useTrans('step5')?.environment?.check6 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="57_7">
             <label class="form-check-label">
-                Abogar por el consumo sostenible de productos y la gestión ambientalmente racional de los desechos para construir una economía más eficiente en el uso de los recursos.
+                {{ useTrans('step5')?.environment?.check7 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="57_8">
             <label class="form-check-label">
-                Abordar las cuestiones de justicia ambiental y las preocupaciones de salud pública en materia de medioambiente.
+                {{ useTrans('step5')?.environment?.check8 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="57_9">
             <label class="form-check-label">
-                Financiar becas para profesionales de campos relacionados con el medioambiente
+                {{ useTrans('step5')?.environment?.check9 }}
             </label>
         </div>
 
         <Step5MeasuresTable :id="57" :measures="$store.state.step5.measures57"/>
 
         <div class="mb-3">
-            <label class="form-label">¿Ya sabes quíen recopilará la información necesario para la evaluación y el monitoreo?</label>
+            <label class="form-label">{{ useTrans('step5')?.prevent?.collect_info }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="evaluation_step5" value="1" v-model="evaluation">
-                <label class="form-check-label">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="evaluation_step5" value="0" v-model="evaluation">
-                <label class="form-check-label">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="my-3" v-if="evaluation == true">
             <div class="mb-3">
-                <label class="form-label">Nombre de la empresa u organización</label>
+                <label class="form-label">{{ useTrans('step5')?.pazprev?.business_name }}</label>
                 <input type="text" class="form-control" v-model="name">
             </div>
 
             <div class="mb-3">
                 <label for="textarea" class="form-label">
-                    Explica brevemente por qué esta persona u organización están capacitadas para realizar esta tarea.
+                    {{ useTrans('step5')?.pazprev?.capacity }}
                 </label>
 
                 <textarea class="form-control" id="textarea" rows="5" v-model="explication"></textarea>
@@ -94,52 +94,37 @@
         <div class="my-3" v-if="evaluation == false">
             <div class="mb-3">
                 <label for="textarea" class="form-label">
-                    Indica cómo buscarás a la persona u organización que se encargará de realizar esta tarea.
+                    {{ useTrans('step5')?.pazprev?.explain }}
                 </label>
 
                 <textarea class="form-control" id="textarea" rows="5" v-model="person_name"></textarea>
             </div>
         </div>
 
-        <step-5-measures-modal :id="57" title="MEDIOAMBIENTE" :modalMeasures="modalMeasures" :modalInformations="modalInformations" :modalFrecuencies="modalFrecuencies" :modalBenefits="modalBenefits"/>
+        <step-5-measures-modal :id="57" :title="useTrans('step5')?.environment?.title" :modalMeasures="modalMeasures" :modalInformations="modalInformations" :modalFrecuencies="modalFrecuencies" :modalBenefits="modalBenefits"/>
     </div>
 </template>
 
 <script>
 import Step5MeasuresTable from '@/Components/Step5MeasuresTable.vue'
 import Step5MeasuresModal from '@/Components/Step5MeasuresModal.vue'
+import { useTrans } from '@/Composables/trans';
 
 export default {
     components: {
         Step5MeasuresTable,
         Step5MeasuresModal
     },
+    setup() {
+        return {
+            useTrans,
+        };
+    },
     data(){
         return {
-            modalMeasures: [
-                "Número total de beneficiarios directos.",
-                "Número de personas entrenadas.",
-                "Otros",
-            ],
-            modalInformations: [
-                "Observación directa",
-                "Grupos de enfoque/entrevistas",
-                "Registros e informes de subvenciones",
-                "Registros Públicos",
-                "Imágenes de satélite",
-                "Encuestas/cuestionarios",
-                "Pruebas",
-            ],
-            modalFrecuencies: [
-                "Semanal",
-                "Cada dos semanas",
-                "Cada mes",
-                "Cada dos meses",
-                "Cada tres meses",
-                "Cada cuatro meses",
-                "Cada seis meses",
-                "Cada Año",
-            ],
+            modalMeasures: this.useTrans('step5')?.environment?.modalMeasures,
+            modalInformations: this.useTrans('step5')?.environment?.modalInformations,
+            modalFrecuencies: this.useTrans('step5')?.environment?.modalFrecuencies,
             modalBenefits: [
                 "1-19",
                 "20-49",

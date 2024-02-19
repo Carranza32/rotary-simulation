@@ -83,7 +83,7 @@ import countries from "@/Utils/countries.json";
                         <label
                             for="email"
                             class="text-small font-bold block text-gray-600 block"
-                            ><span>{{ $lang?.step7?.email }}</span
+                            ><span>{{ useTrans('step7')?.email }}</span
                             ><span aria-hidden="true">*</span></label
                         >
                     </div>

@@ -18,9 +18,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return to_route('dashboard');
-});
+// Route::get('/', function () {
+//     return to_route('dashboard');
+// });
+
+Route::get( '/', fn() => dd( Inertia::getShared() ) );
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [RotaryFormController::class, 'dashboard'])->name('dashboard');

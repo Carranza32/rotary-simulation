@@ -3,8 +3,8 @@
     <AuthenticatedLayout>
         <div class="py-5">
             <div class="d-flex justify-content-between">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-5">{{ $t('dashboard.created_forms') }}</h2>
-                <a :href="route('simulation.form')" class="btn btn-primary ms-auto align-self-baseline">{{ $lang?.dashboard?.create }}</a>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-5">{{ useTrans('dashboard')?.created_forms }}</h2>
+                <a :href="route('simulation.form')" class="btn btn-primary ms-auto align-self-baseline">{{ useTrans('dashboard')?.create }}</a>
             </div>
 
             <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -25,6 +25,7 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
+import { useTrans } from '@/Composables/trans';
 
 export default {
     props: {
@@ -34,6 +35,11 @@ export default {
         AuthenticatedLayout,
         Link,
         Head,
+    },
+    setup() {
+        return {
+            useTrans,
+        };
     },
 }
 </script>

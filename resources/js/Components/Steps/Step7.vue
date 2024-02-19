@@ -8,16 +8,16 @@
             </ul>
         </div>
 
-        <p class="fw-bold text-uppercase">{{ $lang?.step7?.collaborators }}
+        <p class="fw-bold text-uppercase">{{ useTrans('step7')?.collaborators }}
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">{{ $lang?.step7?.name }}</th>
-                    <th scope="col">{{ $lang?.step7?.web }}</th>
-                    <th scope="col">{{ $lang?.step7?.address }}</th>
+                    <th scope="col">{{ useTrans('step7')?.name }}</th>
+                    <th scope="col">{{ useTrans('step7')?.web }}</th>
+                    <th scope="col">{{ useTrans('step7')?.address }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,56 +27,56 @@
                     <td>{{ organize.address }}</td>
                 </tr>
                 <tr>
-                    <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep7" @click="showModalStep7()">+ {{ $lang?.step7?.add_org }}</a></td>
+                    <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep7" @click="showModalStep7()">+ {{ useTrans('step7')?.add_org }}</a></td>
                 </tr>
             </tbody>
         </table>
 
         <div class="mb-3">
-            <label for="name" class="form-label">{{ $lang?.step7?.integrants }}</label>
+            <label for="name" class="form-label">{{ useTrans('step7')?.integrants }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="papel" id="has_interes_conflict" value="1" v-model="$store.state.step7.has_interes_conflict">
-                <label class="form-check-label" for="has_interes_conflict">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label" for="has_interes_conflict">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="papel" id="has_interes_conflict" value="0" v-model="$store.state.step7.has_interes_conflict">
-                <label class="form-check-label" for="has_interes_conflict">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label" for="has_interes_conflict">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="mb-3">
             <label for="textarea" class="form-label">
-                {{ $lang?.step7?.why_you_collaborate }}
+                {{ useTrans('step7')?.why_you_collaborate }}
                 <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
             </label>
 
             <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.colaboration_org"></textarea>
         </div>
 
-        <p class="fw-bold text-uppercase">{{ $lang?.step7?.collaborators_optional }}</p>
+        <p class="fw-bold text-uppercase">{{ useTrans('step7')?.collaborators_optional }}</p>
 
         <div class="mb-3">
             <label for="textarea" class="form-label">
-                {{ $lang?.step7?.project_participants }}
+                {{ useTrans('step7')?.project_participants }}
                 <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
             </label>
 
             <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.members"></textarea>
         </div>
 
-        <p class="fw-bold text-uppercase">{{ $lang?.step7?.travelers_volunteers }}</p>
+        <p class="fw-bold text-uppercase">{{ useTrans('step7')?.travelers_volunteers }}</p>
 
         <div class="mb-3">
-            <p>{{ $lang?.step7?.travelers_volunteers_description }} <a href="https://my.rotary.org/es/privacy-policy">{{ $lang?.step7?.privacy_policy }}</a>  {{ $lang?.step7?.from_rotary }}</p>
+            <p>{{ useTrans('step7')?.travelers_volunteers_description }} <a href="https://my.rotary.org/es/privacy-policy">{{ useTrans('step7')?.privacy_policy }}</a>  {{ useTrans('step7')?.from_rotary }}</p>
 
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">{{ $lang?.step7?.name }}</th>
-                        <th scope="col">{{ $lang?.step7?.email }}</th>
-                        <th scope="col">{{ $lang?.step7?.nationality }}</th>
-                        <th scope="col">{{ $lang?.step7?.is_member }}</th>
+                        <th scope="col">{{ useTrans('step7')?.name }}</th>
+                        <th scope="col">{{ useTrans('step7')?.email }}</th>
+                        <th scope="col">{{ useTrans('step7')?.nationality }}</th>
+                        <th scope="col">{{ useTrans('step7')?.is_member }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,17 +87,17 @@
                         <td>{{ (travel.is_socio == 0) ? 'No' : 'Si' }}</td>
                     </tr>
                     <tr>
-                        <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep72" @click="showModalStep72()">+ {{ $lang?.step7?.add_traveler }}</a></td>
+                        <td><a href="#!" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep72" @click="showModalStep72()">+ {{ useTrans('step7')?.add_traveler }}</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
 
-        <p class="fw-bold text-uppercase">{{ $lang?.step7?.rotary_participants }}</p>
+        <p class="fw-bold text-uppercase">{{ useTrans('step7')?.rotary_participants }}</p>
         <div class="mb-3">
             <label for="textarea" class="form-label">
-                {{ $lang?.step7?.participants_role }}
+                {{ useTrans('step7')?.participants_role }}
             </label>
 
             <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.local_sponsors"></textarea>
@@ -105,7 +105,7 @@
 
         <div class="mb-3">
             <label for="textarea" class="form-label">
-                {{ $lang?.step7?.patreon_role }}
+                {{ useTrans('step7')?.patreon_role }}
             </label>
 
             <textarea class="form-control" id="textarea" rows="5" v-model="$store.state.step7.international_sponsors"></textarea>
@@ -113,13 +113,13 @@
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                {{ $lang?.layout?.save_and_continue }}
+                {{ useTrans('layout')?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                {{ $lang?.layout?.save }}
+                {{ useTrans('layout')?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                {{ $lang?.layout?.out }}
+                {{ useTrans('layout')?.out }}
             </a>
         </div>
     </form>
@@ -135,22 +135,22 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">
-                            <label for="" class="form-label">{{ $lang?.step7?.org_name }}</label>
+                            <label for="" class="form-label">{{ useTrans('step7')?.org_name }}</label>
                             <input type="text" id="organ_name" class="form-control" v-model="org.name">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">{{ $lang?.step7?.web }}</label>
+                            <label for="" class="form-label">{{ useTrans('step7')?.web }}</label>
                             <input type="text" id="organ_web" class="form-control" v-model="org.website">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">{{ $lang?.step7?.address }}</label>
+                            <label for="" class="form-label">{{ useTrans('step7')?.address }}</label>
                             <textarea class="form-control" id="organ_address" rows="3" v-model="org.address"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $lang?.layout?.cancel }}</button>
-                    <button type="button" class="btn btn-primary" @click="addAddress()" data-bs-dismiss="modal">{{ $lang?.layout?.save }}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ useTrans('layout')?.cancel }}</button>
+                    <button type="button" class="btn btn-primary" @click="addAddress()" data-bs-dismiss="modal">{{ useTrans('layout')?.save }}</button>
                 </div>
             </div>
         </div>
@@ -160,40 +160,40 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalStep72Label">{{ $lang?.step7?.add_traveler }}</h1>
+                    <h1 class="modal-title fs-5" id="modalStep72Label">{{ useTrans('step7')?.add_traveler }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 mb-3">
-                            <label for="name" class="form-label">{{ $lang?.step7?.traveler_is_member }}</label>
+                            <label for="name" class="form-label">{{ useTrans('step7')?.traveler_is_member }}</label>
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" id="is_socio" :value="0" v-model="travelers.is_socio">
-                                <label class="form-check-label" for="is_socio">{{ $lang?.layout?.no }}</label>
+                                <label class="form-check-label" for="is_socio">{{ useTrans('layout')?.no }}</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" id="is_socio" :value="1" v-model="travelers.is_socio">
-                                <label class="form-check-label" for="is_socio">{{ $lang?.layout?.yes }}</label>
+                                <label class="form-check-label" for="is_socio">{{ useTrans('layout')?.yes }}</label>
                             </div>
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">{{ $lang?.step7?.name }}</label>
+                            <label for="" class="form-label">{{ useTrans('step7')?.name }}</label>
                             <input type="text" class="form-control" v-model="travelers.name">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">{{ $lang?.step7?.email }}</label>
+                            <label for="" class="form-label">{{ useTrans('step7')?.email }}</label>
                             <input type="email" class="form-control" v-model="travelers.email">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">{{ $lang?.step7?.nationality }}</label>
+                            <label for="" class="form-label">{{ useTrans('step7')?.nationality }}</label>
                             <input type="text" class="form-control" v-model="travelers.nacionalidad">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $lang?.layout?.cancel }}</button>
-                    <button type="button" class="btn btn-primary" @click="addTraveler()" data-bs-dismiss="modal">{{ $lang?.layout?.save }}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ useTrans('layout')?.cancel }}</button>
+                    <button type="button" class="btn btn-primary" @click="addTraveler()" data-bs-dismiss="modal">{{ useTrans('layout')?.save }}</button>
                 </div>
             </div>
         </div>
@@ -202,11 +202,17 @@
 
 <script>
 import axios from 'axios'
+import { useTrans } from '@/Composables/trans';
 
 export default {
     props: {
         errors: [],
         data: Object,
+    },
+    setup() {
+        return {
+            useTrans,
+        };
     },
 	data(){
         return {

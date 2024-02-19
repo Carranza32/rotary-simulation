@@ -8,8 +8,8 @@
             </ul>
         </div>
 
-        <p class="fw-bold">{{ $lang?.step4?.page_title }}</p>
-        <p>{{ $lang?.step4?.page_description }} <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
+        <p class="fw-bold">{{ useTrans('step4')?.page_title }}</p>
+        <p>{{ useTrans('step4')?.page_description }} <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
 
         <div class="step-4-checks">
@@ -17,62 +17,62 @@
                 <input class="form-check-input" type="checkbox" value="1" name="paz" id="paz">
                 <label class="form-check-label" for="paz">
                     <img src="../../assets/images/pazyprevencion.png" height="40" class="rounded-circle">
-                    {{ $lang?.step4?.peace }}
+                    {{ useTrans('step4')?.peace }}
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="2" id="prev" name="prev" >
                 <label class="form-check-label" for="prev">
                     <img src="../../assets/images/prevencionenfermedades.png" height="40" class="rounded-circle">
-                    {{ $lang?.step4?.prevent }}
+                    {{ useTrans('step4')?.prevent }}
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="3"  id="agua" name="agua" >
                 <label class="form-check-label" for="agua">
                     <img src="../../assets/images/aguaysaneamiento.png" height="40" class="rounded-circle">
-                    {{ $lang?.step4?.water }}
+                    {{ useTrans('step4')?.water }}
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="4"  id="salud" name="salud" >
                 <label class="form-check-label" for="salud">
                     <img src="../../assets/images/saludmaternoinfantil.png" height="40" class="rounded-circle">
-                    {{ $lang?.step4?.health }}
+                    {{ useTrans('step4')?.health }}
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="5"  id="alf" name="alf" >
                 <label class="form-check-label" for="alf">
                     <img src="../../assets/images/alfabetizacion.png" height="40" class="rounded-circle">
-                    {{ $lang?.step4?.education }}
+                    {{ useTrans('step4')?.education }}
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="6"  id="des" name="des" >
                 <label class="form-check-label" for="des">
                     <img src="../../assets/images/desarrolloeconomico.png" height="40" class="rounded-circle">
-                    {{ $lang?.step4?.economic }}
+                    {{ useTrans('step4')?.economic }}
                 </label>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" value="7"  id="ambiente" name="ambiente" >
                 <label class="form-check-label" for="ambiente">
                     <img src="../../assets/images/medioambiente.png" height="40" class="rounded-circle">
-                    {{ $lang?.step4?.environment }}
+                    {{ useTrans('step4')?.environment }}
                 </label>
             </div>
         </div>
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                {{ $lang?.layout?.save_and_continue }}
+                {{ useTrans('layout')?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                {{ $lang?.layout?.save }}
+                {{ useTrans('layout')?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                {{ $lang?.layout?.out }}
+                {{ useTrans('layout')?.out }}
             </a>
         </div>
     </form>
@@ -80,10 +80,17 @@
 
 <script>
 import axios from 'axios'
+import { useTrans } from '@/Composables/trans';
+
 export default {
     props: {
         errors: [],
         data: Object,
+    },
+    setup() {
+        return {
+            useTrans,
+        };
     },
     mounted() {
         try {

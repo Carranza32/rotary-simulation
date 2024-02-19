@@ -65,9 +65,9 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">{{ $lang?.step1?.contact_name }}</th>
-                        <th scope="col">{{ $lang?.step1?.contact_club }}</th>
-                        <th scope="col">{{ $lang?.step1?.contact_district }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_name }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_club }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_district }}</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
@@ -92,9 +92,9 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">{{ $lang?.step1?.contact_name }}</th>
-                        <th scope="col">{{ $lang?.step1?.contact_club }}</th>
-                        <th scope="col">{{ $lang?.step1?.contact_district }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_name }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_club }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_district }}</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
@@ -119,9 +119,9 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">{{ $lang?.step1?.contact_name }}</th>
-                        <th scope="col">{{ $lang?.step1?.contact_club }}</th>
-                        <th scope="col">{{ $lang?.step1?.contact_district }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_name }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_club }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_district }}</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
@@ -146,9 +146,9 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">{{ $lang?.step1?.contact_name }}</th>
-                        <th scope="col">{{ $lang?.step1?.contact_club }}</th>
-                        <th scope="col">{{ $lang?.step1?.contact_district }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_name }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_club }}</th>
+                        <th scope="col">{{ useTrans('step1').contact_district }}</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
@@ -170,3 +170,15 @@
         </div>
     </div>
 </template>
+
+<script>
+import { useTrans } from '@/Composables/trans';
+
+export default {
+    setup() {
+        return {
+            useTrans,
+        };
+    },
+}
+</script>

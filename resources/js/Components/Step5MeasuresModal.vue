@@ -9,26 +9,26 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-6">
-                            <label for="" class="form-label">Medida</label>
+                            <label for="" class="form-label">{{ useTrans('step5')?.measure }}</label>
                             <select class="form-select" id="measure" aria-label="Default select example" v-model="measure">
                                 <option v-for="(item, index) in modalMeasures" :key="index" :value="item" :selected="index == 0">{{ item }}</option>
                             </select>
                         </div>
                         <div class="col-6">
-                            <label for="" class="form-label">Método para obtener la información</label>
+                            <label for="" class="form-label">{{ useTrans('step5')?.method }}</label>
                             <select class="form-select" id="method" aria-label="Default select example" v-model="method">
                                 <option v-for="(item, index) in modalInformations" :key="index" :value="item" :selected="index == 0">{{ item }}</option>
                             </select>
                         </div>
 
                         <div class="col-6">
-                            <label for="" class="form-label">Frecuencia</label>
+                            <label for="" class="form-label">{{ useTrans('step5')?.frecuency }}</label>
                             <select class="form-select" id="frecuencie" aria-label="Default select example" v-model="frecuencie">
                                 <option v-for="(item, index) in modalFrecuencies" :key="index" :value="item" :selected="index == 0">{{ item }}</option>
                             </select>
                         </div>
                         <div class="col-6">
-                            <label for="" class="form-label">Beneficiarios</label>
+                            <label for="" class="form-label">{{ useTrans('step5')?.beneficiaries }}</label>
                             <select class="form-select" id="benefits" aria-label="Default select example" v-model="benefits">
                                 <option v-for="(item, index) in modalBenefits" :key="index" :value="item" :selected="index == 0">{{ item }}</option>
                             </select>
@@ -36,8 +36,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $('layout?.cancel') }}</button>
-                    <button type="button" class="btn btn-primary" @click="addMeasure()" data-bs-dismiss="modal">{{ $('layout?.save') }}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ useTrans('layout')?.cancel }}</button>
+                    <button type="button" class="btn btn-primary" @click="addMeasure()" data-bs-dismiss="modal">{{ useTrans('layout')?.save }}</button>
                 </div>
             </div>
         </div>
@@ -45,6 +45,8 @@
 </template>
 
 <script>
+import { useTrans } from '@/Composables/trans';
+
 export default {
     props: {
         id: String,
@@ -53,6 +55,11 @@ export default {
         modalInformations: [],
         modalFrecuencies: [],
         modalBenefits: [],
+    },
+    setup() {
+        return {
+            useTrans,
+        };
     },
     data(){
         return {

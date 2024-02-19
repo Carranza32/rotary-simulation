@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="submit">
-        <p class="fw-bold text-uppercase">Documentos justificantes
+        <p class="fw-bold text-uppercase">{{ useTrans('stepDocuments')?.page_title }}
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
 
@@ -9,7 +9,7 @@
                 <td>
                     <div class="d-flex justify-content-start">
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Agregar archivo</label>
+                            <label for="formFile" class="form-label">{{ useTrans('stepDocuments')?.add_file }}</label>
                             <input class="form-control w-100" type="file" ref="files" multiple id="formFile" @change="handleFileUploads()">
                         </div>
                         <button type="button" @click="submit(false)" class="btn btn-primary float-start mt-3 ms-4 align-self-center">Cargar</button>
@@ -18,7 +18,7 @@
             </tr>
         </table>
 
-        <p class="fw-bold mt-3">Documentos ya cargados
+        <p class="fw-bold mt-3">{{ useTrans('stepDocuments')?.uploaded_files }}
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
         <table class="w-100" id="documentsTable">
@@ -31,17 +31,17 @@
             </tr>
         </table>
 
-        <button class="btn btn-link mt-3 mb-4 text-danger" type="button" @click="deleteSelectedFiles()" :disabled="(selectedFiles.length == 0)" ><i class="fa-solid fa-circle-xmark "></i> Borrar los archivos seleccionados</button>
+        <button class="btn btn-link mt-3 mb-4 text-danger" type="button" @click="deleteSelectedFiles()" :disabled="(selectedFiles.length == 0)" ><i class="fa-solid fa-circle-xmark "></i> {{ useTrans('stepDocuments')?.deleted_file }}</button>
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                {{ $lang?.layout?.save_and_continue }}
+                {{ useTrans('layout')?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                {{ $lang?.layout?.save }}
+                {{ useTrans('layout')?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                {{ $lang?.layout?.out }}
+                {{ useTrans('layout')?.out }}
             </a>
         </div>
     </form>
@@ -49,11 +49,17 @@
 
 <script>
 import axios from 'axios'
+import { useTrans } from '@/Composables/trans';
 
 export default {
     props: {
         errors: [],
         data: Object,
+    },
+    setup() {
+        return {
+            useTrans,
+        };
     },
     data() {
         return {

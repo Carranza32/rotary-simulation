@@ -10,11 +10,11 @@
             </ul>
         </div>
 
-        <p class="fw-bold">{{ $lang?.step6?.page_title }}</p>
+        <p class="fw-bold">{{ useTrans('step6')?.page_title }}</p>
         <div class="row">
             <div class="col">
                 <div class="mb-3">
-                    <label for="name" class="form-label">{{ $lang?.step6?.city }}</label>
+                    <label for="name" class="form-label">{{ useTrans('step6')?.city }}</label>
                     <input type="text" name="project_name" class="form-control" id="name" v-model="$store.state.step6.city">
                 </div>
             </div>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="name" class="form-label">{{ $lang?.step6?.country }}</label>
+            <label for="name" class="form-label">{{ useTrans('step6')?.country }}</label>
             <select class="form-select" aria-label="Default select example" v-model="selected_country">
                 <option v-for="country in countries" :value="country.code" :key="country.code">
                     {{ country.name }}
@@ -35,17 +35,17 @@
             </select>
         </div>
 
-        <p class="fw-bold">{{ $lang?.step6?.project }}</p>
+        <p class="fw-bold">{{ useTrans('step6')?.project }}</p>
         <div class="row">
             <div class="col">
                 <div class="mb-3">
-                    <label for="name" class="form-label">{{ $lang?.step6?.start_date }}</label>
+                    <label for="name" class="form-label">{{ useTrans('step6')?.start_date }}</label>
                     <input type="date" placeholder="dd/mm/yyyy" name="start_date" class="form-control" id="start_date" v-model="$store.state.step6.start_date">
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <label for="name" class="form-label">{{ $lang?.step6?.end_date }}</label>
+                    <label for="name" class="form-label">{{ useTrans('step6')?.end_date }}</label>
                     <input type="date" placeholder="dd/mm/yyyy" name="end_date" class="form-control" id="end_date" v-model="$store.state.step6.end_date">
                 </div>
             </div>
@@ -53,13 +53,13 @@
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                {{ $lang?.layout?.save_and_continue }}
+                {{ useTrans('layout')?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                {{ $lang?.layout?.save }}
+                {{ useTrans('layout')?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                {{ $lang?.layout?.out }}
+                {{ useTrans('layout')?.out }}
             </a>
         </div>
     </form>
@@ -68,11 +68,17 @@
 <script>
 import axios from 'axios'
 import countries from "@/Utils/countries.json";
+import { useTrans } from '@/Composables/trans';
 
 export default {
     props: {
         errors: [],
         data: Object,
+    },
+    setup() {
+        return {
+            useTrans,
+        };
     },
     data() {
         return {

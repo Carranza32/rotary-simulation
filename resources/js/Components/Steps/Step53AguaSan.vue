@@ -1,72 +1,72 @@
 <template>
     <div>
-        <h3>AGUA, SANEAMIENTO E HIGIENE</h3>
+        <h3>{{ useTrans('step5')?.water?.title }}</h3>
 
-        <p class="fw-bold">¿Qué metas de esta área de interés apoya el proyecto?</p>
-        <p>Selecciona todas las que correspondan. Te haremos preguntas sobre las que selecciones y, a la conclusión del proyecto, presentarás un informe con los resultados alcanzados en cada una de ellas. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
+        <p class="fw-bold">{{ useTrans('step5')?.prevent?.description }}</p>
+        <p>{{ useTrans('step5')?.prevent?.description2 }}<span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
 
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="53_1">
             <label class="form-check-label">
-                Facilitar el acceso universal y equitativo y accesible al agua potable.
+                {{ useTrans('step5')?.water?.check1 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="53_2">
             <label class="form-check-label">
-                Mejorar la calidad del agua mediante la protección y el mantenimiento de los recursos hídricos superficiales o subterráneos, la reducción de la polución y los contaminantes, y la promoción de la reutilización de las aguas residuales.
+                {{ useTrans('step5')?.water?.check2 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="53_3">
             <label class="form-check-label">
-                Facilitar el acceso universal y equitativo a servicios mejorados de saneamiento y tratamiento de residuos con el fin de acabar con la práctica de la defecación al aire libre en las comunidades.
+                {{ useTrans('step5')?.water?.check3 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="53_4">
             <label class="form-check-label">
-                Mejorar los conocimientos, hábitos y prácticas de higiene de la comunidad para así contribuir a la prevención de la transmisión de enfermedades.
+                {{ useTrans('step5')?.water?.check4 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="53_5">
             <label class="form-check-label">
-                Fortalecer las capacidad de los gobiernos, instituciones y comunidades para diseñar, financiar, administrar y mantener servicios de suministro de agua y saneamiento sostenibles.
+                {{ useTrans('step5')?.water?.check5 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="53_6">
             <label class="form-check-label">
-                Financiar becas de postgrado para profesionales de campos relacionados con el agua, el saneamiento y la higiene.
+                {{ useTrans('step5')?.water?.check6 }}
             </label>
         </div>
 
         <Step5MeasuresTable :id="53" :measures="$store.state.step5.measures53"/>
 
         <div class="mb-3">
-            <label class="form-label">¿Ya sabes quíen recopilará la información necesario para la evaluación y el monitoreo?</label>
+            <label class="form-label">{{ useTrans('step5')?.prevent?.collect_info }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="evaluation_step5" value="1" v-model="evaluation">
-                <label class="form-check-label">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="evaluation_step5" value="0" v-model="evaluation">
-                <label class="form-check-label">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="my-3" v-if="evaluation == true">
             <div class="mb-3">
-                <label class="form-label">Nombre de la empresa u organización</label>
+                <label class="form-label">{{ useTrans('step5')?.pazprev?.business_name }}</label>
                 <input type="text" class="form-control" v-model="name">
             </div>
 
             <div class="mb-3">
                 <label for="textarea" class="form-label">
-                    Explica brevemente por qué esta persona u organización están capacitadas para realizar esta tarea.
+                    {{ useTrans('step5')?.pazprev?.capacity }}
                 </label>
 
                 <textarea class="form-control" id="textarea" rows="5" v-model="explication"></textarea>
@@ -76,56 +76,37 @@
         <div class="my-3" v-if="evaluation == false">
             <div class="mb-3">
                 <label for="textarea" class="form-label">
-                    Indica cómo buscarás a la persona u organización que se encargará de realizar esta tarea.
+                    {{ useTrans('step5')?.pazprev?.explain }}
                 </label>
 
                 <textarea class="form-control" id="textarea" rows="5" v-model="person_name"></textarea>
             </div>
         </div>
 
-        <step-5-measures-modal :id="53" title="AGUA, SANEAMIENTO E HIGIENE" :modalMeasures="modalMeasures" :modalInformations="modalInformations" :modalFrecuencies="modalFrecuencies" :modalBenefits="modalBenefits"/>
+        <step-5-measures-modal :id="53" :title="useTrans('step5')?.water?.title" :modalMeasures="modalMeasures" :modalInformations="modalInformations" :modalFrecuencies="modalFrecuencies" :modalBenefits="modalBenefits"/>
     </div>
 </template>
 
 <script>
 import Step5MeasuresTable from '@/Components/Step5MeasuresTable.vue'
 import Step5MeasuresModal from '@/Components/Step5MeasuresModal.vue'
+import { useTrans } from '@/Composables/trans';
 
 export default {
     components: {
         Step5MeasuresTable,
         Step5MeasuresModal
     },
+    setup() {
+        return {
+            useTrans,
+        };
+    },
     data(){
         return {
-            modalMeasures: [
-                "Número de personas con acceso a fuentes mejoradas de agua potable.",
-                "Número de personas con acceso a instalaciones de saneamiento mejoradas.",
-                "Número de personas con acceso a agua desinfectada a través del tratamiento de agua doméstico.",
-                "Número de comunidades con un comité de gobierno en funcionamiento.",
-                "Número de comunidades utilizando una estructura de tarifa / uso.",
-                "Número de personas capacitadas.",
-                "Otros",
-            ],
-            modalInformations: [
-                "Observación directa",
-                "Grupos de enfoque/entrevistas",
-                "Registros e informes de subvenciones",
-                "Registros Públicos",
-                "Imágenes de satélite",
-                "Encuestas/cuestionarios",
-                "Pruebas",
-            ],
-            modalFrecuencies: [
-                "Semanal",
-                "Cada dos semanas",
-                "Cada mes",
-                "Cada dos meses",
-                "Cada tres meses",
-                "Cada cuatro meses",
-                "Cada seis meses",
-                "Cada Año",
-            ],
+            modalMeasures: this.useTrans('step5')?.water?.modalMeasures,
+            modalInformations: this.useTrans('step5')?.water?.modalInformations,
+            modalFrecuencies: this.useTrans('step5')?.water?.modalFrecuencies,
             modalBenefits: [
                 "1-19",
                 "20-49",

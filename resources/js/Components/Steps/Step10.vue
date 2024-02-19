@@ -8,40 +8,40 @@
             </ul>
         </div>
 
-        <p class="fw-bold">Los proyectos sostenibles ofrecen soluciones a largo plazo a los problemas que enfrenta una comunidad. Para que un proyecto sea sostenible, los integrantes de la comunidad deberán mantener por si mismos las actividades del proyecto una vez se agoten los fondos de la subvención. Tus respuestas a las preguntas que se incluyen a continuación nos ayudarán a determinar qué elementos del proyecto lo hacen sostenible.</p>
-        <h4>PROYECTOS HUMANITARIOS</h4>
+        <p class="fw-bold">{{ useTrans('step10')?.page_description }}</p>
+        <h4>{{ useTrans('step10')?.page_title }}</h4>
 
-        <p class="fw-bold">Planificaión del proyecto</p>
+        <p class="fw-bold">{{ useTrans('step10')?.project_plan }}</p>
         <hr>
 
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">Describe las necesidades de la comunidad que abordará el proyecto.</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.nececities }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.necesities"></textarea>
         </div>
 
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">¿Qué proceso se siguió para determinar estas necesidades?</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.process }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.necesities_process"></textarea>
         </div>
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">¿Cómo participaron los integrantes de la comunidad beneficiaria en la búsqueda de soluciones?</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.integrants }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.participants1"></textarea>
         </div>
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">¿Qué participación tuvieron los integrantes de la comunidad local en la planificación del proyecto?</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.participation }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.participants2"></textarea>
         </div>
 
-        <p class="fw-bold">Implementación del proyecto</p>
+        <p class="fw-bold">{{ useTrans('step10')?.implement }}</p>
         <hr>
 
-        <p class="fw-bold">Resume cada etapa de la implementación del proyecto.</p>
-        <small>Do not include sensitive personal data, such as government ID numbers, religion, race, health information, etc. If you include personal data, you are responsible for informing those whose personal data is included that you are providing it to Rotary and that it will be processed in accordance with Rotary’s Privacy Policy.</small>
+        <p class="fw-bold">{{ useTrans('step10')?.resume_imp }}</p>
+        <small>{{ useTrans('step10')?.disclamer }}</small>
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col"># Actividad</th>
-                    <th scope="col">Duración</th>
+                    <th scope="col"># {{ useTrans('step10')?.activ }}</th>
+                    <th scope="col">{{ useTrans('step10')?.duration }}</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -59,154 +59,154 @@
             <tfoot>
                 <tr>
                     <td colspan="7">
-                        <button type="button" @click="addActivity()">+ Agregar actividad</button>
+                        <button type="button" @click="addActivity()">+ {{ useTrans('step10')?.add_activ }}</button>
                     </td>
                 </tr>
             </tfoot>
         </table>
 
         <div class="mb-3">
-            <label for="name" class="form-label">¿Trabajarás en coordinación con otras iniciativas afines que estuvieran en marcha en la comunidad?</label>
+            <label for="name" class="form-label">{{ useTrans('step10')?.cooperative }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="coo_work_yes" value="1" v-model="$store.state.step10.coo_work">
-                <label class="form-check-label" for="coo_work_yes">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label" for="coo_work_yes">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="coo_work_no" value="0" v-model="$store.state.step10.coo_work">
-                <label class="form-check-label" for="coo_work_no">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label" for="coo_work_no">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">Describe los programas de capacitación, educación o divulgación a la comunidad que abarcará el proyecto.</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.capacitation }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.capacitation"></textarea>
         </div>
 
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">¿Qué proceso se siguió para determinar las necesidades?</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.determinate_necesities }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.determinate_necesities"></textarea>
         </div>
 
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">¿Qué incentivos (por ejemplo: compensación económica, premios, certificaciones o publicidad) se utilizarán para animar a los integrantes de la comunidad a participar en el proyecto?</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.incentives }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.incentives"></textarea>
         </div>
 
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">Ingresa el nombre de los integrantes o grupos de la comunidad que supervisarán las actividades del proyecto una vez concluidas las actividades financiadas con la subvención.</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.supervisors_names }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.supervisors_names"></textarea>
         </div>
 
-        <h4>PRESUPUESTO</h4>
+        <h4>{{ useTrans('step10')?.budget }}</h4>
         <div class="mb-3">
-            <label for="name" class="form-label">¿Usarás proveedores locales para adquirir los equipos y materiales presupuestados?</label>
+            <label for="name" class="form-label">{{ useTrans('step10')?.providers }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="use_providers_yes" value="1" v-model="$store.state.step10.use_providers">
-                <label class="form-check-label" for="use_providers_yes">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label" for="use_providers_yes">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="use_providers_no" value="0" v-model="$store.state.step10.use_providers">
-                <label class="form-check-label" for="use_providers_no">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label" for="use_providers_no">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="name" class="form-label">¿Se utilizó un proceso de licitación para seleccionar a los proveedores?</label>
+            <label for="name" class="form-label">{{ useTrans('step10')?.licit }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="use_tender_yes" value="1" v-model="$store.state.step10.use_tender">
-                <label class="form-check-label" for="use_tender_yes">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label" for="use_tender_yes">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="use_tender_no" value="0" v-model="$store.state.step10.use_tender">
-                <label class="form-check-label" for="use_tender_no">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label" for="use_tender_no">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="name" class="form-label">¿Tiene alguno de los integrantes del comité un posible conflicto de interés con alguno de los proveedores?</label>
+            <label for="name" class="form-label">{{ useTrans('step10')?.integ }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="has_conflict_providers_yes" value="1" v-model="$store.state.step10.has_conflict_providers">
-                <label class="form-check-label" for="has_conflict_providers_yes">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label" for="has_conflict_providers_yes">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="has_conflict_providers_no" value="0" v-model="$store.state.step10.has_conflict_providers">
-                <label class="form-check-label" for="has_conflict_providers_no">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label" for="has_conflict_providers_no">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">Si el proyecto incluye la adquisición de equipos o materiales, proporciona el plan de operación y mantenimiento. El plan deberá indicar quiénes estarán a cargo de operar y brindar mantenimiento a los equipos y la capacitación que recibirán</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.adqui }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.equipment_included"></textarea>
         </div>
 
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">Describe como los integrantes de la comunidad brindarán mantenimiento a los equipos una vez concluidas las actividades de la subvención. ¿Podrán encontrarse repuestos?</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.community_inte }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.equipment_maintenance"></textarea>
         </div>
 
         <div class="mb-3">
-            <label for="name" class="form-label">Si se utilizarán fondos de la subvención para adquirir equipos, ¿serán éstos adecuados al entorno cultural y los estándares tecnológicos de la comunidad?</label>
+            <label for="name" class="form-label">{{ useTrans('step10')?.subvenc }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="local" value="1" v-model="$store.state.step10.use_founds">
-                <label class="form-check-label" for="local">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label" for="local">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="internacional" value="0" v-model="$store.state.step10.use_founds">
-                <label class="form-check-label" for="internacional">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label" for="internacional">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">Una vez completado el proyecto, ¿a quién pertenecerán los artículos adquiridos con los fondos de la subvención? Ningún artículo podrá ser propiedad de un distrito, club o socio.</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.completed_project }}</label>
             <textarea class="form-control" id="txtarea1" rows="4" v-model="$store.state.step10.completed_proyect"></textarea>
         </div>
 
-        <h4>FINANCIACIÓN</h4>
+        <h4>{{ useTrans('step10')?.finantiation }}</h4>
         <div class="mb-3">
-            <label for="name" class="form-label">¿Incluye tu proyecto actividades de microcrédito?</label>
+            <label for="name" class="form-label">{{ useTrans('step10')?.credit }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="local" value="1" v-model="$store.state.step10.has_microcredit">
-                <label class="form-check-label" for="local">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label" for="local">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="internacional" value="0" v-model="$store.state.step10.has_microcredit">
-                <label class="form-check-label" for="internacional">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label" for="internacional">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="name" class="form-label">¿Cuentas con una fuente de financiación local para mantener los resultados del proyecto a largo plazo? </label>
+            <label for="name" class="form-label">{{ useTrans('step10')?.account }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="local" value="1" v-model="$store.state.step10.has_local_founds">
-                <label class="form-check-label" for="local">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label" for="local">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="internacional" value="0" v-model="$store.state.step10.has_local_founds">
-                <label class="form-check-label" for="internacional">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label" for="internacional">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="mb-3">
-            <label for="txtarea1" class="form-label">¿Generará algún elemento del proyecto ingresos que se destinarán a financiar el proyecto a largo plazo? De ser así, explica.</label>
+            <label for="txtarea1" class="form-label">{{ useTrans('step10')?.element }}</label>
             <textarea class="form-control" id="txtarea1" rows="5" v-model="$store.state.step10.generate_income"></textarea>
         </div>
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                {{ $lang?.layout?.save_and_continue }}
+                {{ useTrans('layout')?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                {{ $lang?.layout?.save }}
+                {{ useTrans('layout')?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                {{ $lang?.layout?.out }}
+                {{ useTrans('layout')?.out }}
             </a>
         </div>
     </form>
@@ -214,11 +214,17 @@
 
 <script>
 import axios from 'axios'
+import { useTrans } from '@/Composables/trans';
 
 export default {
     props: {
         errors: [],
         data: Object,
+    },
+    setup() {
+        return {
+            useTrans,
+        };
     },
     data() {
         return {

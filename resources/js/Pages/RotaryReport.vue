@@ -3,7 +3,7 @@
     <AuthenticatedLayout>
         <div class="py-5">
             <div class="d-flex justify-content-between">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-5">{{ $lang?.dashboard?.created_forms }}</h2>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-5">{{ useTrans('dashboard')?.created_forms }}</h2>
             </div>
 
             <div class="row row-cols-1 row-cols-md-3 g-4">

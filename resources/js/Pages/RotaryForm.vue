@@ -6,16 +6,16 @@
             <div class="col-lg-10 col-sm-12">
                 <div class="primary-bg">
                     <p class="p-3 text-white fw-bold" >
-                        <span class="mx-4">{{ $lang?.layout?.district_number }}: {{ user?.district }}</span>
+                        <span class="mx-4">{{ useTrans('layout')?.district_number }}: {{ user?.district }}</span>
 
-                        {{ $lang?.layout?.district_status }}:
-                        <span style="color: #9add6b;"><i class="fa-solid fa-circle-check"></i> {{ $lang?.layout?.district_certification }}</span>
+                        {{ useTrans('layout')?.district_status }}:
+                        <span style="color: #9add6b;"><i class="fa-solid fa-circle-check"></i> {{ useTrans('layout')?.district_certification }}</span>
                     </p>
                 </div>
 
-                <h4 class="title-color my-3">{{ $lang?.layout?.title }}</h4>
+                <h4 class="title-color my-3">{{ useTrans('layout')?.title }}</h4>
 
-                <p class="mt-5 mb-3"><strong>{{ $lang?.layout?.subtitle }}</strong></p>
+                <p class="mt-5 mb-3"><strong>{{ useTrans('layout')?.subtitle }}</strong></p>
 
                 <vue3-html2pdf
                     :show-layout="false"
@@ -39,60 +39,60 @@
                         <div id="pdf-content">
                             <div class="primary-bg">
                                 <p class="p-3 text-white fw-bold" >
-                                    <span class="mx-4">{{ $lang?.layout?.district_number }}: {{ user?.district }}</span>
+                                    <span class="mx-4">{{ useTrans('layout')?.district_number }}: {{ user?.district }}</span>
 
-                                    {{ $lang?.layout?.district_status }}:
-                                    <span style="color: #9add6b;"><i class="fa-solid fa-circle-check"></i> {{ $lang?.layout?.district_certification }}</span>
+                                    {{ useTrans('layout')?.district_status }}:
+                                    <span style="color: #9add6b;"><i class="fa-solid fa-circle-check"></i> {{ useTrans('layout')?.district_certification }}</span>
                                 </p>
                             </div>
 
-                            <h4 class="title-color my-3">{{ $lang?.layout?.district_status }}</h4>
+                            <h4 class="title-color my-3">{{ useTrans('layout')?.district_status }}</h4>
 
-                            <AccordionPdf id="step-1" :title="$lang?.step1?.title">
+                            <AccordionPdf id="step-1" :title="useTrans('step1').title">
                                 <Step1 />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-2" :title="$lang?.step2?.title">
+                            <AccordionPdf id="step-2" :title="useTrans('step2')?.title">
                                 <Step2 />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-3" :title="$lang?.step3?.title">
+                            <AccordionPdf id="step-3" :title="useTrans('step3')?.title">
                                 <Step3 />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-4" :title="$lang?.step4?.title">
+                            <AccordionPdf id="step-4" :title="useTrans('step4')?.title">
                                 <Step4 />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-5" :title="$lang?.step5?.title">
+                            <AccordionPdf id="step-5" :title="useTrans('step5')?.title">
                                 <Step5 />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-6" :title="$lang?.step6?.title">
+                            <AccordionPdf id="step-6" :title="useTrans('step6')?.title">
                                 <Step6 />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-7" :title="$lang?.step7?.title">
+                            <AccordionPdf id="step-7" :title="useTrans('step7')?.title">
                                 <Step7 />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-8" :title="$lang?.step8?.title">
+                            <AccordionPdf id="step-8" :title="useTrans('step8')?.title">
                                 <Step8 />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-9" :title="$lang?.step9?.title">
+                            <AccordionPdf id="step-9" :title="useTrans('step9')?.title">
                                 <Step9 />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-10" :title="$lang?.step10?.title">
+                            <AccordionPdf id="step-10" :title="useTrans('step10')?.title">
                                 <Step10 />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-11" :title="$lang?.step11?.title">
+                            <AccordionPdf id="step-11" :title="useTrans('step11')?.title">
                                 <Step11Documents />
                             </AccordionPdf>
 
-                            <AccordionPdf id="step-12" :title="$lang?.step12?.title">
+                            <AccordionPdf id="step-12" :title="useTrans('step12')?.title">
                                 <Step12 />
                             </AccordionPdf>
                         </div>
@@ -101,43 +101,43 @@
                 </vue3-html2pdf>
 
                 <div class="accordion accordion-flush" style="margin: 2px 0px;" id="accordionStepper">
-                    <accordion id="step-1" :title="$lang?.step1?.title">
+                    <accordion id="step-1" :title="useTrans('step1').title">
                         <Step1 />
                     </accordion>
 
-                    <accordion id="step-2" :title="$lang?.step2?.title">
+                    <accordion id="step-2" :title="useTrans('step2')?.title">
                         <Step2 />
                     </accordion>
 
-                    <accordion id="step-3" :title="$lang?.step3?.title">
+                    <accordion id="step-3" :title="useTrans('step3')?.title">
                         <Step3 />
                     </accordion>
 
-                    <accordion id="step-4" :title="$lang?.step4?.title">
+                    <accordion id="step-4" :title="useTrans('step4')?.title">
                         <Step4 />
                     </accordion>
 
-                    <accordion id="step-5" :title="$lang?.step5?.title">
+                    <accordion id="step-5" :title="useTrans('step5')?.title">
                         <Step5 />
                     </accordion>
 
-                    <accordion id="step-6" :title="$lang?.step6?.title">
+                    <accordion id="step-6" :title="useTrans('step6')?.title">
                         <Step6 />
                     </accordion>
 
-                    <accordion id="step-7" :title="$lang?.step7?.title">
+                    <accordion id="step-7" :title="useTrans('step7')?.title">
                         <Step7 />
                     </accordion>
 
-                    <accordion id="step-8" :title="$lang?.step8?.title">
+                    <accordion id="step-8" :title="useTrans('step8')?.title">
                         <Step8 />
                     </accordion>
 
-                    <accordion id="step-9" :title="$lang?.step9?.title">
+                    <accordion id="step-9" :title="useTrans('step9')?.title">
                         <Step9 />
                     </accordion>
 
-                    <accordion id="step-10" :title="$lang?.step10?.title">
+                    <accordion id="step-10" :title="useTrans('step10')?.title">
                         <Step10 />
                     </accordion>
 
@@ -145,28 +145,28 @@
                         <Step11Documents />
                     </accordion>
 
-                    <accordion id="step-11" :title="$lang?.step11?.title">
+                    <accordion id="step-11" :title="useTrans('step11')?.title">
                         <Step11 />
                     </accordion>
 
-                    <accordion id="step-12" :title="$lang?.step12?.title">
+                    <accordion id="step-12" :title="useTrans('step12')?.title">
                         <Step12 />
 
                         <div class="progress mb-3" v-show="loading">
-                            <div class="progress-bar bg-success" role="progressbar" aria-label="Example with label" :style="{ 'width': loading + '%' }" :aria-valuenow="loading" aria-valuemin="0" aria-valuemax="100">{{ $lang?.step12?.generating }}: {{ loading }}%</div>
+                            <div class="progress-bar bg-success" role="progressbar" aria-label="Example with label" :style="{ 'width': loading + '%' }" :aria-valuenow="loading" aria-valuemin="0" aria-valuemax="100">{{ useTrans('step12')?.generating }}: {{ loading }}%</div>
                         </div>
 
                         <div class="d-flex justify-content-start gap-3 mt-4">
                             <a class="btn btn-primary" @click="submit12()">
-                                {{ $lang?.step12?.save_and_continue }}
+                                {{ useTrans('step12')?.save_and_continue }}
                             </a>
 
                             <button class="btn btn-outline-primary" @click="generatePDF()">
-                                {{ $lang?.step12?.generating_pdf }}
+                                {{ useTrans('step12')?.generating_pdf }}
                             </button>
 
                             <a class="btn btn-link" :href="route('dashboard')">
-                                {{ $lang?.step12?.out }}
+                                {{ useTrans('step12')?.out }}
                             </a>
                         </div>
 
@@ -174,7 +174,7 @@
                 </div>
             </div>
             <aside class="col-2 p-4">
-                {{ $lang?.layout?.step }} : {{ $store.state.currentStep }}
+                {{ useTrans('layout')?.step }} : {{ $store.state.currentStep }}
             </aside>
         </div>
     </AuthenticatedLayout>
@@ -200,12 +200,18 @@
     import Step12 from '@/Components/Steps/Step12.vue';
     import Vue3Html2pdf from 'vue3-html2pdf'
     import axios from 'axios'
+    import { useTrans } from '@/Composables/trans';
 
     export default {
         props: {
             form: Object,
             errors: [],
             data: Object,
+        },
+        setup() {
+            return {
+                useTrans,
+            };
         },
         data() {
             return {
@@ -250,7 +256,7 @@
                 this.loading = event
             },
             hasGenerated() {
-                alert(this.$lang?.step12?.pdf_generated);
+                alert(this.useTrans('step12')?.pdf_generated);
             },
             generatePDF() {
                 this.$refs.html2Pdf.generatePdf()
@@ -263,7 +269,7 @@
                     id: this.$page.props?.form?.id
                 })
                 .then((response) => {
-                    this.$swal(this.$lang?.step12?.step12_saved, '', 'success');
+                    this.$swal(this.useTrans('step12')?.step12_saved, '', 'success');
                     console.log(response);
                     //redirect to dashboard
                     window.location.href = route('dashboard')

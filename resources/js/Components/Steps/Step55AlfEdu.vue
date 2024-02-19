@@ -1,33 +1,33 @@
 <template>
     <div>
-        <h3>ALFABETIZACIÓN Y EDUCACIÓN BÁSICA</h3>
+        <h3>{{ useTrans('step5')?.education?.title }}</h3>
 
-        <p class="fw-bold">¿Qué metas de esta área de interés apoya el proyecto?</p>
-        <p>Selecciona todas las que correspondan. Te haremos preguntas sobre las que selecciones y, a la conclusión del proyecto, presentarás un informe con los resultados alcanzados en cada una de ellas. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
+        <p class="fw-bold">{{ useTrans('step5')?.prevent?.description }}</p>
+        <p>{{ useTrans('step5')?.prevent?.description2 }}<span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
 
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="55_1">
             <label class="form-check-label">
-                Apoyar programas destinados a fortalecer la capacidad de las comunidades para proporcionar educación básica y alfabetización a todos sus integrantes.
+                {{ useTrans('step5')?.education?.check1 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="55_2">
             <label class="form-check-label">
-                Aumentar el nivel de alfabetización de los adultos.
+                {{ useTrans('step5')?.education?.check2 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="55_3">
             <label class="form-check-label">
-                Trabajar para reducir la disparidad educativa entre los géneros.
+                {{ useTrans('step5')?.education?.check3 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="55_4">
             <label class="form-check-label">
-                Financiar becas de postgrado para profesionales en campos relacionados con la alfabetización y la educación básica.
+                {{ useTrans('step5')?.education?.check4 }}
             </label>
         </div>
 
@@ -38,23 +38,23 @@
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="evaluation_step5" value="1" v-model="evaluation">
-                <label class="form-check-label">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="evaluation_step5" value="0" v-model="evaluation">
-                <label class="form-check-label">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="my-3" v-if="evaluation == true">
             <div class="mb-3">
-                <label class="form-label">Nombre de la empresa u organización</label>
+                <label class="form-label">{{ useTrans('step5')?.pazprev?.business_name }}</label>
                 <input type="text" class="form-control" v-model="name">
             </div>
 
             <div class="mb-3">
                 <label for="textarea" class="form-label">
-                    Explica brevemente por qué esta persona u organización están capacitadas para realizar esta tarea.
+                    {{ useTrans('step5')?.pazprev?.capacity }}
                 </label>
 
                 <textarea class="form-control" id="textarea" rows="5" v-model="explication"></textarea>
@@ -64,58 +64,37 @@
         <div class="my-3" v-if="evaluation == false">
             <div class="mb-3">
                 <label for="textarea" class="form-label">
-                    Indica cómo buscarás a la persona u organización que se encargará de realizar esta tarea.
+                    {{ useTrans('step5')?.pazprev?.explain }}
                 </label>
 
                 <textarea class="form-control" id="textarea" rows="5" v-model="person_name"></textarea>
             </div>
         </div>
 
-        <step-5-measures-modal :id="55" title="ALFABETIZACIÓN Y EDUCACIÓN BÁSICA" :modalMeasures="modalMeasures" :modalInformations="modalInformations" :modalFrecuencies="modalFrecuencies" :modalBenefits="modalBenefits"/>
+        <step-5-measures-modal :id="55" :title="useTrans('step5')?.education?.title" :modalMeasures="modalMeasures" :modalInformations="modalInformations" :modalFrecuencies="modalFrecuencies" :modalBenefits="modalBenefits"/>
     </div>
 </template>
 
 <script>
 import Step5MeasuresTable from '@/Components/Step5MeasuresTable.vue'
 import Step5MeasuresModal from '@/Components/Step5MeasuresModal.vue'
+import { useTrans } from '@/Composables/trans';
 
 export default {
     components: {
         Step5MeasuresTable,
         Step5MeasuresModal
     },
+    setup() {
+        return {
+            useTrans,
+        };
+    },
     data(){
         return {
-            modalMeasures: [
-                "Número de niños beneficiados en edad escolar",
-                "Número de nuevos estudiantes en edad escolar.",
-                "Número de nuevas niñas estudiantes en edad escolar.",
-                "Número de profesores recibiendo entrenamiento en educación de adultos.",
-                "Número de adultos recibiendo entrenamiento en alfabetización.",
-                "Número de instituciones participando en el programa.",
-                "Número de adultos usando nuevas habilidades de alfabetización .",
-                "Número de nuevos puestos docentes creados.",
-                "Otros",
-            ],
-            modalInformations: [
-                "Observación directa",
-                "Grupos de enfoque/entrevistas",
-                "Registros e informes de subvenciones",
-                "Registros Públicos",
-                "Imágenes de satélite",
-                "Encuestas/cuestionarios",
-                "Pruebas",
-            ],
-            modalFrecuencies: [
-                "Semanal",
-                "Cada dos semanas",
-                "Cada mes",
-                "Cada dos meses",
-                "Cada tres meses",
-                "Cada cuatro meses",
-                "Cada seis meses",
-                "Cada Año",
-            ],
+            modalMeasures: this.useTrans('step5')?.education?.modalMeasures,
+            modalInformations: this.useTrans('step5')?.education?.modalInformations,
+            modalFrecuencies: this.useTrans('step5')?.education?.modalFrecuencies,
             modalBenefits: [
                 "1-19",
                 "20-49",

@@ -8,18 +8,18 @@
             </ul>
         </div>
 
-        <p class="fw-bold">{{ $lang?.step9?.page_title }}</p>
+        <p class="fw-bold">{{ useTrans('step9')?.page_title }}</p>
 
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">{{ $lang?.step9?.source }}</th>
-                        <th scope="col">{{ $lang?.step9?.details }}</th>
-                        <th scope="col">{{ $lang?.step9?.amount }}</th>
-                        <th scope="col">{{ $lang?.step9?.support }}*</th>
-                        <th scope="col">{{ $lang?.step9?.total }}</th>
+                        <th scope="col">{{ useTrans('step9')?.source }}</th>
+                        <th scope="col">{{ useTrans('step9')?.details }}</th>
+                        <th scope="col">{{ useTrans('step9')?.amount }}</th>
+                        <th scope="col">{{ useTrans('step9')?.support }}*</th>
+                        <th scope="col">{{ useTrans('step9')?.total }}</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -42,39 +42,39 @@
                 <tfoot>
                     <tr>
                         <td colspan="7">
-                            <a href="#!" @click="newFontSource()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep9" >+ {{ $lang?.step9?.add_source }}</a>
+                            <a href="#!" @click="newFontSource()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalStep9" >+ {{ useTrans('step9')?.add_source }}</a>
                         </td>
                     </tr>
                 </tfoot>
-                <caption>* {{ $lang?.step9?.add_source_description }}</caption>
+                <caption>* {{ useTrans('step9')?.add_source_description }}</caption>
             </table>
         </div>
 
-        <p class="fw-bold">{{ $lang?.step9?.amount_project }}
+        <p class="fw-bold">{{ useTrans('step9')?.amount_project }}
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
         <div class="bg-light p-3">
             <div class="row">
                 <div class="col-6">
-                    <p class="tw-bold">{{ $lang?.step9?.amount_project_description }}</p>
+                    <p class="tw-bold">{{ useTrans('step9')?.amount_project_description }}</p>
                 </div>
                 <div class="col-6">
                     <input type="text" class="form-control" v-model="$store.state.step9.world_donation">
                     <div class="invalid-feedback">
-                        {{ $lang?.step9?.amount_project_validation }}
+                        {{ useTrans('step9')?.amount_project_validation }}
                     </div>
                 </div>
             </div>
         </div>
 
-        <p class="fw-bold">{{ $lang?.step9?.finantiation_resume }}
+        <p class="fw-bold">{{ useTrans('step9')?.finantiation_resume }}
             <span class="float-end"><i class="fa-regular fa-circle-question"></i></span>
         </p>
         <div class="alert alert-warning d-flex align-items-center" role="alert" v-if="showAlert()">
             <i class="fa-solid fa-circle-exclamation"></i>
             <div class="ms-3">
-                <span class="text-uppercase">{{ $lang?.step9?.atention }}:</span><br>
-                {{ $lang?.step9?.finantiation_resume_validation }}
+                <span class="text-uppercase">{{ useTrans('step9')?.atention }}:</span><br>
+                {{ useTrans('step9')?.finantiation_resume_validation }}
             </div>
         </div>
 
@@ -83,23 +83,23 @@
             <div class="col">
                 <table class="w-100">
                     <tr>
-                        <td class="text-end">{{ $lang?.step9?.contributions }}:</td>
+                        <td class="text-end">{{ useTrans('step9')?.contributions }}:</td>
                         <td class="text-end">{{ sumFDD() }}</td>
                     </tr>
                     <tr>
-                        <td class="text-end">{{ $lang?.step9?.money_contributions }}:</td>
+                        <td class="text-end">{{ useTrans('step9')?.money_contributions }}:</td>
                         <td class="text-end">{{ sumClub() }}</td>
                     </tr>
                     <tr>
-                        <td class="text-end">{{ $lang?.step9?.globla_fond }}:</td>
+                        <td class="text-end">{{ useTrans('step9')?.globla_fond }}:</td>
                         <td class="text-end">{{ $store.state.step9.world_donation }}</td>
                     </tr>
                     <tr class="p-3">
-                        <td class="text-end fw-bold my-3">{{ $lang?.step9?.total_fund }}:</td>
+                        <td class="text-end fw-bold my-3">{{ useTrans('step9')?.total_fund }}:</td>
                         <td class="text-end">{{ totalFinanciado() }}</td>
                     </tr>
                     <tr>
-                        <td class="text-end">{{ $lang?.step9?.budget_total }}:</td>
+                        <td class="text-end">{{ useTrans('step9')?.budget_total }}:</td>
                         <td class="text-end">{{ $store.state.step8.budget_step8 }}</td>
                     </tr>
                 </table>
@@ -108,13 +108,13 @@
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                {{ $lang?.layout?.save_and_continue }}
+                {{ useTrans('layout')?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                {{ $lang?.layout?.save }}
+                {{ useTrans('layout')?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                {{ $lang?.layout?.out }}
+                {{ useTrans('layout')?.out }}
             </a>
         </div>
 
@@ -126,39 +126,39 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalStep9Label">{{ $lang?.step9?.add_source }}</h1>
+                    <h1 class="modal-title fs-5" id="modalStep9Label">{{ useTrans('step9')?.add_source }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">
-                            <label for="" class="form-label">{{ $lang?.step9?.source }}</label>
+                            <label for="" class="form-label">{{ useTrans('step9')?.source }}</label>
                             <select class="form-select" id="source_money" aria-label="Default select example" v-model="source">
-                                <option value="Fondo Distrital Designado (FDD)">{{ $lang?.step9?.fdd_contributions }}</option>
-                                <option value="Efectivo procedente del distrito">{{ $lang?.step9?.district_money }}</option>
-                                <option value="Efectivo procedente del club">{{ $lang?.step9?.club_money }}</option>
-                                <option value="Contribuciones realizadas por personas ajenas a Rotary NO equipadas por la Fundación">{{ $lang?.step9?.no_rotary_money }}</option>
-                                <option value="Fondo Designado por los Donantes de la Fundación Rotaria">{{ $lang?.step9?.rotary_money }}</option>
-                                <option value="Endowed/Directed gift - T10031 - Ernesto Leal Memorial Named Ambassadorial Scholarship">{{ $lang?.step9?.own_money }}</option>
+                                <option value="Fondo Distrital Designado (FDD)">{{ useTrans('step9')?.fdd_contributions }}</option>
+                                <option value="Efectivo procedente del distrito">{{ useTrans('step9')?.district_money }}</option>
+                                <option value="Efectivo procedente del club">{{ useTrans('step9')?.club_money }}</option>
+                                <option value="Contribuciones realizadas por personas ajenas a Rotary NO equipadas por la Fundación">{{ useTrans('step9')?.no_rotary_money }}</option>
+                                <option value="Fondo Designado por los Donantes de la Fundación Rotaria">{{ useTrans('step9')?.rotary_money }}</option>
+                                <option value="Endowed/Directed gift - T10031 - Ernesto Leal Memorial Named Ambassadorial Scholarship">{{ useTrans('step9')?.own_money }}</option>
                             </select>
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">{{ $lang?.step9?.amount }}</label>
+                            <label for="" class="form-label">{{ useTrans('step9')?.amount }}</label>
                             <input type="number" min="0" class="form-control" v-model="amount">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">{{ $lang?.step9?.details }}</label>
+                            <label for="" class="form-label">{{ useTrans('step9')?.details }}</label>
                             <input type="text" class="form-control" v-model="detail">
                         </div>
                         <div class="col-12">
-                            <label for="" class="form-label">{{ $lang?.step9?.support }}</label>
+                            <label for="" class="form-label">{{ useTrans('step9')?.support }}</label>
                             <input type="text" class="form-control" v-model="support">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $lang?.layout?.cancel }}</button>
-                    <button type="button" class="btn btn-primary" @click="addFontSource()" data-bs-dismiss="modal">{{ $lang?.layout?.save }}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ useTrans('layout')?.cancel }}</button>
+                    <button type="button" class="btn btn-primary" @click="addFontSource()" data-bs-dismiss="modal">{{ useTrans('layout')?.save }}</button>
                 </div>
             </div>
         </div>
@@ -167,11 +167,17 @@
 
 <script>
 import axios from 'axios'
+import { useTrans } from '@/Composables/trans';
 
 export default {
     props: {
         errors: [],
         data: Object,
+    },
+    setup() {
+        return {
+            useTrans,
+        };
     },
     data() {
         return {

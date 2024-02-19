@@ -7,10 +7,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Medida</th>
-                    <th scope="col">Método para obtener la información</th>
-                    <th scope="col">Frecuencia</th>
-                    <th scope="col">Beneficiarios</th>
+                    <th scope="col">{{ useTrans('step5')?.measure }}</th>
+                    <th scope="col">{{ useTrans('step5')?.method }}</th>
+                    <th scope="col">{{ useTrans('step5')?.frecuency }}</th>
+                    <th scope="col">{{ useTrans('step5')?.beneficiaries }}</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -38,10 +38,16 @@
 </template>
 
 <script>
+import { useTrans } from '@/Composables/trans';
 export default {
     props: {
         measures: [],
         id: String,
+    },
+    setup() {
+        return {
+            useTrans,
+        };
     },
     methods: {
         showModal() {

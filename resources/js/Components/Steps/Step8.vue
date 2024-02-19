@@ -8,14 +8,14 @@
             </ul>
         </div>
 
-        <p class="fw-bold">{{ $lang?.step8?.page_title }}</p>
-        <p>{{ $lang?.step8?.page_description }}<span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
+        <p class="fw-bold">{{ useTrans('step8')?.page_title }}</p>
+        <p>{{ useTrans('step8')?.page_description }}<span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
 
         <div class="row">
             <div class="col">
                 <div class="mb-3">
-                    <label for="name" class="form-label">{{ $lang?.step8?.currency }}</label>
+                    <label for="name" class="form-label">{{ useTrans('step8')?.currency }}</label>
                     <select class="form-select" aria-label="Default select example" v-model="$store.state.step8.currency">
                         <option value="USD" selected>USD</option>
                         <option value="EUR">EUR</option>
@@ -25,16 +25,16 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <label for="exchange_rate" class="form-label"><a href="#!">{{ $lang?.step8?.change_currency }}</a> {{ $lang?.step8?.change_for_dollar }}</label>
+                    <label for="exchange_rate" class="form-label"><a href="#!">{{ useTrans('step8')?.change_currency }}</a> {{ useTrans('step8')?.change_for_dollar }}</label>
                     <input type="number" class="form-control" id="exchange_rate" v-model="$store.state.step8.exchange_rate" >
-                    <small>{{ $lang?.step8?.saved_date }}</small>
+                    <small>{{ useTrans('step8')?.saved_date }}</small>
                 </div>
             </div>
         </div>
 
         <hr>
-        <p class="fw-bold">{{ $lang?.step8?.budget }}</p>
-        <p>{{ $lang?.step8?.budget_description }} <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
+        <p class="fw-bold">{{ useTrans('step8')?.budget }}</p>
+        <p>{{ useTrans('step8')?.budget_description }} <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
 
 
         <div class="table-responsive">
@@ -42,11 +42,11 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">{{ $lang?.step8?.category }}</th>
-                        <th scope="col">{{ $lang?.step8?.description }}</th>
-                        <th scope="col">{{ $lang?.step8?.provider }}</th>
-                        <th scope="col">{{ $lang?.step8?.usd_cost }}</th>
-                        <th scope="col">{{ $lang?.step8?.cost_in_usd }}$</th>
+                        <th scope="col">{{ useTrans('step8')?.category }}</th>
+                        <th scope="col">{{ useTrans('step8')?.description }}</th>
+                        <th scope="col">{{ useTrans('step8')?.provider }}</th>
+                        <th scope="col">{{ useTrans('step8')?.usd_cost }}</th>
+                        <th scope="col">{{ useTrans('step8')?.cost_in_usd }}$</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -55,19 +55,19 @@
                         <td>{{ item.id }}</td>
                         <td>
                             <select class="form-select" aria-label="Default select example" v-model="item.category">
-                                <option disabled>--{{ $lang?.layout?.select_option }}--</option>
-                                <option value="Accommodation">{{ $lang?.step8?.accommodation }}</option>
-                                <option value="Equipos">{{ $lang?.step8?.equipment }}</option>
-                                <option value="Monitoreo / evaluación">{{ $lang?.step8?.monitoring }}</option>
-                                <option value="Operaciones">{{ $lang?.step8?.operations }}</option>
-                                <option value="Personal">{{ $lang?.step8?.personnel }}</option>
-                                <option value="Administración de proyecto">{{ $lang?.step8?.admin_proyect }}</option>
-                                <option value="Publicidad">{{ $lang?.step8?.advertising }}</option>
-                                <option value="Señalización">{{ $lang?.step8?.Signaling }}</option>
-                                <option value="Suministros">{{ $lang?.step8?.supplies }}</option>
-                                <option value="Entrenamiento">{{ $lang?.step8?.training }}</option>
-                                <option value="Viajes">{{ $lang?.step8?.traveling }}</option>
-                                <option value="Matrícula">{{ $lang?.step8?.tuition }}</option>
+                                <option disabled>--{{ useTrans('layout')?.select_option }}--</option>
+                                <option value="Accommodation">{{ useTrans('step8')?.accommodation }}</option>
+                                <option value="Equipos">{{ useTrans('step8')?.equipment }}</option>
+                                <option value="Monitoreo / evaluación">{{ useTrans('step8')?.monitoring }}</option>
+                                <option value="Operaciones">{{ useTrans('step8')?.operations }}</option>
+                                <option value="Personal">{{ useTrans('step8')?.personnel }}</option>
+                                <option value="Administración de proyecto">{{ useTrans('step8')?.admin_proyect }}</option>
+                                <option value="Publicidad">{{ useTrans('step8')?.advertising }}</option>
+                                <option value="Señalización">{{ useTrans('step8')?.Signaling }}</option>
+                                <option value="Suministros">{{ useTrans('step8')?.supplies }}</option>
+                                <option value="Entrenamiento">{{ useTrans('step8')?.training }}</option>
+                                <option value="Viajes">{{ useTrans('step8')?.traveling }}</option>
+                                <option value="Matrícula">{{ useTrans('step8')?.tuition }}</option>
                             </select>
                         </td>
                         <td><input type="text" name="" id="" v-model="item.description"></td>
@@ -84,12 +84,12 @@
                 <tfoot>
                     <tr>
                         <td colspan="7">
-                            <button type="button" @click="addBudgetTableItem()">+ {{ $lang?.step8?.add_rubro }}</button>
+                            <button type="button" @click="addBudgetTableItem()">+ {{ useTrans('step8')?.add_rubro }}</button>
                         </td>
                     </tr>
                     <tr class="table-light">
                         <td colspan="4">
-                            <span class="float-end">{{ $lang?.step8?.total_budget }}:</span>
+                            <span class="float-end">{{ useTrans('step8')?.total_budget }}:</span>
                         </td>
 
                         <td>
@@ -106,13 +106,13 @@
 
         <div class="d-flex justify-content-start gap-3 mt-4">
             <button class="btn btn-primary" type="submit">
-                {{ $lang?.layout?.save_and_continue }}
+                {{ useTrans('layout')?.save_and_continue }}
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                {{ $lang?.layout?.save }}
+                {{ useTrans('layout')?.save }}
             </button>
             <a class="btn btn-link" :href="route('dashboard')">
-                {{ $lang?.layout?.out }}
+                {{ useTrans('layout')?.out }}
             </a>
         </div>
     </form>
@@ -120,11 +120,17 @@
 
 <script>
 import axios from 'axios'
+import { useTrans } from '@/Composables/trans';
 
 export default {
     props: {
         errors: [],
         data: Object,
+    },
+    setup() {
+        return {
+            useTrans,
+        };
     },
     data() {
         return {

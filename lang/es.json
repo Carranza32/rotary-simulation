@@ -104,7 +104,280 @@
     },
     "step5": {
         "title": "Paso #5 Medición del éxito",
-        "description": "Este es el paso 5"
+        "description": "Este es el paso 5",
+        "measure": "Medida",
+        "method": "Método para obtener la información",
+        "frecuency": "Frecuencia",
+        "beneficiaries": "Beneficiarios",
+        "pazprev": {
+            "title": "PAZ Y PREVENCIÓN DE CONFLICTOS",
+            "description": "¿Qué metas de esta área de interés apoya el proyecto?",
+            "description2": "Selecciona todas las que correspondan. Te haremos preguntas sobre las que selecciones y, a la conclusión del proyecto, presentarás un informe con los resultados alcanzados en cada una de ellas. ",
+            "check1": "Potenciar la capacidad de las personas y comunidades para transformar los conflictos y construir la paz.",
+            "check2": "Capacitar a los integrantes de la comunidad en campos como la educación, el liderazgo para la paz y la prevención y resolución de conflictos.",
+            "check3": "Proporcionar servicios que contribuyen a integrar en la sociedad a los grupos vulnerables.",
+            "check4": "Mejorar el diálogo y las relaciones en la comunidad para determinar el mejor modo de administrar los recursos naturales.",
+            "check5": "Otorgar becas de postgrado para profesionales en el campo de la paz y la prevención de conflictos.",
+            "collect_info":"¿Ya sabes quíen recopilará la información necesario para la evaluación y el monitoreo?",
+            "business_name":"Nombre de la empresa u organización",
+            "capacity":"Explica brevemente por qué esta persona u organización están capacitadas para realizar esta tarea.",
+            "explain":"Indica cómo buscarás a la persona u organización que se encargará de realizar esta tarea.",
+            "modalMeasures": [
+                "Número de grupos y organizaciones que participan en los esfuerzos de consolidación de la paz",
+                "Número de personas capacitadas",
+                "Número de conflictos mediados",
+                "Número de comunidades que informan una reducción en el nivel de conflicto",
+                "Otro"
+            ],
+            "modalInformations": [
+                "Observación directa",
+                "Grupos focales/entrevistas",
+                "Registros e informes de subvenciones",
+                "Registros Públicos",
+                "Imágenes de satélite",
+                "Encuestas/cuestionarios",
+                "Pruebas"
+            ],
+            "modalFrecuencies": [
+                "Cada semana",
+                "Cada dos semanas",
+                "Cada mes",
+                "Cada dos meses",
+                "Cada tres meses",
+                "Cada cuatro meses",
+                "Cada cinco meses",
+                "Cada Año"
+            ]
+        },
+        "prevent": {
+            "title": "PREVENCIÓN Y TRATAMIENTO DE ENFERMEDADES",
+            "description": "¿Qué metas de esta área de interés apoya el proyecto?",
+            "description2": "Selecciona todas las que correspondan. Te haremos preguntas sobre las que selecciones y, a la conclusión del proyecto, presentarás un informe con los resultados alcanzados en cada una de ellas.  ",
+            "check1": "Mejorar las competencias de los profesionales médicos locales.",
+            "check2": "Promover programas de prevención y tratamiento de enfermedades con el objetivo de contener la propagación de enfermedades transmisibles y reducir la incidencia y las consecuencias de las enfermedades no transmisibles.",
+            "check3": "Fortalecer los sistemas de atención sanitaria.",
+            "check4": "Proporcionar tratamientos clínicos y de rehabilitación a personas que sufren discapacidades físicas.",
+            "check5": "Financiar becas de postgrado para profesionales que se desempeñen en el campo de prevención y tratamiento de enfermedades.",
+            "collect_info":"¿Ya sabes quíen recopilará la información necesario para la evaluación y el monitoreo?",
+            "modalMeasures": [
+                "Número de médicos y personal de salud entrenados.",
+                "Número de personas que informan una mejor calidad de servicios de cuidado de la salud.",
+                "Número de beneficiarios de la intervención de prevención de enfermedades.",
+                "Número de comunidades reportando disminución en casos de enfermedades.",
+                "Número de establecimientos de salud beneficiados.",
+                "Número de comunidades reportando incremento en el acceso de establecimientos de salud.",
+                "Número de eventos enfocados en la salud.",
+                "Número de campañas educativas de salud.",
+                "Otros"
+            ],
+            "modalInformations": [
+                "Observación directa",
+                "Grupos de enfoque/entrevistas",
+                "Registros e informes de subvenciones",
+                "Registros Públicos",
+                "Imágenes de satélite",
+                "Encuestas/cuestionarios",
+                "Pruebas"
+            ],
+            "modalFrecuencies": [
+                "Semanal",
+                "Cada dos semanas",
+                "Cada mes",
+                "Cada dos meses",
+                "Cada tres meses",
+                "Cada cuatro meses",
+                "Cada seis meses",
+                "Cada Año"
+            ]
+        },
+        "water":{
+            "title": "AGUA, SANEAMIENTO E HIGIENE",
+            "check1": "Facilitar el acceso universal y equitativo y accesible al agua potable.",
+            "check2": "Mejorar la calidad del agua mediante la protección y el mantenimiento de los recursos hídricos superficiales o subterráneos, la reducción de la polución y los contaminantes, y la promoción de la reutilización de las aguas residuales.",
+            "check3": "Facilitar el acceso universal y equitativo a servicios mejorados de saneamiento y tratamiento de residuos con el fin de acabar con la práctica de la defecación al aire libre en las comunidades.",
+            "check4": "Mejorar los conocimientos, hábitos y prácticas de higiene de la comunidad para así contribuir a la prevención de la transmisión de enfermedades.",
+            "check5": "Fortalecer las capacidad de los gobiernos, instituciones y comunidades para diseñar, financiar, administrar y mantener servicios de suministro de agua y saneamiento sostenibles.",
+            "check6": "Financiar becas de postgrado para profesionales de campos relacionados con el agua, el saneamiento y la higiene.",
+            "modalMeasures": [
+                "Número de personas con acceso a fuentes mejoradas de agua potable.",
+                "Número de personas con acceso a instalaciones de saneamiento mejoradas.",
+                "Número de personas con acceso a agua desinfectada a través del tratamiento de agua doméstico.",
+                "Número de comunidades con un comité de gobierno en funcionamiento.",
+                "Número de comunidades utilizando una estructura de tarifa / uso.",
+                "Número de personas capacitadas.",
+                "Otros"
+            ],
+            "modalInformations": [
+                "Observación directa",
+                "Grupos de enfoque/entrevistas",
+                "Registros e informes de subvenciones",
+                "Registros Públicos",
+                "Imágenes de satélite",
+                "Encuestas/cuestionarios",
+                "Pruebas"
+            ],
+            "modalFrecuencies": [
+                "Semanal",
+                "Cada dos semanas",
+                "Cada mes",
+                "Cada dos meses",
+                "Cada tres meses",
+                "Cada cuatro meses",
+                "Cada seis meses",
+                "Cada Año"
+            ]
+        },
+        "health":{
+            "title": "SALUD MATERNO-INFANTIL",
+            "check1": "Reducir la tasa de mortalidad neonatal.",
+            "check2": "Reducir la tasa de mortalidad y morbilidad de los niños menores de cinco años.",
+            "check3": "Reducir la tasa de mortalidad y morbilidad materna.",
+            "check4": "Mejorar el acceso a los servicios médicos esenciales, los trabajadores comunitarios de salud capacitados y a los proveedores de servicios de atención de la salud.",
+            "check5": "Financiar becas de postgrado para profesionales en campos relacionados con la salud materno-infantil.",
+            "modalMeasures": [
+                "Número de niños menores de 5 años recibiendo tratamiento médico.",
+                "Número de madres recibiendo cuidado prenatal.",
+                "Número de profesionales de la salud materno-infantil capacitados.",
+                "Número de comunidades que reportan disminución de tasa de mortalidad de niños menores de 5 años.",
+                "Número de comunidades que reportan disminución de tasa de morbilidad de niños menores de 5 años.",
+                "Número de comunidades que reportan disminución de tasa de mortalidad de madres.",
+                "Número de comunidades que reportan disminución de tasa de morbilidad de madres.",
+                "Número de establecimientos de salud beneficiados.",
+                "Otros"
+            ],
+            "modalInformations": [
+                "Observación directa",
+                "Grupos de enfoque/entrevistas",
+                "Registros e informes de subvenciones",
+                "Registros Públicos",
+                "Imágenes de satélite",
+                "Encuestas/cuestionarios",
+                "Pruebas"
+            ],
+            "modalFrecuencies": [
+                "Semanal",
+                "Cada dos semanas",
+                "Cada mes",
+                "Cada dos meses",
+                "Cada tres meses",
+                "Cada cuatro meses",
+                "Cada seis meses",
+                "Cada Año"
+            ]
+        },
+        "education":{
+            "title": "ALFABETIZACIÓN Y EDUCACIÓN BÁSICA",
+            "check1": "Apoyar programas destinados a fortalecer la capacidad de las comunidades para proporcionar educación básica y alfabetización a todos sus integrantes.",
+            "check2": "Aumentar el nivel de alfabetización de los adultos.",
+            "check3": "Trabajar para reducir la disparidad educativa entre los géneros.",
+            "check4": "Financiar becas de postgrado para profesionales en campos relacionados con la alfabetización y la educación básica.",
+            "modalMeasures": [
+                "Número de niños beneficiados en edad escolar",
+                "Número de nuevos estudiantes en edad escolar.",
+                "Número de nuevas niñas estudiantes en edad escolar.",
+                "Número de profesores recibiendo entrenamiento en educación de adultos.",
+                "Número de adultos recibiendo entrenamiento en alfabetización.",
+                "Número de instituciones participando en el programa.",
+                "Número de adultos usando nuevas habilidades de alfabetización .",
+                "Número de nuevos puestos docentes creados.",
+                "Otros"
+            ],
+            "modalInformations": [
+                "Observación directa",
+                "Grupos de enfoque/entrevistas",
+                "Registros e informes de subvenciones",
+                "Registros Públicos",
+                "Imágenes de satélite",
+                "Encuestas/cuestionarios",
+                "Pruebas"
+            ],
+            "modalFrecuencies": [
+                "Semanal",
+                "Cada dos semanas",
+                "Cada mes",
+                "Cada dos meses",
+                "Cada tres meses",
+                "Cada cuatro meses",
+                "Cada seis meses",
+                "Cada Año"
+            ]
+        },
+        "economic" : {
+            "title": "DESARROLLO ECONÓMICO DE LA COMUNIDAD",
+            "check1": "Fortalecer la capacidad de los líderes cívicos, organizaciones locales y redes comunitarias para apoyar el desarrollo económico de comunidades empobrecidas.",
+            "check2": "Crear oportunidades de empleo productivo y mejorar el acceso a fuentes de sustento sostenibles.",
+            "check3": "Empoderar a comunidades marginadas brindándoles acceso a servicios y oportunidades económicas.",
+            "check4": "Fortalecer la capacidad de los emprendedores, las empresas sociales y los empresarios innovadores basados en la comunidad.",
+            "check5": "Luchar contra las disparidades de género o clase que impiden que las personas afectadas obtengan empleo productivo y accedan a los mercados y servicios financieros.",
+            "check6": "Mejorar el acceso a fuentes de energía renovables y la adopción de medidas para el ahorro de energía orientadas a crear comunidades sostenibles y económicamente resilientes.",
+            "check7": "Empoderar a las comunidades para que adquieran habilidades para la conservación del medioambiente y los recursos naturales de modo que puedan obtener rendimiento económico de ellos.",
+            "check8": "Fortalecer las capacidades de resiliencia y adaptabilidad económica de las comunidades de modo que puedan responder a los desastres naturales y a los riesgos relacionados con el medioambiente y el cambio climático.",
+            "check9": "Desarrollar y apoyar servicios comunitarios básicos para situaciones de emergencia orientados a mejorar la resiliencia económica.",
+            "check10": "Financiar becas para profesionales que se desempeñen en el área de desarrollo económico de las comunidades.",
+            "modalMeasures": [
+                "Número de emprendedores apoyados.",
+                "Número de negocios apoyados.",
+                "Número de personas entrenadas.",
+                "Número de empleados creados.",
+                "Número de jóvenes empleados en actividades de generación de ingresos.",
+                "Otros"
+            ],
+            "modalInformations": [
+                "Observación directa",
+                "Grupos de enfoque/entrevistas",
+                "Registros e informes de subvenciones",
+                "Registros Públicos",
+                "Imágenes de satélite",
+                "Encuestas/cuestionarios",
+                "Pruebas"
+            ],
+            "modalFrecuencies": [
+                "Semanal",
+                "Cada dos semanas",
+                "Cada mes",
+                "Cada dos meses",
+                "Cada tres meses",
+                "Cada cuatro meses",
+                "Cada seis meses",
+                "Cada Año"
+            ]
+        },
+        "environment": {
+            "title": "MEDIO AMBIENTE",
+            "check1": "Proteger y restaurar los recursos terrestres, costeros, marinos y de agua dulce.",
+            "check2": "Mejorar la capacidad de las comunidades y los gobiernos locales para apoyar la gestión y conservación de los recursos naturales.",
+            "check3": "Apoyar la agroecología y las prácticas de agricultura, pesca y acuicultura sostenibles para mejorar la salud ecológica.",
+            "check4": "Abordar las causas del cambio climático y de la alteración del clima y apoyar soluciones para reducir la emisión de gases de efecto invernadero.",
+            "check5": "Fortalecimiento de la resiliencia de los ecosistemas y las comunidades afectadas por el cambio climático y la alteración del clima.",
+            "check6": "Apoyar la educación para promover comportamientos que protejan el medioambiente.",
+            "check7": "Abogar por el consumo sostenible de productos y la gestión ambientalmente racional de los desechos para construir una economía más eficiente en el uso de los recursos.",
+            "check8": "Abordar las cuestiones de justicia ambiental y las preocupaciones de salud pública en materia de medioambiente.",
+            "check9": "Financiar becas para profesionales de campos relacionados con el medioambiente",
+            "modalMeasures": [
+                "Número total de beneficiarios directos.",
+                "Número de personas entrenadas.",
+                "Otros"
+            ],
+            "modalInformations": [
+                "Observación directa",
+                "Grupos de enfoque/entrevistas",
+                "Registros e informes de subvenciones",
+                "Registros Públicos",
+                "Imágenes de satélite",
+                "Encuestas/cuestionarios",
+                "Pruebas"
+            ],
+            "modalFrecuencies": [
+                "Semanal",
+                "Cada dos semanas",
+                "Cada mes",
+                "Cada dos meses",
+                "Cada tres meses",
+                "Cada cuatro meses",
+                "Cada seis meses",
+                "Cada Año"
+            ]
+        }
     },
     "step6": {
         "title": "Paso #6 Sede y fechas",
@@ -205,15 +478,50 @@
     },
     "step10": {
         "title": "Paso #10 Sostenibilidad",
-        "description": "Este es el paso 10"
+        "page_title": "PROYECTOS HUMANITARIOS",
+        "page_description": "Los proyectos sostenibles ofrecen soluciones a largo plazo a los problemas que enfrenta una comunidad. Para que un proyecto sea sostenible, los integrantes de la comunidad deberán mantener por si mismos las actividades del proyecto una vez se agoten los fondos de la subvención. Tus respuestas a las preguntas que se incluyen a continuación nos ayudarán a determinar qué elementos del proyecto lo hacen sostenible.",
+        "description": "Este es el paso 10",
+        "project_plan": "Planificaión del proyecto",
+        "nececities": "Describe las necesidades de la comunidad que abordará el proyecto.",
+        "process": "¿Qué proceso se siguió para determinar estas necesidades?",
+        "integrants": "¿Cómo participaron los integrantes de la comunidad beneficiaria en la búsqueda de soluciones?",
+        "participation": "¿Qué participación tuvieron los integrantes de la comunidad local en la planificación del proyecto?",
+        "implement": "Implementación del proyecto",
+        "resume_imp": "Resume cada etapa de la implementación del proyecto.",
+        "disclamer": "Do not include sensitive personal data, such as government ID numbers, religion, race, health information, etc. If you include personal data, you are responsible for informing those whose personal data is included that you are providing it to Rotary and that it will be processed in accordance with Rotary’s Privacy Policy.",
+        "activ": "Actividad",
+        "duration": "Duración",
+        "add_activ": "Agregar actividad",
+        "cooperative": "¿Trabajarás en coordinación con otras iniciativas afines que estuvieran en marcha en la comunidad?",
+        "capacitation": "Describe los programas de capacitación, educación o divulgación a la comunidad que abarcará el proyecto.",
+        "determinate_necesities": "¿Qué proceso se siguió para determinar las necesidades?",
+        "incentives": "¿Qué incentivos (por ejemplo: compensación económica, premios, certificaciones o publicidad) se utilizarán para animar a los integrantes de la comunidad a participar en el proyecto?",
+        "supervisors_names": "Ingresa el nombre de los integrantes o grupos de la comunidad que supervisarán las actividades del proyecto una vez concluidas las actividades financiadas con la subvención.",
+        "budget": "PRESUPUESTO",
+        "providers": "¿Usarás proveedores locales para adquirir los equipos y materiales presupuestados?",
+        "licit": "¿Se utilizó un proceso de licitación para seleccionar a los proveedores?",
+        "integ": "¿Tiene alguno de los integrantes del comité un posible conflicto de interés con alguno de los proveedores?",
+        "adqui": "Si el proyecto incluye la adquisición de equipos o materiales, proporciona el plan de operación y mantenimiento. El plan deberá indicar quiénes estarán a cargo de operar y brindar mantenimiento a los equipos y la capacitación que recibirán",
+        "community_inte": "Describe como los integrantes de la comunidad brindarán mantenimiento a los equipos una vez concluidas las actividades de la subvención. ¿Podrán encontrarse repuestos?",
+        "subvenc": "Si se utilizarán fondos de la subvención para adquirir equipos, ¿serán éstos adecuados al entorno cultural y los estándares tecnológicos de la comunidad?",
+        "completed_project": "Una vez completado el proyecto, ¿a quién pertenecerán los artículos adquiridos con los fondos de la subvención? Ningún artículo podrá ser propiedad de un distrito, club o socio.",
+        "finantiation": "FINANCIACIÓN",
+        "credit": "¿Incluye tu proyecto actividades de microcrédito?",
+        "account": "¿Cuentas con una fuente de financiación local para mantener los resultados del proyecto a largo plazo? ",
+        "element": "¿Generará algún elemento del proyecto ingresos que se destinarán a financiar el proyecto a largo plazo? De ser así, explica."
     },
     "stepDocuments": {
         "title": "Documentos justificantes",
-        "description": "Este es el paso 10"
+        "description": "Este es el paso 10",
+        "page_title": "Documentos justificantes",
+        "add_file": "Agregar archivo",
+        "uploaded_files": "Documentos ya cargados",
+        "deleted_file": "Borrar los archivos seleccionados"
     },
     "step11": {
         "title": "Paso #11 Repaso y bloqueo de la solicitud",
-        "description": "Este es el paso 11"
+        "description": "Este es el paso 11",
+        "block": "Bloqueo de solicitud"
     },
     "step12": {
         "title": "Paso #12 Autorizaciones",

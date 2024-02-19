@@ -1,66 +1,66 @@
 <template>
     <div>
-        <h3>PREVENCIÓN Y TRATAMIENTO DE ENFERMEDADES</h3>
+        <h3>{{ useTrans('step5')?.prevent?.title }}</h3>
 
-        <p class="fw-bold">¿Qué metas de esta área de interés apoya el proyecto?</p>
-        <p>Selecciona todas las que correspondan. Te haremos preguntas sobre las que selecciones y, a la conclusión del proyecto, presentarás un informe con los resultados alcanzados en cada una de ellas. <span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
+        <p class="fw-bold">{{ useTrans('step5')?.prevent?.description }}</p>
+        <p>{{ useTrans('step5')?.prevent?.description2 }}<span class="float-end"><i class="fa-regular fa-circle-question"></i></span></p>
         <hr>
 
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="52_1">
             <label class="form-check-label">
-                Mejorar las competencias de los profesionales médicos locales.
+                {{ useTrans('step5')?.prevent?.check1 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="52_2">
             <label class="form-check-label">
-                Promover programas de prevención y tratamiento de enfermedades con el objetivo de contener la propagación de enfermedades transmisibles y reducir la incidencia y las consecuencias de las enfermedades no transmisibles.
+                {{ useTrans('step5')?.prevent?.check2 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="52_3">
             <label class="form-check-label">
-                Fortalecer los sistemas de atención sanitaria.
+                {{ useTrans('step5')?.prevent?.check3 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="52_4">
             <label class="form-check-label">
-                Proporcionar tratamientos clínicos y de rehabilitación a personas que sufren discapacidades físicas.
+                {{ useTrans('step5')?.prevent?.check4 }}
             </label>
         </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="52_5">
             <label class="form-check-label">
-                Financiar becas de postgrado para profesionales que se desempeñen en el campo de prevención y tratamiento de enfermedades.
+                {{ useTrans('step5')?.prevent?.check5 }}
             </label>
         </div>
 
         <Step5MeasuresTable :id="52" :measures="$store.state.step5.measures52"/>
 
         <div class="mb-3">
-            <label class="form-label">¿Ya sabes quíen recopilará la información necesario para la evaluación y el monitoreo?</label>
+            <label class="form-label">{{ useTrans('step5')?.prevent?.collect_info }}</label>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="evaluation_step5" value="1" v-model="evaluation">
-                <label class="form-check-label">{{ $lang?.layout?.yes }}</label>
+                <label class="form-check-label">{{ useTrans('layout')?.yes }}</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="evaluation_step5" value="0" v-model="evaluation">
-                <label class="form-check-label">{{ $lang?.layout?.no }}</label>
+                <label class="form-check-label">{{ useTrans('layout')?.no }}</label>
             </div>
         </div>
 
         <div class="my-3" v-if="evaluation == true">
             <div class="mb-3">
-                <label class="form-label">Nombre de la empresa u organización</label>
+                <label class="form-label">{{ useTrans('step5')?.pazprev?.business_name }}</label>
                 <input type="text" class="form-control" v-model="name">
             </div>
 
             <div class="mb-3">
                 <label for="textarea" class="form-label">
-                    Explica brevemente por qué esta persona u organización están capacitadas para realizar esta tarea.
+                    {{ useTrans('step5')?.pazprev?.capacity }}
                 </label>
 
                 <textarea class="form-control" id="textarea" rows="5" v-model="explication"></textarea>
@@ -70,58 +70,37 @@
         <div class="my-3" v-if="evaluation == false">
             <div class="mb-3">
                 <label for="textarea" class="form-label">
-                    Indica cómo buscarás a la persona u organización que se encargará de realizar esta tarea.
+                    {{ useTrans('step5')?.pazprev?.explain }}
                 </label>
 
                 <textarea class="form-control" id="textarea" rows="5" v-model="person_name"></textarea>
             </div>
         </div>
 
-        <step-5-measures-modal :id="52" title="PREVENCIÓN Y TRATAMIENTO DE ENFERMEDADES" :modalMeasures="modalMeasures" :modalInformations="modalInformations" :modalFrecuencies="modalFrecuencies" :modalBenefits="modalBenefits"/>
+        <step-5-measures-modal :id="52" :title="useTrans('step5')?.prevent?.title" :modalMeasures="modalMeasures" :modalInformations="modalInformations" :modalFrecuencies="modalFrecuencies" :modalBenefits="modalBenefits"/>
     </div>
 </template>
 
 <script>
 import Step5MeasuresTable from '@/Components/Step5MeasuresTable.vue'
 import Step5MeasuresModal from '@/Components/Step5MeasuresModal.vue'
+import { useTrans } from '@/Composables/trans';
 
 export default {
     components: {
         Step5MeasuresTable,
         Step5MeasuresModal
     },
+    setup() {
+        return {
+            useTrans,
+        };
+    },
     data(){
         return {
-            modalMeasures: [
-                "Número de médicos y personal de salud entrenados.",
-                "Número de personas que informan una mejor calidad de servicios de cuidado de la salud.",
-                "Número de beneficiarios de la intervención de prevención de enfermedades.",
-                "Número de comunidades reportando disminución en casos de enfermedades.",
-                "Número de establecimientos de salud beneficiados.",
-                "Número de comunidades reportando incremento en el acceso de establecimientos de salud.",
-                "Número de eventos enfocados en la salud.",
-                "Número de campañas educativas de salud.",
-                "Otros",
-            ],
-            modalInformations: [
-                "Observación directa",
-                "Grupos de enfoque/entrevistas",
-                "Registros e informes de subvenciones",
-                "Registros Públicos",
-                "Imágenes de satélite",
-                "Encuestas/cuestionarios",
-                "Pruebas",
-            ],
-            modalFrecuencies: [
-                "Semanal",
-                "Cada dos semanas",
-                "Cada mes",
-                "Cada dos meses",
-                "Cada tres meses",
-                "Cada cuatro meses",
-                "Cada seis meses",
-                "Cada Año",
-            ],
+            modalMeasures: this.useTrans('step5')?.prevent?.modalMeasures,
+            modalInformations: this.useTrans('step5')?.prevent?.modalInformations,
+            modalFrecuencies: this.useTrans('step5')?.prevent?.modalFrecuencies,
             modalBenefits: [
                 "1-19",
                 "20-49",
